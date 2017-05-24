@@ -1,0 +1,62 @@
+template:
+  params:
+    bootswatch: cosmo
+
+reference:
+  - title: Authentication
+    desc: Functions for authenticating with CellEngine.
+    contents:
+      - setServer
+      - authenticate
+
+  - title: Experiments, Projects and Attachments
+    contents:
+      - createExperiment
+      - getExperiments
+      - getExperiment
+      - updateExperiment
+      - deleteExperiment
+      - getAttachments
+
+  - title: FCS Files
+    contents:
+      - uploadFcsFile
+      - getFcsFiles
+      - getFcsFile
+      - getEvents
+      - annotateFcsFile
+      - setFcsFilePanel
+      - deleteFcsFile
+
+  - title: Scales
+    contents:
+      - getScaleSets
+
+  - title: Compensations
+    contents:
+      - getCompensations
+
+  - title: Gates and Populations
+    contents:
+      - ends_with("Gate")
+      - createGates
+      - createPopulation
+      - getGates
+      - getPopulations
+      - deletePopulationAuto
+
+  - title: Statistics
+    contents:
+      - getStatistics
+
+  - title: Plots
+    contents:
+      # - getPlot
+
+  - title: Utilities
+    contents:
+      - generateId
+      - UNCOMPENSATED
+      - FILE_INTERNAL
+      - UNGATED
+      - getErrorInfo

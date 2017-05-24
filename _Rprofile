@@ -1,0 +1,3 @@
+r = getOption("repos")
+r["CRAN"] = gsub("mran", "cran", r["CRAN"])
+options(repos = r)
