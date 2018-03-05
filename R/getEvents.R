@@ -22,6 +22,8 @@
 #' @param format One of "TSV" or "FCS".
 #' @param destination Optional, if specified, write the file to the specified
 #'   path instead of returning it as a binary blob.
+#' @param overwrite Optional, if a destination is specified, allows destination
+#'   file to be overwritten.
 #' @export
 #' @examples
 #' \dontrun{
@@ -37,7 +39,8 @@ getEvents = function(experimentId,
                      compensatedQ = FALSE,
                      headerQ = FALSE,
                      format = "FCS",
-                     destination = NULL) {
+                     destination = NULL,
+                     overwrite = FALSE) {
 
   # scale set argument
   # TODO dedupe
@@ -70,7 +73,7 @@ getEvents = function(experimentId,
     httr::warn_for_status(response)
     content = httr::content(response, "raw")
   } else {
-    response = httr::GET(fullURL, query = params, httr::user_agent(ua), httr::write_disk(destination))
+    response = httr::GET(fullURL, query = params, httr::user_agent(ua), httr::write_disk(destination, overwrite))
     httr::warn_for_status(response)
   }
 }
