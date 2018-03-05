@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get statistics — getStatistics â€¢ blackbuck</title>
+<title>Get statistics — getStatistics â€¢ cellengine</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -47,7 +47,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">blackbuck</a>
+      <a class="navbar-brand" href="../index.html">cellengine</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -116,7 +116,7 @@ error will be thrown. If specified, do not specify <code>fcsFileIds</code>.</p><
     <tr>
       <th>compensationId</th>
       <td><p>Compensation to apply. May be an ID,
-<code><a href='http://www.rdocumentation.org/packages/blackbuck/topics/UNCOMPENSATED'>blackbuck::UNCOMPENSATED</a></code> or <code><a href='http://www.rdocumentation.org/packages/blackbuck/topics/FILE_INTERNAL'>blackbuck::FILE_INTERNAL</a></code>.</p></td>
+<code><a href='http://www.rdocumentation.org/packages/cellengine/topics/UNCOMPENSATED'>cellengine::UNCOMPENSATED</a></code> or <code><a href='http://www.rdocumentation.org/packages/cellengine/topics/FILE_INTERNAL'>cellengine::FILE_INTERNAL</a></code>.</p></td>
     </tr>
     <tr>
       <th>populationIds</th>
@@ -189,7 +189,7 @@ be non-unique, in which case an error will be raised.</p>
 <span class='no'>populations</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Leukocytes"</span>)
 <span class='no'>stats</span> <span class='kw'>=</span> <span class='fu'>getStatistics</span>(<span class='no'>experimentId</span>, <span class='kw'>fcsFiles</span> <span class='kw'>=</span> <span class='no'>fcsFiles</span>, <span class='kw'>channels</span> <span class='kw'>=</span> <span class='no'>channels</span>,
   <span class='kw'>statistics</span> <span class='kw'>=</span> <span class='no'>statistics</span>, <span class='kw'>populations</span> <span class='kw'>=</span> <span class='no'>populations</span>, <span class='kw'>q</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
-  <span class='kw'>compensationId</span> <span class='kw'>=</span> <span class='kw pkg'>blackbuck</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/blackbuck/topics/FILE_INTERNAL'>FILE_INTERNAL</a></span>)
+  <span class='kw'>compensationId</span> <span class='kw'>=</span> <span class='kw pkg'>cellengine</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/cellengine/topics/FILE_INTERNAL'>FILE_INTERNAL</a></span>)
 <span class='co'># Returns a data.frame of statistics, including the file annotations.</span>
 <span class='co'># Because percentOf is not specified, "percent" will be percent of parent.</span>
 
@@ -201,12 +201,12 @@ be non-unique, in which case an error will be raised.</p>
 <span class='no'>scaleSetId</span> <span class='kw'>=</span> <span class='st'>"9ab5c6d7a8cf24a5c4f9fdde"</span>
 <span class='no'>stats</span> <span class='kw'>=</span> <span class='fu'>getStatistics</span>(<span class='no'>experimentId</span>, <span class='kw'>fcsFileIds</span> <span class='kw'>=</span> <span class='no'>fcsFileIds</span>,
   <span class='kw'>statistics</span> <span class='kw'>=</span> <span class='no'>statistics</span>, <span class='kw'>populationIds</span> <span class='kw'>=</span> <span class='no'>populationIds</span>,
-  <span class='kw'>compensationId</span> <span class='kw'>=</span> <span class='kw pkg'>blackbuck</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/blackbuck/topics/UNCOMPENSATED'>UNCOMPENSATED</a></span>, <span class='kw'>scaleSetId</span> <span class='kw'>=</span> <span class='no'>scaleSetId</span>)
+  <span class='kw'>compensationId</span> <span class='kw'>=</span> <span class='kw pkg'>cellengine</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/cellengine/topics/UNCOMPENSATED'>UNCOMPENSATED</a></span>, <span class='kw'>scaleSetId</span> <span class='kw'>=</span> <span class='no'>scaleSetId</span>)
 
 <span class='co'># Percent of ungated:</span>
 <span class='fu'>getStatistics</span>(<span class='no'>experimentId</span>, <span class='kw'>fcsFileIds</span> <span class='kw'>=</span> <span class='no'>fcsFileIds</span>, <span class='kw'>statistics</span> <span class='kw'>=</span> <span class='no'>statistics</span>,
-  <span class='kw'>populationIds</span> <span class='kw'>=</span> <span class='no'>populationIds</span>, <span class='kw'>compensationId</span> <span class='kw'>=</span> <span class='kw pkg'>blackbuck</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/blackbuck/topics/UNCOMPENSATED'>UNCOMPENSATED</a></span>,
-  <span class='kw'>percentOf</span> <span class='kw'>=</span> <span class='kw pkg'>blackbuck</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/blackbuck/topics/UNGATED'>UNGATED</a></span>)
+  <span class='kw'>populationIds</span> <span class='kw'>=</span> <span class='no'>populationIds</span>, <span class='kw'>compensationId</span> <span class='kw'>=</span> <span class='kw pkg'>cellengine</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/cellengine/topics/UNCOMPENSATED'>UNCOMPENSATED</a></span>,
+  <span class='kw'>percentOf</span> <span class='kw'>=</span> <span class='kw pkg'>cellengine</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/cellengine/topics/UNGATED'>UNGATED</a></span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

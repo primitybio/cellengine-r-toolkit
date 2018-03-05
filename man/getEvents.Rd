@@ -6,7 +6,7 @@
 \usage{
 getEvents(experimentId, fcsFileId, populationId = NULL, scaleSetId = NULL,
   compensation = UNCOMPENSATED, compensatedQ = FALSE, headerQ = FALSE,
-  format = "FCS", destination = NULL)
+  format = "FCS", destination = NULL, overwrite = FALSE)
 }
 \arguments{
 \item{experimentId}{ID of experiment.}
@@ -33,6 +33,9 @@ spill string (file-internal compensation).}
 
 \item{destination}{Optional, if specified, write the file to the specified
 path instead of returning it as a binary blob.}
+
+\item{overwrite}{Optional, if a destination is specified, allows destination
+file to be overwritten.}
 }
 \description{
 Retrieves events from an FCS file or gated population as either an FCS or
