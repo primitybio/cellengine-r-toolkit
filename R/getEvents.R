@@ -11,8 +11,13 @@
 #' @param populationId Optional ID of population, for gated events.
 #' @param scaleSetId Optional ID of scale set. If omitted and if a single
 #'   scale set exists in the experiment, that scale set will be used.
-#' @param compensatedQ For TSV format only: if true, file will contain
-#'   compensated values.
+#' @param compensation ID of compensation or special compensation type
+#'   (\code{UNCOMPENSATED} or \code{FILE_INTERNAL}).
+#' @param compensatedQ If \code{TRUE}, applies the compensation specified in
+#'   compensation to the exported events. For TSV format, the numerical values
+#'   will be the compensated values. For FCS format, the numerical values will
+#'   be unchanged, but the file header will contain the compensation as the
+#'   spill string (file-internal compensation).
 #' @param headerQ for TSV format only: if true, file will contain a header row.
 #' @param format One of "TSV" or "FCS".
 #' @param destination Optional, if specified, write the file to the specified
@@ -28,6 +33,7 @@ getEvents = function(experimentId,
                      fcsFileId,
                      populationId = NULL,
                      scaleSetId = NULL,
+                     compensation = UNCOMPENSATED,
                      compensatedQ = FALSE,
                      headerQ = FALSE,
                      format = "FCS",
@@ -53,8 +59,9 @@ getEvents = function(experimentId,
   params = list(
     populationId = populationId,
     scaleSetId = scaleSetId,
+    compensationId = compensation,
     compensatedQ = compensatedQ,
-    headerQ = headerQ,
+    headers = headerQ,
     format = format
   )
 

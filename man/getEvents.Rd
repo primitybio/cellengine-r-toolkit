@@ -5,8 +5,8 @@
 \title{Get FCS File Events}
 \usage{
 getEvents(experimentId, fcsFileId, populationId = NULL, scaleSetId = NULL,
-  compensatedQ = FALSE, headerQ = FALSE, format = "FCS",
-  destination = NULL)
+  compensation = UNCOMPENSATED, compensatedQ = FALSE, headerQ = FALSE,
+  format = "FCS", destination = NULL)
 }
 \arguments{
 \item{experimentId}{ID of experiment.}
@@ -18,8 +18,14 @@ getEvents(experimentId, fcsFileId, populationId = NULL, scaleSetId = NULL,
 \item{scaleSetId}{Optional ID of scale set. If omitted and if a single
 scale set exists in the experiment, that scale set will be used.}
 
-\item{compensatedQ}{For TSV format only: if true, file will contain
-compensated values.}
+\item{compensation}{ID of compensation or special compensation type
+(\code{UNCOMPENSATED} or \code{FILE_INTERNAL}).}
+
+\item{compensatedQ}{If \code{TRUE}, applies the compensation specified in
+compensation to the exported events. For TSV format, the numerical values
+will be the compensated values. For FCS format, the numerical values will
+be unchanged, but the file header will contain the compensation as the
+spill string (file-internal compensation).}
 
 \item{headerQ}{for TSV format only: if true, file will contain a header row.}
 
