@@ -24,7 +24,7 @@ error will be thrown. If specified, do not specify \code{fcsFileIds}.}
 "quantile", "stddev", "cv", "eventcount", "percent", "mad".}
 
 \item{compensationId}{Compensation to apply. May be an ID,
-\code{blackbuck::UNCOMPENSATED} or \code{blackbuck::FILE_INTERNAL}.}
+\code{cellengine::UNCOMPENSATED} or \code{cellengine::FILE_INTERNAL}.}
 
 \item{populationIds}{IDs of populations. If specified, do not specify
 \code{populations}.}
@@ -88,7 +88,7 @@ statistics = c("median", "mean", "quantile", "percent")
 populations = c("Leukocytes")
 stats = getStatistics(experimentId, fcsFiles = fcsFiles, channels = channels,
   statistics = statistics, populations = populations, q = 0.95,
-  compensationId = blackbuck::FILE_INTERNAL)
+  compensationId = cellengine::FILE_INTERNAL)
 # Returns a data.frame of statistics, including the file annotations.
 # Because percentOf is not specified, "percent" will be percent of parent.
 
@@ -100,11 +100,11 @@ populationIds = c("9ab5c6d7a8cf24a5c4f9face")
 scaleSetId = "9ab5c6d7a8cf24a5c4f9fdde"
 stats = getStatistics(experimentId, fcsFileIds = fcsFileIds,
   statistics = statistics, populationIds = populationIds,
-  compensationId = blackbuck::UNCOMPENSATED, scaleSetId = scaleSetId)
+  compensationId = cellengine::UNCOMPENSATED, scaleSetId = scaleSetId)
 
 # Percent of ungated:
 getStatistics(experimentId, fcsFileIds = fcsFileIds, statistics = statistics,
-  populationIds = populationIds, compensationId = blackbuck::UNCOMPENSATED,
-  percentOf = blackbuck::UNGATED)
+  populationIds = populationIds, compensationId = cellengine::UNCOMPENSATED,
+  percentOf = cellengine::UNGATED)
 }
 }
