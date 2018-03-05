@@ -55,7 +55,7 @@ createGates = function(experimentId, gates) {
         RangeGate = {
           g$model$label = c(
             mean(g$model$range$x1, g$model$range$x2),
-            x$model$range.y
+            g$model$range.y
           )
         }
       )
