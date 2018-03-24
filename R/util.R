@@ -10,7 +10,7 @@ handleResponse = function(response) {
 
 ua = (function (){
   versions <- c(
-    `Blackbuck API Toolkit` = "0.1.0", # TODO see if utils::packageVersion works
+    `CellEngine API Toolkit` = "0.1.0", # TODO see if utils::packageVersion works
     libcurl = curl::curl_version()$version,
     `r-curl` = as.character(utils::packageVersion("curl")),
     httr = as.character(utils::packageVersion("httr")))
@@ -81,4 +81,57 @@ UNGATED = ""
 #' @export
 getErrorInfo = function() {
   pkg.env$lastError
+}
+
+#' Resource By Name
+#'
+#' Allows specifying a resource by name instead of by id, anywhere that an id is
+#' accepted.
+#'
+#' Internally, this looks up the resource's id by name before the function runs.
+#' To improve performance, the resource's id is cached for the duration of the R
+#' session. Resources such as gates that exist within an experiment are cached
+#' within the experiment's scope. That is, the following is safe, even though
+#' the FCS files have the same name:
+#'
+#' \code{
+#' getFcsFile(byName("experiment 1"), byName("fcsfile1.fcs"))
+#' getFcsFile(byName("experiment 2"), byName("fcsfile1.fcs"))
+#' }
+#'
+#' @param name Name of resource.
+#' @examples
+#' \dontrun{
+#' getGates(byName("my experiment"))
+#' getGates(experimentId = byName("my experiment"))
+#' }
+#' @export
+byName = function(name) {
+  class(name) <- "_boxed_by_name"
+  name
+}
+
+byNameHash = new.env(hash = TRUE, parent = emptyenv())
+
+lookupByName = function(listpath, name) {
+  if (class(name) != "_boxed_by_name") return(name)
+
+  name = unclass(name)
+  key = paste(listpath, name, sep="$$$")
+  if (exists(key, envir = byNameHash)) return(get(key, envir = byNameHash))
+
+  vals = baseGet(listpath, params = list(
+    query = sprintf("eq(name, \"%s\")", name),
+    limit = 2 # need >1 so we can detect ambiguous matches
+  ))
+  if (!is.data.frame(vals)) {
+    stop(sprintf("Resource with the name '%s' does not exist in the experiment.", name))
+  }
+  if (nrow(vals) > 1) {
+    stop(sprintf("More than one resource with the name '%s' exists in the experiment.", name))
+  }
+
+  val = vals$`_id`
+  assign(key, val, envir = byNameHash)
+  val
 }

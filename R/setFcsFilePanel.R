@@ -33,7 +33,9 @@
 #' }
 setFcsFilePanel = function(experimentId, fcsFileId, panelName, panel) {
   checkDefined(experimentId)
+  experimentId = lookupByName("experiments", experimentId)
   checkDefined(fcsFileId)
+  fcsFileId = lookupByName(paste("experiments", experimentId, "fcsfiles", sep = "/"), fcsFileId)
   body = jsonlite::toJSON(list(
     panelName = panelName,
     panel = panel

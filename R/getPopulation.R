@@ -13,6 +13,8 @@
 #' }
 getPopulation = function(experimentId, populationId, params = list()) {
   checkDefined(experimentId)
+  experimentId = lookupByName("experiments", experimentId)
   checkDefined(populationId)
+  populationId = lookupByName(paste("experiments", experimentId, "populations", sep = "/"), populationId)
   baseGet(paste("experiments", experimentId, "populations", populationId, sep = "/"), params)
 }

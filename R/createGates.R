@@ -35,6 +35,7 @@ createGates = function(experimentId, gates) {
   # an advanced function.
 
   checkDefined(experimentId)
+  experimentId = lookupByName("experiments", experimentId)
 
   body = lapply(gates, function (g) {
     if (!("label" %in% names(g$model))) {
