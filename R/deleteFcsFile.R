@@ -11,6 +11,8 @@
 #' }
 deleteFcsFile = function(experimentId, fcsFileId) {
   checkDefined(experimentId)
+  experimentId = lookupByName("experiments", experimentId)
   checkDefined(fcsFileId)
+  fcsFileId = lookupByName(paste("experiments", experimentId, "fcsfiles", sep = "/"), fcsFileId)
   baseDelete(paste("experiments", experimentId, "fcsfiles", fcsFileId, sep = "/"))
 }

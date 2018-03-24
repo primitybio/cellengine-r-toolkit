@@ -54,8 +54,10 @@ getEvents = function(experimentId,
                      subsampling = list()) {
 
   checkDefined(experimentId)
+  experimentId = lookupByName("experiments", experimentId)
   checkDefined(fcsFileId)
-  
+  fcsFileId = lookupByName(paste("experiments", experimentId, "fcsfiles", sep = "/"), fcsFileId)
+
   if (is.null(compensation) && !is.null(populationId)) {
     stop("'compensation' parameter is required for gated populations.")
   } else if (is.null(compensation) && isTRUE(compensatedQ)) {

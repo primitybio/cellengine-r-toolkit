@@ -12,5 +12,6 @@
 #' }
 getCompensations = function(experimentId, params = list()) {
   checkDefined(experimentId)
+  experimentId = lookupByName("experiments", experimentId)
   baseGet(paste("experiments", experimentId, "compensations", sep = "/"), params)
 }

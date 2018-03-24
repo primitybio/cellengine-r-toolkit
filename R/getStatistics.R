@@ -98,6 +98,7 @@ getStatistics = function(experimentId,
                          percentOf = NULL) {
 
   checkDefined(experimentId)
+  experimentId = lookupByName("experiments", experimentId)
 
   # FCS file arguments
   if (is.null(fcsFileIds) && is.null(fcsFiles)) {
