@@ -32,6 +32,8 @@
 #' setFcsFilePanel(experimentId, fcsFileId, "Panel 1", panel)
 #' }
 setFcsFilePanel = function(experimentId, fcsFileId, panelName, panel) {
+  checkDefined(experimentId)
+  checkDefined(fcsFileId)
   body = jsonlite::toJSON(list(
     panelName = panelName,
     panel = panel

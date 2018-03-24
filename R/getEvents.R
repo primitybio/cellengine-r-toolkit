@@ -42,6 +42,9 @@ getEvents = function(experimentId,
                      destination = NULL,
                      overwrite = FALSE) {
 
+  checkDefined(experimentId)
+  checkDefined(fcsFileId)
+
   # scale set argument
   # TODO dedupe
   if (is.null(scaleSetId) && !is.null(populationId)) {

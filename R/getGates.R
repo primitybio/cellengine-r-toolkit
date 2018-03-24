@@ -11,5 +11,6 @@
 #' getGates(experimentId, params = list("limit" = "5"))
 #' }
 getGates = function(experimentId, params = list()) {
+  checkDefined(experimentId)
   baseGet(paste("experiments", experimentId, "gates", sep = "/"), params)
 }

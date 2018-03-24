@@ -11,6 +11,7 @@
 #' updateExperiment(experimentId, list("name" = "my experiment"))
 #' }
 updateExperiment = function(experimentId, properties = list(), params = list()) {
+  checkDefined(experimentId)
   body = jsonlite::toJSON(body, null = "null")
   basePut(paste("experiments", experimentId, sep = "/"), body, params)
 }

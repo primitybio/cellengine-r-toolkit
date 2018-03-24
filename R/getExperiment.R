@@ -11,5 +11,6 @@
 #' getExperiment(experimentId, params = list("fields" = "+name"))
 #' }
 getExperiment = function(experimentId, params = list()) {
+  checkDefined(experimentId)
   baseGet(paste("experiments", experimentId, sep = "/"), params)
 }

@@ -26,6 +26,9 @@
 #' }
 createPopulation = function(experimentId, name, gates, terminalGateGid,
                             parentId = NULL) {
+
+  checkDefined(experimentId)
+
   body = jsonlite::toJSON(list(
     name = jsonlite::unbox(name),
     gates = jsonlite::unbox(jsonlite::toJSON(gates)),

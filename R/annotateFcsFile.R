@@ -16,6 +16,8 @@
 #' annotateFcsFile(experimentId, fcsFileId, annotations)
 #' }
 annotateFcsFile = function(experimentId, fcsFileId, annotations) {
+  checkDefined(experimentId)
+  checkDefined(fcsFileId)
   body = jsonlite::toJSON(list("annotations" =
     mapply(function (k,v) {
       list("name" = jsonlite::unbox(k), "value" = jsonlite::unbox(v))

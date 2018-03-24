@@ -11,5 +11,6 @@
 #' getScaleSets(experimentId, params = list("limit" = "5"))
 #' }
 getScaleSets = function(experimentId, params = list()) {
+  checkDefined(experimentId)
   baseGet(paste("experiments", experimentId, "scalesets", sep = "/"), params)
 }

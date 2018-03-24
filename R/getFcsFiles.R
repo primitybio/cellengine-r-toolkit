@@ -12,5 +12,6 @@
 #' getFcsFiles(experimentId, params = list("limit" = "5"))
 #' }
 getFcsFiles = function(experimentId, params = list()) {
+  checkDefined(experimentId)
   baseGet(paste("experiments", experimentId, "fcsfiles", sep = "/"), params)
 }

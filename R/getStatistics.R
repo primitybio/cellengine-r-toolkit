@@ -97,6 +97,8 @@ getStatistics = function(experimentId,
                          q = 0.5,
                          percentOf = NULL) {
 
+  checkDefined(experimentId)
+
   # FCS file arguments
   if (is.null(fcsFileIds) && is.null(fcsFiles)) {
     stop("One of fcsFileIds or fcsFiles is required.")

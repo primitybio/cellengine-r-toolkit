@@ -10,7 +10,7 @@ handleResponse = function(response) {
 
 ua = (function (){
   versions <- c(
-    `CellEngine R API Toolkit` = "0.1.0", # TODO see if utils::packageVersion works
+    `Blackbuck API Toolkit` = "0.1.0", # TODO see if utils::packageVersion works
     libcurl = curl::curl_version()$version,
     `r-curl` = as.character(utils::packageVersion("curl")),
     httr = as.character(utils::packageVersion("httr")))
@@ -44,6 +44,12 @@ baseDelete = function(url, params = list()) {
   fullURL = paste(pkg.env$baseURL, url, sep = "/")
   response = httr::DELETE(fullURL, query = params, httr::user_agent(ua))
   httr::warn_for_status(response)
+}
+
+checkDefined = function(param) {
+  if (is.null(param)) {
+    stop(paste0("parameter '", deparse(substitute(param)), "' is NULL"))
+  }
 }
 
 #' No compensation.

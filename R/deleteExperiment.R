@@ -9,5 +9,6 @@
 #' deleteExperiment(experimentId)
 #' }
 deleteExperiment = function(experimentId) {
+  checkDefined(experimentId)
   baseDelete(paste("experiments", experimentId, sep = "/"))
 }

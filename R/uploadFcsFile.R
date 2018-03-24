@@ -10,6 +10,7 @@
 #' uploadFcsFile(experimentId, "/path/to/file.fcs")
 #' }
 uploadFcsFile = function(experimentId, fcsFilePath) {
+  checkDefined(experimentId)
   body = list("file" = httr::upload_file(fcsFilePath))
   ensureBaseUrl()
   fullURL = paste(pkg.env$baseURL, "experiments", experimentId, "fcsfiles", sep = "/")

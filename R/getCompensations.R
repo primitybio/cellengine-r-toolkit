@@ -11,5 +11,6 @@
 #' getCompensations(experimentId, params = list("limit" = "5"))
 #' }
 getCompensations = function(experimentId, params = list()) {
+  checkDefined(experimentId)
   baseGet(paste("experiments", experimentId, "compensations", sep = "/"), params)
 }

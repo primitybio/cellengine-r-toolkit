@@ -91,6 +91,8 @@ commonGateCreate = function(body, name, gid,
                             tailoredPerFile, fcsFileId, fcsFile,
                             createPopulation) {
 
+  checkDefined(experimentId)
+
   parentPopulationId = parsePopulationArgs(parentPopulationId, parentPopulation,
     experimentId)
 

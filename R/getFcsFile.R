@@ -13,5 +13,7 @@
 #' getFcsFile(experimentId, fcsFileId, params = list("fields" = "+filename"))
 #' }
 getFcsFile = function(experimentId, fcsFileId, params = list()) {
+  checkDefined(experimentId)
+  checkDefined(fcsFileId)
   baseGet(paste("experiments", experimentId, "fcsfiles", fcsFileId, sep = "/"), params)
 }

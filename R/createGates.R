@@ -34,6 +34,8 @@ createGates = function(experimentId, gates) {
   # This function could be friendlier in terms of valdiating gates, but it is
   # an advanced function.
 
+  checkDefined(experimentId)
+
   body = lapply(gates, function (g) {
     if (!("label" %in% names(g$model))) {
       switch (g$type,
