@@ -12,5 +12,8 @@
 #' }
 getGates = function(experimentId, params = list()) {
   checkDefined(experimentId)
-  baseGet(paste("experiments", experimentId, "gates", sep = "/"), params)
+  res = baseGet(paste("experiments", experimentId, "gates", sep = "/"), params)
+  # Always have the fcsFileId column present (#9)
+  if (is.data.frame(res) && !("fcsFileId" %in% colnames(res))) res$fcsFileId <- NA
+  res
 }
