@@ -5,7 +5,17 @@ CellEngine R API Toolkit
 -----
 
 Installing:
-```
+```R
 library("devtools")
 install_github("primitybio/cellengine-r-toolkit")
+```
+
+Quick start:
+
+```R
+library("cellengine")
+setServer("https://cellengine.com")
+authenticate("username", Sys.getenv("CELLENGINE_PASSWORD"))
+
+experiments = getExperiments()
 ```
