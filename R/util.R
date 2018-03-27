@@ -1,6 +1,6 @@
 pkg.env = new.env()
 
-pkg.env$baseURL = ""
+pkg.env$baseURL = "https://cellengine.com/api/v1"
 
 handleResponse = function(response) {
   httr::warn_for_status(response)

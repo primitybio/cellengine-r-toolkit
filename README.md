@@ -14,7 +14,6 @@ Quick start:
 
 ```R
 library("cellengine")
-setServer("https://cellengine.com")
 authenticate("username", Sys.getenv("CELLENGINE_PASSWORD"))
 
 experiments = getExperiments()

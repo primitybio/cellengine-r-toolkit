@@ -55,8 +55,13 @@
 <h2 class="hasAnchor">
 <a href="#cellengine-r-api-toolkit" class="anchor"></a>CellEngine R API Toolkit</h2>
 <p>Installing:</p>
-<pre><code>library("devtools")
-install_github("primitybio/cellengine-r-toolkit")</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"devtools"</span>)
+<span class="kw">install_github</span>(<span class="st">"primitybio/cellengine-r-toolkit"</span>)</code></pre></div>
+<p>Quick start:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">"cellengine"</span>)
+<span class="kw"><a href="reference/authenticate.html">authenticate</a></span>(<span class="st">"username"</span>, <span class="kw">Sys.getenv</span>(<span class="st">"CELLENGINE_PASSWORD"</span>))
+
+experiments =<span class="st"> </span><span class="kw"><a href="reference/getExperiments.html">getExperiments</a></span>()</code></pre></div>
 </div>
 
   </div>

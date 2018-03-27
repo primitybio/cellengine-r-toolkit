@@ -13,5 +13,5 @@ setServer(host)
 Sets the address of the server to which to connect.
 }
 \examples{
-setServer("https://mycompany.immuneatlas.org")
+setServer("https://mycompany.cellengine.com")
 }

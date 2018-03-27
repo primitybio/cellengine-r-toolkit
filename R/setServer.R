@@ -5,7 +5,7 @@
 #' @param host Address of API server.
 #' @export
 #' @examples
-#' setServer("https://mycompany.immuneatlas.org")
+#' setServer("https://mycompany.cellengine.com")
 setServer = function(host) {
   host = sub("/$", "", host)
   if (!grepl("^https://[0-9a-zA-Z\\.\\-]+\\.[0-9a-zA-Z\\.]+$", host, ignore.case = TRUE)) {
