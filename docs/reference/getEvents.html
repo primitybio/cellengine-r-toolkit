@@ -85,7 +85,8 @@ TSV file.</p>
 
     <pre class="usage"><span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='kw'>populationId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scaleSetId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>compensation</span> <span class='kw'>=</span> <span class='no'>UNCOMPENSATED</span>, <span class='kw'>compensatedQ</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>headerQ</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"FCS"</span>, <span class='kw'>destination</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"FCS"</span>, <span class='kw'>destination</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>subsampling</span> <span class='kw'>=</span> <span class='fu'>list</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -138,6 +139,16 @@ path instead of returning it as a binary blob.</p></td>
       <td><p>Optional, if a destination is specified, allows destination
 file to be overwritten.</p></td>
     </tr>
+    <tr>
+      <th>subsampling</th>
+      <td><p>Optional, subsampling parameters in the form
+<code>list(preSubsampleN = number, preSubsampleP = number,
+postSubsampleN = number, postSubsampleP = number, seed = number)</code>.
+Subsample-N options specify absolute subsampling values, and subsample-P options
+specify a fractional subsampling value (0 to 1); specify only one pre-
+and/or one post-subsample option. Specify a <code>seed</code> for reproducible
+downsampling.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -151,6 +162,7 @@ downloads. Use a library such as flowCore to parse FCS files.</p>
 <span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>)
 <span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='no'>populationId</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"TSV"</span>)
 <span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='kw'>destination</span> <span class='kw'>=</span> <span class='st'>"/path/to/output.fcs"</span>)
+<span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='no'>populationId</span>, <span class='kw'>subsampling</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>preSubsampleN</span> <span class='kw'>=</span> <span class='fl'>5000</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1.5</span>))
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

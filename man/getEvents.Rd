@@ -6,7 +6,8 @@
 \usage{
 getEvents(experimentId, fcsFileId, populationId = NULL, scaleSetId = NULL,
   compensation = UNCOMPENSATED, compensatedQ = FALSE, headerQ = FALSE,
-  format = "FCS", destination = NULL, overwrite = FALSE)
+  format = "FCS", destination = NULL, overwrite = FALSE,
+  subsampling = list())
 }
 \arguments{
 \item{experimentId}{ID of experiment.}
@@ -36,6 +37,14 @@ path instead of returning it as a binary blob.}
 
 \item{overwrite}{Optional, if a destination is specified, allows destination
 file to be overwritten.}
+
+\item{subsampling}{Optional, subsampling parameters in the form
+\code{list(preSubsampleN = number, preSubsampleP = number,
+postSubsampleN = number, postSubsampleP = number, seed = number)}.
+Subsample-N options specify absolute subsampling values, and subsample-P options
+specify a fractional subsampling value (0 to 1); specify only one pre-
+and/or one post-subsample option. Specify a \code{seed} for reproducible
+downsampling.}
 }
 \description{
 Retrieves events from an FCS file or gated population as either an FCS or
@@ -50,5 +59,6 @@ downloads. Use a library such as flowCore to parse FCS files.
 getEvents(experimentId, fcsFileId)
 getEvents(experimentId, fcsFileId, populationId, format = "TSV")
 getEvents(experimentId, fcsFileId, destination = "/path/to/output.fcs")
+getEvents(experimentId, fcsFileId, populationId, subsampling = list(preSubsampleN = 5000, seed = 1.5))
 }
 }

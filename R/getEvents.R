@@ -24,12 +24,20 @@
 #'   path instead of returning it as a binary blob.
 #' @param overwrite Optional, if a destination is specified, allows destination
 #'   file to be overwritten.
+#' @param subsampling Optional, subsampling parameters in the form
+#'   \code{list(preSubsampleN = number, preSubsampleP = number,
+#'   postSubsampleN = number, postSubsampleP = number, seed = number)}.
+#'   Subsample-N options specify absolute subsampling values, and subsample-P options
+#'   specify a fractional subsampling value (0 to 1); specify only one pre-
+#'   and/or one post-subsample option. Specify a \code{seed} for reproducible
+#'   downsampling.
 #' @export
 #' @examples
 #' \dontrun{
 #' getEvents(experimentId, fcsFileId)
 #' getEvents(experimentId, fcsFileId, populationId, format = "TSV")
 #' getEvents(experimentId, fcsFileId, destination = "/path/to/output.fcs")
+#' getEvents(experimentId, fcsFileId, populationId, subsampling = list(preSubsampleN = 5000, seed = 1.5))
 #' }
 getEvents = function(experimentId,
                      fcsFileId,
@@ -40,7 +48,8 @@ getEvents = function(experimentId,
                      headerQ = FALSE,
                      format = "FCS",
                      destination = NULL,
-                     overwrite = FALSE) {
+                     overwrite = FALSE,
+                     subsampling = list()) {
 
   checkDefined(experimentId)
   checkDefined(fcsFileId)
@@ -58,6 +67,14 @@ getEvents = function(experimentId,
     scaleSetId = serverScaleSets$`_id`
   }
 
+  if (!is.null(subsampling$preSubsampleN) && !is.null(subsampling$preSubsampleP)) {
+    stop("Specify only one of preSubsampleN or preSubsampleP.")
+  }
+
+  if (!is.null(subsampling$postSubsampleN) && !is.null(subsampling$postSubsampleP)) {
+    stop("Specify only one of postSubsampleN or postSubsampleP.")
+  }
+
   ensureBaseUrl()
 
   fullURL = paste(paste(pkg.env$baseURL, "experiments", experimentId, "fcsfiles", fcsFileId, sep = "/"), format, sep = ".")
@@ -67,9 +84,13 @@ getEvents = function(experimentId,
     scaleSetId = scaleSetId,
     compensationId = compensation,
     compensatedQ = compensatedQ,
-    headers = headerQ,
-    format = format
+    headers = headerQ
   )
+
+  subsamplingParams = Filter(Negate(is.null), subsampling[
+    c("preSubsampleN", "preSubsampleP", "postSubsampleN", "postSubsampleP", "seed")])
+
+  params = c(params, subsamplingParams)
 
   if (is.null(destination)) {
     response = httr::GET(fullURL, query = params, httr::user_agent(ua))
