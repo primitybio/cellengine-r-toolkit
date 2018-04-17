@@ -18,13 +18,16 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Function reference" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -32,6 +35,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -47,8 +52,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">cellengine</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">cellengine</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -65,6 +74,7 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -72,296 +82,297 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.1.0</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-authentication" class="hasAnchor"><a href="#section-authentication" class="anchor"></a>Authentication</h2>
-            <p class="section-desc"><p>Functions for authenticating with CellEngine.</p></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="setServer.html">setServer</a></code> </p>
-          </td>
-          <td><p>Set server address</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="authenticate.html">authenticate</a></code> </p>
-          </td>
-          <td><p>Authenticate</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-experiments-projects-and-attachments" class="hasAnchor"><a href="#section-experiments-projects-and-attachments" class="anchor"></a>Experiments, Projects and Attachments</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="createExperiment.html">createExperiment</a></code> </p>
-          </td>
-          <td><p>Create experiment</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="getExperiments.html">getExperiments</a></code> </p>
-          </td>
-          <td><p>Get experiments</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="getExperiment.html">getExperiment</a></code> </p>
-          </td>
-          <td><p>Get experiment</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="updateExperiment.html">updateExperiment</a></code> </p>
-          </td>
-          <td><p>Update experiment</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="deleteExperiment.html">deleteExperiment</a></code> </p>
-          </td>
-          <td><p>Delete experiment</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="getAttachments.html">getAttachments</a></code> </p>
-          </td>
-          <td><p>Get experiment attachments</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-fcs-files" class="hasAnchor"><a href="#section-fcs-files" class="anchor"></a>FCS Files</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="uploadFcsFile.html">uploadFcsFile</a></code> </p>
-          </td>
-          <td><p>Upload FCS file</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="getFcsFiles.html">getFcsFiles</a></code> </p>
-          </td>
-          <td><p>Get FCS files</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="getFcsFile.html">getFcsFile</a></code> </p>
-          </td>
-          <td><p>Get FCS File</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="getEvents.html">getEvents</a></code> </p>
-          </td>
-          <td><p>Get FCS File Events</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="annotateFcsFile.html">annotateFcsFile</a></code> </p>
-          </td>
-          <td><p>Annotate FCS file</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="setFcsFilePanel.html">setFcsFilePanel</a></code> </p>
-          </td>
-          <td><p>Set FCS file panel</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="deleteFcsFile.html">deleteFcsFile</a></code> </p>
-          </td>
-          <td><p>Delete FCS file</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-scales" class="hasAnchor"><a href="#section-scales" class="anchor"></a>Scales</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="getScaleSets.html">getScaleSets</a></code> </p>
-          </td>
-          <td><p>Get scale sets</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-compensations" class="hasAnchor"><a href="#section-compensations" class="anchor"></a>Compensations</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="getCompensations.html">getCompensations</a></code> </p>
-          </td>
-          <td><p>Get compensations</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-gates-and-populations" class="hasAnchor"><a href="#section-gates-and-populations" class="anchor"></a>Gates and Populations</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="createEllipseGate.html">createEllipseGate</a></code> </p>
-          </td>
-          <td><p>Create ellipse gate</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="createPolygonGate.html">createPolygonGate</a></code> </p>
-          </td>
-          <td><p>Create polygon gate</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="createRangeGate.html">createRangeGate</a></code> </p>
-          </td>
-          <td><p>Create range gate</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="createRectangleGate.html">createRectangleGate</a></code> </p>
-          </td>
-          <td><p>Create rectangle gate</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="createGates.html">createGates</a></code> </p>
-          </td>
-          <td><p>Create gates in bulk.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="createPopulation.html">createPopulation</a></code> </p>
-          </td>
-          <td><p>Create population</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="getGates.html">getGates</a></code> </p>
-          </td>
-          <td><p>Get gates</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="getPopulations.html">getPopulations</a></code> </p>
-          </td>
-          <td><p>Get populations</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="deletePopulationAuto.html">deletePopulationAuto</a></code> </p>
-          </td>
-          <td><p>Auto Delete Population</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-statistics" class="hasAnchor"><a href="#section-statistics" class="anchor"></a>Statistics</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="getStatistics.html">getStatistics</a></code> </p>
-          </td>
-          <td><p>Get statistics</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-plots" class="hasAnchor"><a href="#section-plots" class="anchor"></a>Plots</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-utilities" class="hasAnchor"><a href="#section-utilities" class="anchor"></a>Utilities</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="byName.html">byName</a></code> </p>
-          </td>
-          <td><p>Resource By Name</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="generateId.html">generateId</a></code> </p>
-          </td>
-          <td><p>Generate ID</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="UNCOMPENSATED.html">UNCOMPENSATED</a></code> </p>
-          </td>
-          <td><p>No compensation.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="FILE_INTERNAL.html">FILE_INTERNAL</a></code> </p>
-          </td>
-          <td><p>File-internal compensation.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="UNGATED.html">UNGATED</a></code> </p>
-          </td>
-          <td><p>Ungated.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="getErrorInfo.html">getErrorInfo</a></code> </p>
-          </td>
-          <td><p>Returns more information about the last error.</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-authentication" class="hasAnchor"><a href="#section-authentication" class="anchor"></a>Authentication</h2>
+          <p class="section-desc"><p>Functions for authenticating with CellEngine.</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="setServer.html">setServer()</a></code> </p>
+        </td>
+        <td><p>Set server address</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="authenticate.html">authenticate()</a></code> </p>
+        </td>
+        <td><p>Authenticate</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-experiments-projects-and-attachments" class="hasAnchor"><a href="#section-experiments-projects-and-attachments" class="anchor"></a>Experiments, Projects and Attachments</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="createExperiment.html">createExperiment()</a></code> </p>
+        </td>
+        <td><p>Create experiment</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getExperiments.html">getExperiments()</a></code> </p>
+        </td>
+        <td><p>Get experiments</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getExperiment.html">getExperiment()</a></code> </p>
+        </td>
+        <td><p>Get experiment</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="updateExperiment.html">updateExperiment()</a></code> </p>
+        </td>
+        <td><p>Update experiment</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="deleteExperiment.html">deleteExperiment()</a></code> </p>
+        </td>
+        <td><p>Delete experiment</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getAttachments.html">getAttachments()</a></code> </p>
+        </td>
+        <td><p>Get experiment attachments</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-fcs-files" class="hasAnchor"><a href="#section-fcs-files" class="anchor"></a>FCS Files</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="uploadFcsFile.html">uploadFcsFile()</a></code> </p>
+        </td>
+        <td><p>Upload FCS file</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getFcsFiles.html">getFcsFiles()</a></code> </p>
+        </td>
+        <td><p>Get FCS files</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getFcsFile.html">getFcsFile()</a></code> </p>
+        </td>
+        <td><p>Get FCS File</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getEvents.html">getEvents()</a></code> </p>
+        </td>
+        <td><p>Get FCS File Events</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="annotateFcsFile.html">annotateFcsFile()</a></code> </p>
+        </td>
+        <td><p>Annotate FCS file</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="setFcsFilePanel.html">setFcsFilePanel()</a></code> </p>
+        </td>
+        <td><p>Set FCS file panel</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="deleteFcsFile.html">deleteFcsFile()</a></code> </p>
+        </td>
+        <td><p>Delete FCS file</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-scales" class="hasAnchor"><a href="#section-scales" class="anchor"></a>Scales</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getScaleSets.html">getScaleSets()</a></code> </p>
+        </td>
+        <td><p>Get scale sets</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-compensations" class="hasAnchor"><a href="#section-compensations" class="anchor"></a>Compensations</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getCompensations.html">getCompensations()</a></code> </p>
+        </td>
+        <td><p>Get compensations</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-gates-and-populations" class="hasAnchor"><a href="#section-gates-and-populations" class="anchor"></a>Gates and Populations</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="createEllipseGate.html">createEllipseGate()</a></code> </p>
+        </td>
+        <td><p>Create ellipse gate</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="createPolygonGate.html">createPolygonGate()</a></code> </p>
+        </td>
+        <td><p>Create polygon gate</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="createRangeGate.html">createRangeGate()</a></code> </p>
+        </td>
+        <td><p>Create range gate</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="createRectangleGate.html">createRectangleGate()</a></code> </p>
+        </td>
+        <td><p>Create rectangle gate</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="createGates.html">createGates()</a></code> </p>
+        </td>
+        <td><p>Create gates in bulk.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="createPopulation.html">createPopulation()</a></code> </p>
+        </td>
+        <td><p>Create population</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getGates.html">getGates()</a></code> </p>
+        </td>
+        <td><p>Get gates</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getPopulation.html">getPopulation()</a></code> </p>
+        </td>
+        <td><p>Get population</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getPopulations.html">getPopulations()</a></code> </p>
+        </td>
+        <td><p>Get populations</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="deletePopulationAuto.html">deletePopulationAuto()</a></code> </p>
+        </td>
+        <td><p>Auto Delete Population</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-statistics" class="hasAnchor"><a href="#section-statistics" class="anchor"></a>Statistics</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getStatistics.html">getStatistics()</a></code> </p>
+        </td>
+        <td><p>Get statistics</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-plots" class="hasAnchor"><a href="#section-plots" class="anchor"></a>Plots</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-utilities" class="hasAnchor"><a href="#section-utilities" class="anchor"></a>Utilities</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="byName.html">byName()</a></code> </p>
+        </td>
+        <td><p>Resource By Name</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="generateId.html">generateId()</a></code> </p>
+        </td>
+        <td><p>Generate ID</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="UNCOMPENSATED.html">UNCOMPENSATED</a></code> </p>
+        </td>
+        <td><p>No compensation.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="FILE_INTERNAL.html">FILE_INTERNAL</a></code> </p>
+        </td>
+        <td><p>File-internal compensation.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="UNGATED.html">UNGATED</a></code> </p>
+        </td>
+        <td><p>Ungated.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="getErrorInfo.html">getErrorInfo()</a></code> </p>
+        </td>
+        <td><p>Returns more information about the last error.</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -386,11 +397,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

@@ -42,6 +42,7 @@ reference:
       - createGates
       - createPopulation
       - getGates
+      - getPopulation
       - getPopulations
       - deletePopulationAuto
 
