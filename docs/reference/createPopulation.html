@@ -117,7 +117,8 @@ the form <code>list(`$and` = c("gid1", "gid2"))</code>, where <code>"gid1"</code
 <code>"gid2"</code> are the Group IDs (<code>gid</code>s) of the gates. Any combination
 of <code>$and</code>, <code>$or</code>, <code>$not</code> and <code>$xor</code> can be used;
 however, only populations with the form <code>list(`$and` = c(...gates))</code>
-can be displayed in the Web UI at this time.</p></td>
+can be displayed in the Web UI at this time. Alternatively, this may be a
+JSON string (may be easier than constructing the correct R expression).</p></td>
     </tr>
     <tr>
       <th>terminalGateGid</th>

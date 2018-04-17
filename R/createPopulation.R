@@ -9,7 +9,8 @@
 #'   \code{"gid2"} are the Group IDs (\code{gid}s) of the gates. Any combination
 #'   of \code{$and}, \code{$or}, \code{$not} and \code{$xor} can be used;
 #'   however, only populations with the form \code{list(`$and` = c(...gates))}
-#'   can be displayed in the Web UI at this time.
+#'   can be displayed in the Web UI at this time. Alternatively, this may be a
+#'   JSON string (may be easier than constructing the correct R expression).
 #' @param terminalGateGid The Group ID (\code{gid}) of the gate that
 #'   differentiates this population from its parent. Because complex populations
 #'   that deviate from the \code{list(`$and` = c(...gates))} form cannot currently
@@ -29,9 +30,11 @@ createPopulation = function(experimentId, name, gates, terminalGateGid,
 
   checkDefined(experimentId)
 
+  if (!is.character(gates)) gates = jsonlite::toJSON(gates)
+
   body = jsonlite::toJSON(list(
     name = jsonlite::unbox(name),
-    gates = jsonlite::unbox(jsonlite::toJSON(gates)),
+    gates = jsonlite::unbox(gates),
     terminalGateGid = jsonlite::unbox(terminalGateGid),
     parentId = jsonlite::unbox(parentId)
   ), null = "null", digits = NA)
