@@ -27,6 +27,12 @@ baseGet = function(url, params = list()) {
   handleResponse(httr::GET(fullURL, query = params, httr::user_agent(ua)))
 }
 
+basePatch = function(url, body, params = list()) {
+  ensureBaseUrl()
+  fullURL = paste(pkg.env$baseURL, url, sep = "/")
+  handleResponse(httr::PATCH(fullURL, body = body, query = params, httr::content_type_json(), httr::user_agent(ua)))
+}
+
 basePut = function(url, body, params = list()) {
   ensureBaseUrl()
   fullURL = paste(pkg.env$baseURL, url, sep = "/")

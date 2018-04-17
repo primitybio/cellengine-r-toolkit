@@ -40,5 +40,5 @@ setFcsFilePanel = function(experimentId, fcsFileId, panelName, panel) {
     panelName = panelName,
     panel = panel
   ), null = "null", auto_unbox = TRUE)
-  basePut(paste("experiments", experimentId, "fcsfiles", fcsFileId, sep = "/"), body)
+  basePatch(paste("experiments", experimentId, "fcsfiles", fcsFileId, sep = "/"), body)
 }

@@ -3,7 +3,7 @@ context("setFcsFilePanel")
 test_that("Correct HTTP request is made", {
   with_mock(
     `httr::request_perform` = function(req, handle, refresh) {
-      expect_equal(req$method, "PUT")
+      expect_equal(req$method, "PATCH")
       expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles/591a3b441d725115208a6fdc")
       body = rawToChar(req$options$postfields)
       expect_equal(body, '{"panelName":"Panel 1","panel":[{"index":1,"channel":"FSC-A"},{"index":7,"channel":"Blue530-A","reagent":"CD3"}]}')
