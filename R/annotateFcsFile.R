@@ -26,5 +26,5 @@ annotateFcsFile = function(experimentId, fcsFileId, annotations) {
     }, names(annotations), annotations, SIMPLIFY = FALSE, USE.NAMES = FALSE)
   ))
 
-  basePut(paste("experiments", experimentId, "fcsfiles", fcsFileId, sep = "/"), body)
+  basePatch(paste("experiments", experimentId, "fcsfiles", fcsFileId, sep = "/"), body)
 }
