@@ -16,7 +16,8 @@ the form \code{list(`$and` = c("gid1", "gid2"))}, where \code{"gid1"} and
 \code{"gid2"} are the Group IDs (\code{gid}s) of the gates. Any combination
 of \code{$and}, \code{$or}, \code{$not} and \code{$xor} can be used;
 however, only populations with the form \code{list(`$and` = c(...gates))}
-can be displayed in the Web UI at this time.}
+can be displayed in the Web UI at this time. Alternatively, this may be a
+JSON string (may be easier than constructing the correct R expression).}
 
 \item{terminalGateGid}{The Group ID (\code{gid}) of the gate that
 differentiates this population from its parent. Because complex populations
