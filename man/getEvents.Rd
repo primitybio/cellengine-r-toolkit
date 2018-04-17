@@ -5,7 +5,7 @@
 \title{Get FCS File Events}
 \usage{
 getEvents(experimentId, fcsFileId, populationId = NULL, scaleSetId = NULL,
-  compensation = UNCOMPENSATED, compensatedQ = FALSE, headerQ = FALSE,
+  compensation = NULL, compensatedQ = FALSE, headerQ = FALSE,
   format = "FCS", destination = NULL, overwrite = FALSE,
   subsampling = list())
 }
@@ -20,7 +20,9 @@ getEvents(experimentId, fcsFileId, populationId = NULL, scaleSetId = NULL,
 scale set exists in the experiment, that scale set will be used.}
 
 \item{compensation}{ID of compensation or special compensation type
-(\code{UNCOMPENSATED} or \code{FILE_INTERNAL}).}
+(\code{UNCOMPENSATED} or \code{FILE_INTERNAL}) to use for gating. This
+should generally match what you used to create your gates. Not required if
+\code{compensatedQ} is \code{FALSE} and exporting ungated files.}
 
 \item{compensatedQ}{If \code{TRUE}, applies the compensation specified in
 compensation to the exported events. For TSV format, the numerical values

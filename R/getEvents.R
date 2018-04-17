@@ -12,7 +12,9 @@
 #' @param scaleSetId Optional ID of scale set. If omitted and if a single
 #'   scale set exists in the experiment, that scale set will be used.
 #' @param compensation ID of compensation or special compensation type
-#'   (\code{UNCOMPENSATED} or \code{FILE_INTERNAL}).
+#'   (\code{UNCOMPENSATED} or \code{FILE_INTERNAL}) to use for gating. This
+#'   should generally match what you used to create your gates. Not required if
+#'   \code{compensatedQ} is \code{FALSE} and exporting ungated files.
 #' @param compensatedQ If \code{TRUE}, applies the compensation specified in
 #'   compensation to the exported events. For TSV format, the numerical values
 #'   will be the compensated values. For FCS format, the numerical values will
@@ -43,7 +45,7 @@ getEvents = function(experimentId,
                      fcsFileId,
                      populationId = NULL,
                      scaleSetId = NULL,
-                     compensation = UNCOMPENSATED,
+                     compensation = NULL,
                      compensatedQ = FALSE,
                      headerQ = FALSE,
                      format = "FCS",
@@ -53,6 +55,14 @@ getEvents = function(experimentId,
 
   checkDefined(experimentId)
   checkDefined(fcsFileId)
+  
+  if (is.null(compensation) && !is.null(populationId)) {
+    stop("'compensation' parameter is required for gated populations.")
+  } else if (is.null(compensation) && isTRUE(compensatedQ)) {
+    stop("'compensation' parameter is required when returning compensated data.")
+  } else {
+    compensation = UNCOMPENSATED
+  }
 
   # scale set argument
   # TODO dedupe

@@ -84,7 +84,7 @@ TSV file.</p>
     
 
     <pre class="usage"><span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='kw'>populationId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scaleSetId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>compensation</span> <span class='kw'>=</span> <span class='no'>UNCOMPENSATED</span>, <span class='kw'>compensatedQ</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>headerQ</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>compensation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compensatedQ</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>headerQ</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"FCS"</span>, <span class='kw'>destination</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>subsampling</span> <span class='kw'>=</span> <span class='fu'>list</span>())</pre>
     
@@ -111,7 +111,9 @@ scale set exists in the experiment, that scale set will be used.</p></td>
     <tr>
       <th>compensation</th>
       <td><p>ID of compensation or special compensation type
-(<code>UNCOMPENSATED</code> or <code>FILE_INTERNAL</code>).</p></td>
+(<code>UNCOMPENSATED</code> or <code>FILE_INTERNAL</code>) to use for gating. This
+should generally match what you used to create your gates. Not required if
+<code>compensatedQ</code> is <code>FALSE</code> and exporting ungated files.</p></td>
     </tr>
     <tr>
       <th>compensatedQ</th>
