@@ -53,6 +53,8 @@
 #'   provided, an attempt will be made to find those populations by name. IDs
 #'   are detected as matching a 24-character string comprised of the characters
 #'   \code{A-Fa-f0-9}.
+#' @param includeAnnotations Includes FCS file annotations in the returned data
+#'   frame.
 #'
 #' @return Statistics as a data frame, including file annotations and 
 #'   information about the statistics such as the channel name and population.
@@ -95,7 +97,8 @@ getStatistics = function(experimentId,
                          populationIds = NULL, populations = NULL,
                          scaleSetId = NULL,
                          q = 0.5,
-                         percentOf = NULL) {
+                         percentOf = NULL,
+                         includeAnnotations = TRUE) {
 
   checkDefined(experimentId)
   experimentId = lookupByName("experiments", experimentId)
@@ -241,7 +244,7 @@ getStatistics = function(experimentId,
     q = jsonlite::unbox(q),
     scaleSetId = jsonlite::unbox(scaleSetId),
     format = jsonlite::unbox("json"),
-    annotations = jsonlite::unbox(TRUE)
+    annotations = jsonlite::unbox(includeAnnotations)
   )
 
   if (!is.null(percentOf)) {

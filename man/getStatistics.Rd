@@ -6,7 +6,8 @@
 \usage{
 getStatistics(experimentId, fcsFileIds = NULL, fcsFiles = NULL,
   channels = c(), statistics, compensationId, populationIds = NULL,
-  populations = NULL, scaleSetId = NULL, q = 0.5, percentOf = NULL)
+  populations = NULL, scaleSetId = NULL, q = 0.5, percentOf = NULL,
+  includeAnnotations = TRUE)
 }
 \arguments{
 \item{experimentId}{ID of experiment.}
@@ -62,6 +63,9 @@ scale set exists in the experiment, that scale set will be used.}
   provided, an attempt will be made to find those populations by name. IDs
   are detected as matching a 24-character string comprised of the characters
   \code{A-Fa-f0-9}.}
+
+\item{includeAnnotations}{Includes FCS file annotations in the returned data
+frame.}
 }
 \value{
 Statistics as a data frame, including file annotations and 

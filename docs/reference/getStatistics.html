@@ -99,7 +99,8 @@
 
     <pre class="usage"><span class='fu'>getStatistics</span>(<span class='no'>experimentId</span>, <span class='kw'>fcsFileIds</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fcsFiles</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>channels</span> <span class='kw'>=</span> <span class='fu'>c</span>(), <span class='no'>statistics</span>, <span class='no'>compensationId</span>, <span class='kw'>populationIds</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>populations</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scaleSetId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>q</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>percentOf</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>populations</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scaleSetId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>q</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>percentOf</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>includeAnnotations</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -176,6 +177,11 @@ scale set exists in the experiment, that scale set will be used.</p></td>
   provided, an attempt will be made to find those populations by name. IDs
   are detected as matching a 24-character string comprised of the characters
   <code>A-Fa-f0-9</code>.</p></td>
+    </tr>
+    <tr>
+      <th>includeAnnotations</th>
+      <td><p>Includes FCS file annotations in the returned data
+frame.</p></td>
     </tr>
     </table>
     
