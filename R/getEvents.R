@@ -9,8 +9,6 @@
 #' @param experimentId ID of experiment.
 #' @param fcsFileId ID of FCS file.
 #' @param populationId Optional ID of population, for gated events.
-#' @param scaleSetId Optional ID of scale set. If omitted and if a single
-#'   scale set exists in the experiment, that scale set will be used.
 #' @param compensation ID of compensation or special compensation type
 #'   (\code{UNCOMPENSATED} or \code{FILE_INTERNAL}) to use for gating. This
 #'   should generally match what you used to create your gates. Not required if
@@ -44,7 +42,6 @@
 getEvents = function(experimentId,
                      fcsFileId,
                      populationId = NULL,
-                     scaleSetId = NULL,
                      compensation = NULL,
                      compensatedQ = FALSE,
                      headerQ = FALSE,
@@ -64,19 +61,6 @@ getEvents = function(experimentId,
     stop("'compensation' parameter is required when returning compensated data.")
   }
 
-  # scale set argument
-  # TODO dedupe
-  if (is.null(scaleSetId) && !is.null(populationId)) {
-    serverScaleSets = getScaleSets(experimentId, params = list(fields = "+_id"))
-    if (!is.data.frame(serverScaleSets)) { # zero-length results are not data.frames
-      stop("No scalesets found in experiment.")
-    }
-    if (nrow(serverScaleSets) > 1) {
-      stop("More than one scaleset exists in experiment. Please specify a scaleSetId to select one.")
-    }
-    scaleSetId = serverScaleSets$`_id`
-  }
-
   if (!is.null(subsampling$preSubsampleN) && !is.null(subsampling$preSubsampleP)) {
     stop("Specify only one of preSubsampleN or preSubsampleP.")
   }
@@ -91,7 +75,6 @@ getEvents = function(experimentId,
 
   params = list(
     populationId = populationId,
-    scaleSetId = scaleSetId,
     compensationId = compensation,
     compensatedQ = compensatedQ,
     headers = headerQ

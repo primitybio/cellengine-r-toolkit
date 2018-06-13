@@ -99,10 +99,9 @@ TSV file." />
 TSV file.</p>
     
 
-    <pre class="usage"><span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='kw'>populationId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scaleSetId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>compensation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compensatedQ</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>headerQ</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"FCS"</span>, <span class='kw'>destination</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>subsampling</span> <span class='kw'>=</span> <span class='fu'>list</span>())</pre>
+    <pre class="usage"><span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='kw'>populationId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compensation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>compensatedQ</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>headerQ</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"FCS"</span>,
+  <span class='kw'>destination</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>subsampling</span> <span class='kw'>=</span> <span class='fu'>list</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -118,11 +117,6 @@ TSV file.</p>
     <tr>
       <th>populationId</th>
       <td><p>Optional ID of population, for gated events.</p></td>
-    </tr>
-    <tr>
-      <th>scaleSetId</th>
-      <td><p>Optional ID of scale set. If omitted and if a single
-scale set exists in the experiment, that scale set will be used.</p></td>
     </tr>
     <tr>
       <th>compensation</th>

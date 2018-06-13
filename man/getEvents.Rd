@@ -4,10 +4,9 @@
 \alias{getEvents}
 \title{Get FCS File Events}
 \usage{
-getEvents(experimentId, fcsFileId, populationId = NULL, scaleSetId = NULL,
-  compensation = NULL, compensatedQ = FALSE, headerQ = FALSE,
-  format = "FCS", destination = NULL, overwrite = FALSE,
-  subsampling = list())
+getEvents(experimentId, fcsFileId, populationId = NULL, compensation = NULL,
+  compensatedQ = FALSE, headerQ = FALSE, format = "FCS",
+  destination = NULL, overwrite = FALSE, subsampling = list())
 }
 \arguments{
 \item{experimentId}{ID of experiment.}
@@ -15,9 +14,6 @@ getEvents(experimentId, fcsFileId, populationId = NULL, scaleSetId = NULL,
 \item{fcsFileId}{ID of FCS file.}
 
 \item{populationId}{Optional ID of population, for gated events.}
-
-\item{scaleSetId}{Optional ID of scale set. If omitted and if a single
-scale set exists in the experiment, that scale set will be used.}
 
 \item{compensation}{ID of compensation or special compensation type
 (\code{UNCOMPENSATED} or \code{FILE_INTERNAL}) to use for gating. This
