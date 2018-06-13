@@ -4,7 +4,7 @@ test_that("makes expected HTTP request", {
   with_mock(
     `httr::request_perform` = function(req, handle, refresh) {
       expect_equal(req$method, "GET")
-      expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles/591a3b441d725115208a6fdc.FCS?compensationId=0&compensatedQ=FALSE&headers=FALSE")
+      expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles/591a3b441d725115208a6fdc.FCS?compensatedQ=FALSE&headers=FALSE")
       response = httptest::fakeResponse(
         req$url,
         req$method,
@@ -25,7 +25,7 @@ test_that("makes expected HTTP request with subsampling", {
   with_mock(
     `httr::request_perform` = function(req, handle, refresh) {
       expect_equal(req$method, "GET")
-      expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles/591a3b441d725115208a6fdc.FCS?compensationId=0&compensatedQ=FALSE&headers=FALSE&preSubsampleN=50&seed=2.25")
+      expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles/591a3b441d725115208a6fdc.FCS?compensatedQ=FALSE&headers=FALSE&preSubsampleN=50&seed=2.25")
       response = httptest::fakeResponse(
         req$url,
         req$method,

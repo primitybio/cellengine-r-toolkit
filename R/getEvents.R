@@ -62,8 +62,6 @@ getEvents = function(experimentId,
     stop("'compensation' parameter is required for gated populations.")
   } else if (is.null(compensation) && isTRUE(compensatedQ)) {
     stop("'compensation' parameter is required when returning compensated data.")
-  } else {
-    compensation = UNCOMPENSATED
   }
 
   # scale set argument
