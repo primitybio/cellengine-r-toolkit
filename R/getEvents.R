@@ -21,7 +21,7 @@
 #' @param headerQ for TSV format only: if true, file will contain a header row.
 #' @param format One of "TSV" or "FCS".
 #' @param destination Optional, if specified, write the file to the specified
-#'   path instead of returning it as a binary blob.
+#'   path instead of returning it as a binary blob (FCS) or data.frame (TSV).
 #' @param overwrite Optional, if a destination is specified, allows destination
 #'   file to be overwritten.
 #' @param subsampling Optional, subsampling parameters in the form
@@ -34,9 +34,19 @@
 #' @export
 #' @examples
 #' \dontrun{
+#' # Returns the FCS file as a binary blob (requires parsing before use):
 #' getEvents(experimentId, fcsFileId)
-#' getEvents(experimentId, fcsFileId, populationId, format = "TSV")
+#'
+#' # Returns a data.frame:
+#' getEvents(experimentId, fcsFileId, populationId, format = "TSV", headerQ = T)
+#'
+#' # Saves as an FCS file to disk:
 #' getEvents(experimentId, fcsFileId, destination = "/path/to/output.fcs")
+#'
+#' # Saves as a TSV file to disk:
+#' getEvents(experimentId, fcsFileId, destination = "/path/to/output.tsv", format = "TSV", headerQ = T)
+#'
+#' # Subsamples and gates to only contain events in the specified population:
 #' getEvents(experimentId, fcsFileId, populationId, subsampling = list(preSubsampleN = 5000, seed = 1.5))
 #' }
 getEvents = function(experimentId,
@@ -69,6 +79,10 @@ getEvents = function(experimentId,
     stop("Specify only one of postSubsampleN or postSubsampleP.")
   }
 
+  if (!is.null(populationId)) {
+    populationId = lookupByName(paste("experiments", experimentId, "populations", sep = "/"), populationId)
+  }
+
   ensureBaseUrl()
 
   fullURL = paste(paste(pkg.env$baseURL, "experiments", experimentId, "fcsfiles", fcsFileId, sep = "/"), format, sep = ".")
@@ -88,7 +102,13 @@ getEvents = function(experimentId,
   if (is.null(destination)) {
     response = httr::GET(fullURL, query = params, httr::user_agent(ua))
     httr::warn_for_status(response)
-    content = httr::content(response, "raw")
+    if (format == "TSV") {
+      content = httr::content(response, "text")
+      content = read.table(text = content, header = headerQ, sep = "\t")
+    } else {
+      content = httr::content(response, "raw")
+    }
+    return(content)
   } else {
     response = httr::GET(fullURL, query = params, httr::user_agent(ua), httr::write_disk(destination, overwrite))
     httr::warn_for_status(response)

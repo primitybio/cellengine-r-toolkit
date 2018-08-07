@@ -31,7 +31,7 @@ spill string (file-internal compensation).}
 \item{format}{One of "TSV" or "FCS".}
 
 \item{destination}{Optional, if specified, write the file to the specified
-path instead of returning it as a binary blob.}
+path instead of returning it as a binary blob (FCS) or data.frame (TSV).}
 
 \item{overwrite}{Optional, if a destination is specified, allows destination
 file to be overwritten.}
@@ -54,9 +54,19 @@ downloads. Use a library such as flowCore to parse FCS files.
 }
 \examples{
 \dontrun{
+# Returns the FCS file as a binary blob (requires parsing before use):
 getEvents(experimentId, fcsFileId)
-getEvents(experimentId, fcsFileId, populationId, format = "TSV")
+
+# Returns a data.frame:
+getEvents(experimentId, fcsFileId, populationId, format = "TSV", headerQ = T)
+
+# Saves as an FCS file to disk:
 getEvents(experimentId, fcsFileId, destination = "/path/to/output.fcs")
+
+# Saves as a TSV file to disk:
+getEvents(experimentId, fcsFileId, destination = "/path/to/output.tsv", format = "TSV", headerQ = T)
+
+# Subsamples and gates to only contain events in the specified population:
 getEvents(experimentId, fcsFileId, populationId, subsampling = list(preSubsampleN = 5000, seed = 1.5))
 }
 }

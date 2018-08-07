@@ -144,7 +144,7 @@ spill string (file-internal compensation).</p></td>
     <tr>
       <th>destination</th>
       <td><p>Optional, if specified, write the file to the specified
-path instead of returning it as a binary blob.</p></td>
+path instead of returning it as a binary blob (FCS) or data.frame (TSV).</p></td>
     </tr>
     <tr>
       <th>overwrite</th>
@@ -171,9 +171,19 @@ downloads. Use a library such as flowCore to parse FCS files.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># Returns the FCS file as a binary blob (requires parsing before use):</span>
 <span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>)
-<span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='no'>populationId</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"TSV"</span>)
+
+<span class='co'># Returns a data.frame:</span>
+<span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='no'>populationId</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"TSV"</span>, <span class='kw'>headerQ</span> <span class='kw'>=</span> <span class='no'>T</span>)
+
+<span class='co'># Saves as an FCS file to disk:</span>
 <span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='kw'>destination</span> <span class='kw'>=</span> <span class='st'>"/path/to/output.fcs"</span>)
+
+<span class='co'># Saves as a TSV file to disk:</span>
+<span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='kw'>destination</span> <span class='kw'>=</span> <span class='st'>"/path/to/output.tsv"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"TSV"</span>, <span class='kw'>headerQ</span> <span class='kw'>=</span> <span class='no'>T</span>)
+
+<span class='co'># Subsamples and gates to only contain events in the specified population:</span>
 <span class='fu'>getEvents</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='no'>populationId</span>, <span class='kw'>subsampling</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>preSubsampleN</span> <span class='kw'>=</span> <span class='fl'>5000</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1.5</span>))
 <span class='co'># }</span></pre>
   </div>
