@@ -119,7 +119,7 @@ byName = function(name) {
 
 byNameHash = new.env(hash = TRUE, parent = emptyenv())
 
-lookupByName = function(listpath, name) {
+lookupByName = function(listpath, name, prop = "name") {
   if (class(name) != "_boxed_by_name") return(name)
 
   name = unclass(name)
@@ -127,7 +127,7 @@ lookupByName = function(listpath, name) {
   if (exists(key, envir = byNameHash)) return(get(key, envir = byNameHash))
 
   vals = baseGet(listpath, params = list(
-    query = sprintf("eq(name, \"%s\")", name),
+    query = sprintf("eq(%s, \"%s\")", prop, name),
     limit = 2 # need >1 so we can detect ambiguous matches
   ))
   if (!is.data.frame(vals)) {
