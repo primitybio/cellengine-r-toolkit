@@ -4,7 +4,8 @@
 \alias{createPopulation}
 \title{Create population}
 \usage{
-createPopulation(experimentId, name, gates, terminalGateGid, parentId = NULL)
+createPopulation(experimentId, name, gates, terminalGateGid,
+  parentId = NULL)
 }
 \arguments{
 \item{experimentId}{The ID of the experiment to which to add the population.}
