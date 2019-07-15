@@ -45,6 +45,8 @@ reference:
       - getPopulation
       - getPopulations
       - deletePopulationAuto
+      - updateGateFamily
+      - deleteGates
 
   - title: Statistics
     contents:
