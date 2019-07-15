@@ -4,9 +4,10 @@
 \alias{getEvents}
 \title{Get FCS File Events}
 \usage{
-getEvents(experimentId, fcsFileId, populationId = NULL, compensation = NULL,
-  compensatedQ = FALSE, headerQ = FALSE, format = "FCS",
-  destination = NULL, overwrite = FALSE, subsampling = list())
+getEvents(experimentId, fcsFileId, populationId = NULL,
+  compensation = NULL, compensatedQ = FALSE, headerQ = FALSE,
+  format = "FCS", destination = NULL, overwrite = FALSE,
+  subsampling = list())
 }
 \arguments{
 \item{experimentId}{ID of experiment.}
