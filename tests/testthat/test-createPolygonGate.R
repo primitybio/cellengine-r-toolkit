@@ -8,7 +8,7 @@ test_that("Correct HTTP request is made", {
       body = rawToChar(req$options$postfields)
       # Literal except for the gid value
       expect_match(body, '{"model":{"locked":false,"polygon":{"vertices":\\[\\[37836.07,971.51\\],\\[1588732.12,154.646\\],\\[8139.405,664.78\\],\\[9441.949,781.32\\]\\]},"label":\\[411037.386,643.064\\]},"xChannel":"FSC-A","yChannel":"FSC-W","type":"PolygonGate","parentPopulationId":null,"name":"my gate","gid":"[0-9A-Za-z]{24}","tailoredPerFile":false}', perl = TRUE)
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         # Fixed GID, not the one passed in
@@ -53,7 +53,7 @@ test_that("Correct HTTP request is made, fcsFileId specified", {
       body = rawToChar(req$options$postfields)
       # Literal except for the gid value
       expect_match(body, '{"model":{"locked":false,"polygon":{"vertices":\\[\\[37836.07,971.51\\],\\[1588732.12,154.646\\],\\[8139.405,664.78\\],\\[9441.949,781.32\\]\\]},"label":\\[411037.386,643.064\\]},"xChannel":"FSC-A","yChannel":"FSC-W","type":"PolygonGate","parentPopulationId":null,"name":"my gate","gid":"[0-9A-Za-z]{24}","tailoredPerFile":true,"fcsFileId":"591a3b441d725115208a6fdf"}', perl = TRUE)
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         # Fixed GID, not the one passed in
@@ -97,7 +97,7 @@ test_that("Correct HTTP request is made, parentPopulation specified", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?query=eq%28name%2C%20%22singlets%22%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -112,7 +112,7 @@ test_that("Correct HTTP request is made, parentPopulation specified", {
           body = rawToChar(req$options$postfields)
           # Literal except for the gid value
           expect_match(body, '{"model":{"locked":false,"polygon":{"vertices":\\[\\[37836.07,971.51\\],\\[1588732.12,154.646\\],\\[8139.405,664.78\\],\\[9441.949,781.32\\]\\]},"label":\\[411037.386,643.064\\]},"xChannel":"FSC-A","yChannel":"FSC-W","type":"PolygonGate","parentPopulationId":"591a3b5f1d725115208a7087","name":"my gate","gid":"[0-9A-Za-z]{24}","tailoredPerFile":false}', perl = TRUE)
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             # Fixed GID, not the one passed in

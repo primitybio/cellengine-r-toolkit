@@ -5,7 +5,7 @@ test_that("returns the ID of a single matching population", {
     `httr::request_perform` = function(req, handle, refresh) {
       expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?query=eq%28name%2C%20%22name%22%29")
       expect_equal(req$method, "GET")
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         content = '[
@@ -36,7 +36,7 @@ test_that("throws an error if multiple populations match", {
     `httr::request_perform` = function(req, handle, refresh) {
       expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?query=eq%28name%2C%20%22name%22%29")
       expect_equal(req$method, "GET")
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         content = '[
@@ -70,7 +70,7 @@ test_that("throws an error if no populations match", {
     `httr::request_perform` = function(req, handle, refresh) {
       expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?query=eq%28name%2C%20%22name%22%29")
       expect_equal(req$method, "GET")
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         content = '[
@@ -94,7 +94,7 @@ test_that("assigns the ID of a single matching fcsFile", {
     `httr::request_perform` = function(req, handle, refresh) {
       expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles?query=eq%28filename%2C%20%22name%22%29&fields=%2B_id")
       expect_equal(req$method, "GET")
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         content = '[
@@ -125,7 +125,7 @@ test_that("throws an error if multiple fcsFiles match", {
     `httr::request_perform` = function(req, handle, refresh) {
       expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles?query=eq%28filename%2C%20%22name%22%29&fields=%2B_id")
       expect_equal(req$method, "GET")
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         content = '[
@@ -175,7 +175,7 @@ test_that("throws an error if no fcsFiles match", {
     `httr::request_perform` = function(req, handle, refresh) {
       expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles?query=eq%28filename%2C%20%22name%22%29&fields=%2B_id")
       expect_equal(req$method, "GET")
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         content = '[]',
@@ -201,7 +201,7 @@ test_that("it works given no parentPopulation or parentPopulationId", {
           expect_equal(req$method, "POST")
           body = rawToChar(req$options$postfields)
           expect_equal(body, '{"name":"my gate","gates":"{\\\"$and\\\":[\\\"592640a5a6a1d6256ec9b08a\\\"]}","terminalGateGid":"592640a5a6a1d6256ec9b08a","parentId":null}')
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '{"experimentId":"591a3b441d725115208a6fda","name":"my gate","gates":"{\\\"$and\\\":[\\\"592640a5a6a1d6256ec9b08a\\\"]}","terminalGateGid":"592640a5a6a1d6256ec9b08a","parentId":null,"id":"592640aa298f1480900e10e4","_id":"592640aa298f1480900e10e4"}',
@@ -236,7 +236,7 @@ test_that("it works given a parentPopulation object; `gates` has empty `$and`", 
           expect_equal(req$method, "POST")
           body = rawToChar(req$options$postfields)
           expect_equal(body, '{"name":"my gate","gates":"{\\\"$and\\\":[\\\"592640a5a6a1d6256ec9b08a\\\"]}","terminalGateGid":"592640a5a6a1d6256ec9b08a","parentId":"591a3b441d725115208a6fba"}')
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '{"experimentId":"591a3b441d725115208a6fda","name":"my gate","gates":"{\\\"$and\\\":[\\\"592640a5a6a1d6256ec9b08a\\\"]}","terminalGateGid":"592640a5a6a1d6256ec9b08a","parentId":"591a3b441d725115208a6fba","id":"592640aa298f1480900e10e4","_id":"592640aa298f1480900e10e4"}',
@@ -276,7 +276,7 @@ test_that("it works given a parentPopulation object; `gates` has non-empty `$and
           expect_equal(req$method, "POST")
           body = rawToChar(req$options$postfields)
           expect_equal(body, '{"name":"my gate","gates":"{\\\"$and\\\":[\\\"591a3b441d725115208a6fbf\\\",\\\"592640a5a6a1d6256ec9b08a\\\"]}","terminalGateGid":"592640a5a6a1d6256ec9b08a","parentId":"591a3b441d725115208a6fba"}')
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '{"experimentId":"591a3b441d725115208a6fda","name":"my gate","gates":"{\\\"$and\\\":[\\\"591a3b441d725115208a6fbf\\\",\\\"592640a5a6a1d6256ec9b08a\\\"]}","terminalGateGid":"592640a5a6a1d6256ec9b08a","parentId":"591a3b441d725115208a6fba","id":"592640aa298f1480900e10e4","_id":"592640aa298f1480900e10e4"}',
@@ -316,7 +316,7 @@ test_that("it works given a parentPopulation object; `gates` has complex value",
           expect_equal(req$method, "POST")
           body = rawToChar(req$options$postfields)
           expect_equal(body, '{"name":"my gate","gates":"{\\\"$and\\\":[{\\\"$or\\\":[\\\"591a3b441d725115208a6fbf\\\"]},\\\"592640a5a6a1d6256ec9b08a\\\"]}","terminalGateGid":"592640a5a6a1d6256ec9b08a","parentId":"591a3b441d725115208a6fba"}')
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '{"experimentId":"591a3b441d725115208a6fda","name":"my gate","gates":"{\\\"$and\\\":[{\\\"$or\\\":[\\\"591a3b441d725115208a6fbf\\\"]},\\\"592640a5a6a1d6256ec9b08a\\\"]}","terminalGateGid":"592640a5a6a1d6256ec9b08a","parentId":"591a3b441d725115208a6fba","id":"592640aa298f1480900e10e4","_id":"592640aa298f1480900e10e4"}',
@@ -354,7 +354,7 @@ test_that("it works given a parentPopulationId", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations/591a3b441d725115208a6fba" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '{"experimentId":"591a3b441d725115208a6fda","name":"my gate","gates":"{\\\"$and\\\":[\\\"591a3b441d725115208a6fbf\\\"]}","terminalGateGid":"591a3b441d725115208a6fbf","parentId":null,"id":"591a3b441d725115208a6fba","_id":"591a3b441d725115208a6fba"}',
@@ -367,7 +367,7 @@ test_that("it works given a parentPopulationId", {
           expect_equal(req$method, "POST")
           body = rawToChar(req$options$postfields)
           expect_equal(body, '{"name":"my gate","gates":"{\\\"$and\\\":[\\\"591a3b441d725115208a6fbf\\\",\\\"592640a5a6a1d6256ec9b08a\\\"]}","terminalGateGid":"592640a5a6a1d6256ec9b08a","parentId":"591a3b441d725115208a6fba"}')
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '{"experimentId":"591a3b441d725115208a6fda","name":"my gate","gates":"{\\\"$and\\\":[\\\"591a3b441d725115208a6fbf\\\",\\\"592640a5a6a1d6256ec9b08a\\\"]}","terminalGateGid":"592640a5a6a1d6256ec9b08a","parentId":"591a3b441d725115208a6fba","id":"592640aa298f1480900e10e4","_id":"592640aa298f1480900e10e4"}',

@@ -7,7 +7,7 @@ test_that("Correct HTTP request is made", {
       expect_equal(req$url, "https://my.server.com/api/v1/signin")
       body = rawToChar(req$options$postfields)
       expect_equal(body, '{"username":"user1","password":"p@ssword"}')
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         content='{"token":"s:abcdefgh.ijklmnop/pqr","userId":"592799bd14ac0ad59699cb77","admin":false,"flags":{}}',
