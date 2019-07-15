@@ -6,7 +6,7 @@ test_that("Correct HTTP request is made", {
       expect_equal(req$method, "POST")
       expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fdb/fcsfiles")
       # Not sure the best way to assert on this.
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         content='{"__v":0,"_id":"591a3b441d725115208a6fda","filename":"5k.fcs"}',

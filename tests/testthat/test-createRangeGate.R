@@ -8,7 +8,7 @@ test_that("Correct HTTP request is made", {
       body = rawToChar(req$options$postfields)
       # Literal except for the gid value
       expect_match(body, '{"model":{"locked":false,"range":{"x1":123.4,"x2":234.5,"y":0.5},"label":\\[178.95,0.5\\]},"xChannel":"FSC-A","type":"RangeGate","parentPopulationId":null,"name":"my gate","gid":"[0-9A-Za-z]{24}","tailoredPerFile":false}', perl = TRUE)
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         # Fixed GID, not the one passed in
@@ -48,7 +48,7 @@ test_that("Correct HTTP request is made, fcsFileId specified", {
       body = rawToChar(req$options$postfields)
       # Literal except for the gid value
       expect_match(body, '{"model":{"locked":false,"range":{"x1":123.4,"x2":234.5,"y":0.5},"label":\\[178.95,0.5\\]},"xChannel":"FSC-A","type":"RangeGate","parentPopulationId":null,"name":"my gate","gid":"[0-9A-Za-z]{24}","tailoredPerFile":true,"fcsFileId":"591a3b441d725115208a6fdf"}', perl = TRUE)
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         # Fixed GID, not the one passed in
@@ -87,7 +87,7 @@ test_that("Correct HTTP request is made, parentPopulation specified", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?query=eq%28name%2C%20%22singlets%22%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -102,7 +102,7 @@ test_that("Correct HTTP request is made, parentPopulation specified", {
           body = rawToChar(req$options$postfields)
           # Literal except for the gid value
           expect_match(body, '{"model":{"locked":false,"range":{"x1":123.4,"x2":234.5,"y":0.5},"label":\\[178.95,0.5\\]},"xChannel":"FSC-A","type":"RangeGate","parentPopulationId":"591a3b5f1d725115208a7087","name":"my gate","gid":"[0-9A-Za-z]{24}","tailoredPerFile":false}', perl = TRUE)
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             # Fixed GID, not the one passed in

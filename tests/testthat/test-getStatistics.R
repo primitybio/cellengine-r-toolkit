@@ -25,7 +25,7 @@ test_that("looks up fcsFiles by name; unambiguous match", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles?fields=%2Bfilename&query=in%28filename%2C%20%5B%22filename1.fcs%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -58,7 +58,7 @@ test_that("looks up fcsFiles by name; errors with ambiguous results", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles?fields=%2Bfilename&query=in%28filename%2C%20%5B%22filename1.fcs%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -91,7 +91,7 @@ test_that("looks up fcsFiles by name; errors with too few results", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles?fields=%2Bfilename&query=in%28filename%2C%20%5B%22filename1.fcs%22%2C%22filename2.fcs%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -124,7 +124,7 @@ test_that("looks up fcsFiles by name; errors with zero results", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles?fields=%2Bfilename&query=in%28filename%2C%20%5B%22filename1.fcs%22%2C%22filename2.fcs%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[]',
@@ -155,7 +155,7 @@ test_that("looks up fcsFiles by name; errors with too few and ambiguous results"
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/fcsfiles?fields=%2Bfilename&query=in%28filename%2C%20%5B%22filename1.fcs%22%2C%22filename2.fcs%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -208,7 +208,7 @@ test_that("looks up population by name; unambiguous match", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?fields=%2Bname&query=in%28name%2C%20%5B%22pname1%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -242,7 +242,7 @@ test_that("looks up populations by name; errors with ambiguous results", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?fields=%2Bname&query=in%28name%2C%20%5B%22pname1%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -276,7 +276,7 @@ test_that("looks up populations by name; errors with too few results", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?fields=%2Bname&query=in%28name%2C%20%5B%22pname1%22%2C%22pname2%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -309,7 +309,7 @@ test_that("looks up populations by name; errors with zero results", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?fields=%2Bname&query=in%28name%2C%20%5B%22pname1%22%2C%22pname2%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[]',
@@ -340,7 +340,7 @@ test_that("looks up populations by name; errors with too few and ambiguous resul
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?fields=%2Bname&query=in%28name%2C%20%5B%22pname1%22%2C%22pname2%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -388,7 +388,7 @@ test_that("looks up default scaleset; single match", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/scalesets?fields=%2B_id" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -422,7 +422,7 @@ test_that("looks up default scaleset; no matches", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/scalesets?fields=%2B_id" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[]',
@@ -453,7 +453,7 @@ test_that("looks up default scaleset; more than one match", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/scalesets?fields=%2B_id" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -500,7 +500,7 @@ test_that("works, percentOf specified as single value", {
           expect_equal(req$method, "POST")
           body = rawToChar(req$options$postfields)
           expect_equal(body, '{\"fcsFileIds\":[\"591a3b441d725115208a6fdb\"],\"statistics\":[\"percent\"],\"populationIds\":[\"591a3b441d725115208a6fdc\"],\"compensationId\":0,\"q\":0.5,\"scaleSetId\":\"591a3b441d725115208a6fdd\",\"format\":\"json\",\"annotations\":true,\"percentOf\":\"591a3b441d725115208a6fde\"}')
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -536,7 +536,7 @@ test_that("works, percentOf not specified", {
           expect_equal(req$method, "POST")
           body = rawToChar(req$options$postfields)
           expect_equal(body, '{\"fcsFileIds\":[\"591a3b441d725115208a6fdb\"],\"statistics\":[\"percent\"],\"populationIds\":[\"591a3b441d725115208a6fdc\"],\"compensationId\":0,\"q\":0.5,\"scaleSetId\":\"591a3b441d725115208a6fdd\",\"format\":\"json\",\"annotations\":true}')
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -568,7 +568,7 @@ test_that("works, percentOf specified as an array", {
           expect_equal(req$method, "POST")
           body = rawToChar(req$options$postfields)
           expect_equal(body, '{\"fcsFileIds\":[\"591a3b441d725115208a6fdb\"],\"statistics\":[\"percent\"],\"populationIds\":[\"591a3b441d725115208a6fdc\",\"591a3b441d725115208a6fd1\"],\"compensationId\":0,\"q\":0.5,\"scaleSetId\":\"591a3b441d725115208a6fdd\",\"format\":\"json\",\"annotations\":true,\"percentOf\":[\"591a3b441d725115208a6fde\",\"591a3b441d725115208a6fd2\"]}')
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -598,7 +598,7 @@ test_that("works, percentOf specified as a single name", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?fields=%2Bname&query=in%28name%2C%20%5B%22pname1%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -613,7 +613,7 @@ test_that("works, percentOf specified as a single name", {
           expect_equal(req$method, "POST")
           body = rawToChar(req$options$postfields)
           expect_equal(body, '{\"fcsFileIds\":[\"591a3b441d725115208a6fdb\"],\"statistics\":[\"percent\"],\"populationIds\":[\"591a3b441d725115208a6fdc\",\"591a3b441d725115208a6fd1\"],\"compensationId\":0,\"q\":0.5,\"scaleSetId\":\"591a3b441d725115208a6fdd\",\"format\":\"json\",\"annotations\":true,\"percentOf\":"591a3b5f1d725115208a7088"}')
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[]',
@@ -642,7 +642,7 @@ test_that("works, percentOf specified as an array of names", {
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?fields=%2Bname&query=in%28name%2C%20%5B%22pname1%22%2C%22pname2%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -658,7 +658,7 @@ test_that("works, percentOf specified as an array of names", {
           expect_equal(req$method, "POST")
           body = rawToChar(req$options$postfields)
           expect_equal(body, '{\"fcsFileIds\":[\"591a3b441d725115208a6fdb\"],\"statistics\":[\"percent\"],\"populationIds\":[\"591a3b441d725115208a6fdc\",\"591a3b441d725115208a6fd1\"],\"compensationId\":0,\"q\":0.5,\"scaleSetId\":\"591a3b441d725115208a6fdd\",\"format\":\"json\",\"annotations\":true,\"percentOf\":["591a3b5f1d725115208a7088","591a3b5f1d725115208a7090"]}')
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[]',
@@ -687,7 +687,7 @@ test_that("works, percentOf specified as a mixed array of names, IDs and UNGATED
       switch(req$url,
         "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/populations?fields=%2Bname&query=in%28name%2C%20%5B%22pname1%22%5D%29" = {
           expect_equal(req$method, "GET")
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[
@@ -702,7 +702,7 @@ test_that("works, percentOf specified as a mixed array of names, IDs and UNGATED
           expect_equal(req$method, "POST")
           body = rawToChar(req$options$postfields)
           expect_equal(body, '{\"fcsFileIds\":[\"591a3b441d725115208a6fdb\"],\"statistics\":[\"percent\"],\"populationIds\":["591a3b441d725115208a6fdc","591a3b441d725115208a6fd1","591a3b441d725115208a6fe1"],\"compensationId\":0,\"q\":0.5,\"scaleSetId\":\"591a3b441d725115208a6fdd\",\"format\":\"json\",\"annotations\":true,\"percentOf\":["591a3b5f1d725115208a7088","591a3b5f1d725115208a7090",""]}')
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[]',
@@ -733,7 +733,7 @@ test_that("works, percentOf specified as null (ungated)", {
           expect_equal(req$method, "POST")
           body = rawToChar(req$options$postfields)
           expect_equal(body, '{\"fcsFileIds\":[\"591a3b441d725115208a6fdb\"],\"statistics\":[\"percent\"],\"populationIds\":[\"591a3b441d725115208a6fdc\",\"591a3b441d725115208a6fd1\"],\"compensationId\":0,\"q\":0.5,\"scaleSetId\":\"591a3b441d725115208a6fdd\",\"format\":\"json\",\"annotations\":true,\"percentOf\":""}')
-          response = httptest::fakeResponse(
+          response = httptest::fake_response(
             req$url,
             req$method,
             content = '[]',

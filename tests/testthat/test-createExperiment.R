@@ -7,7 +7,7 @@ test_that("Correct HTTP request is made", {
       expect_equal(req$url, "https://my.server.com/api/v1/experiments")
       body = rawToChar(req$options$postfields)
       expect_equal(body, '{"name":"my experiment"}')
-      response = httptest::fakeResponse(
+      response = httptest::fake_response(
         req$url,
         req$method,
         content='{"__v":0,"_id":"591a3b441d725115208a6fda","name":"my experiment"}',
