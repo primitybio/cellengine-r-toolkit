@@ -13,6 +13,6 @@
 updateExperiment = function(experimentId, properties = list(), params = list()) {
   checkDefined(experimentId)
   experimentId = lookupByName("experiments", experimentId)
-  body = jsonlite::toJSON(body, null = "null")
+  body = jsonlite::toJSON(properties, null = "null")
   basePatch(paste("experiments", experimentId, sep = "/"), body, params)
 }
