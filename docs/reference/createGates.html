@@ -124,13 +124,13 @@ createXxxGate in a loop." />
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Each gate must be specified as a <code><a href='https://www.rdocumentation.org/packages/base/topics/list'>list()</a></code> object conforming to our API
-specification (TODO INSERT LINK WHEN PUBLIC); however, some properties will
-have defaults automatically set if not specified (<code>model.locked</code>,
-<code>model.label</code>, <code>gid</code>, <code>parentPopulationId</code>,
-<code>tailoredPerFile</code>, <code>fcsFileId</code>, <code>experimentId</code>).</p>
-<p>Up to ~1,000 gates may be created at once. If any single gate fails
-validation on the server, no gates will be created.</p>
+    <p>Each gate must be specified as a <code><a href='https://www.rdocumentation.org/packages/base/topics/list'>list()</a></code> object conforming to our
+<a href='https://docs.cellengine.com/api/#resource-representation_4'>API documentation</a>;
+however, some properties will have defaults automatically set if not
+specified (<code>model.locked</code>, <code>model.label</code>, <code>gid</code>,
+<code>parentPopulationId</code>, <code>tailoredPerFile</code>, <code>fcsFileId</code>,
+<code>experimentId</code>).</p>
+<p>Up to ~1,000 gates may be created at once.</p>
 <p>Unlike <code>createXxxGate</code>, this function cannot automatically create
 populations corresponding to each gate. This function is primarily suited to
 tailoring a large number of gates.</p>
