@@ -16,14 +16,14 @@ Creates multiple gates in a single API call. This is faster than calling
 \code{createXxxGate} in a loop.
 }
 \details{
-Each gate must be specified as a \code{list()} object conforming to our API
-specification (TODO INSERT LINK WHEN PUBLIC); however, some properties will
-have defaults automatically set if not specified (\code{model.locked},
-\code{model.label}, \code{gid}, \code{parentPopulationId},
-\code{tailoredPerFile}, \code{fcsFileId}, \code{experimentId}).
+Each gate must be specified as a \code{list()} object conforming to our
+\href{https://docs.cellengine.com/api/#resource-representation_4}{API documentation};
+however, some properties will have defaults automatically set if not
+specified (\code{model.locked}, \code{model.label}, \code{gid},
+\code{parentPopulationId}, \code{tailoredPerFile}, \code{fcsFileId},
+\code{experimentId}).
 
-Up to ~1,000 gates may be created at once. If any single gate fails
-validation on the server, no gates will be created.
+Up to ~1,000 gates may be created at once.
 
 Unlike \code{createXxxGate}, this function cannot automatically create
 populations corresponding to each gate. This function is primarily suited to
