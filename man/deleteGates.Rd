@@ -4,7 +4,7 @@
 \alias{deleteGates}
 \title{Delete gate}
 \usage{
-deleteGates(experimentId, gid, gateId = NULL, exclude = NULL)
+deleteGates(experimentId, gid = NULL, gateId = NULL, exclude = NULL)
 }
 \arguments{
 \item{experimentId}{ID of experiment.}
@@ -20,9 +20,12 @@ Deletes a gate or a tailored gate family
 Works for compound gates if you specify the top-level gid. Specifying the gid of a sector (i.e. one listed in model.gids) will result in no gates being deleted.
 If gateID is specified, only that gate will be deleted, regardless of the other parameters specified.
 }
+\details{
+Currently, byName does not work for the gateId in this function (it does work for the experimentID).
+}
 \examples{
 \dontrun{
-deleteGate(experimentId, gid)
-deleteGate(experimentId, gid)
+deleteGate(experimentId, gid = [gate family ID])
+deleteGate(experimentId, gateId = [gate ID])
 }
 }

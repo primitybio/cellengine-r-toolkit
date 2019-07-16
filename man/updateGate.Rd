@@ -9,9 +9,9 @@ updateGate(experimentId, gateId, properties = list(), params = list())
 \arguments{
 \item{experimentId}{ID of experiment.}
 
-\item{gateId}{Gate family ID}
+\item{gateId}{gate ID}
 
-\item{properties}{Properties to set on the experiment.}
+\item{properties}{Properties to set on the gate.}
 
 \item{params}{Optional query parameters.}
 }
