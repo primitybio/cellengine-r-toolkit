@@ -12,7 +12,7 @@ updateGateFamily(experimentId, gid, properties = list(),
 
 \item{gid}{Gate family ID}
 
-\item{properties}{Properties to set on the experiment.}
+\item{properties}{Properties to set on the gate.}
 
 \item{params}{Optional query parameters.}
 }

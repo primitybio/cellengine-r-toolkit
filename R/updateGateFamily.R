@@ -19,6 +19,5 @@ updateGateFamily = function(experimentId, gid, properties = list(), params = lis
   body = jsonlite::toJSON(properties, null = "null")
   base = paste("experiments", experimentId, "gates", sep = "/")
   url = sprintf("%s?gid=%s", base, gid)
-  print(url)
   basePatch(url, body, params)
 }
