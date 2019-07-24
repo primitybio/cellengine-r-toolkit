@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Auto Delete Population — deletePopulationAuto • cellengine</title>
+<title>Create split gate — createSplitGate • cellengine</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="Auto Delete Population — deletePopulationAuto" />
+<meta property="og:title" content="Create split gate — createSplitGate" />
 
-<meta property="og:description" content="Deletes a population, its corresponding gates, and all descendant gates and
-populations." />
+<meta property="og:description" content="Creates a split gate. split gates have two sectors (right and left),
+each with a unique gid and name." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -95,37 +95,105 @@ populations." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Auto Delete Population</h1>
+    <h1>Create split gate</h1>
     
-    <div class="hidden name"><code>deletePopulationAuto.Rd</code></div>
+    <div class="hidden name"><code>createSplitGate.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Deletes a population, its corresponding gates, and all descendant gates and
-populations.</p>
+    <p>Creates a split gate. split gates have two sectors (right and left),
+each with a unique gid and name.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>deletePopulationAuto</span>(<span class='no'>experimentId</span>, <span class='no'>populationId</span>)</pre>
+    <pre class="usage"><span class='fu'>createSplitGate</span>(<span class='no'>experimentId</span>, <span class='no'>xChannel</span>, <span class='no'>name</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>gid</span> <span class='kw'>=</span> <span class='fu'><a href='generateId.html'>generateId</a></span>(),
+  <span class='kw'>gids</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>2</span>, <span class='fu'><a href='generateId.html'>generateId</a></span>()), <span class='kw'>parentPopulationId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>parentPopulation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>skewable</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>tailoredPerFile</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>fcsFileId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fcsFile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>locked</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>createPopulation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>experimentId</th>
-      <td><p>ID of experiment.</p></td>
+      <td><p>The ID of the experiment to which to add the gate.</p></td>
     </tr>
     <tr>
-      <th>populationId</th>
-      <td><p>ID of population.</p></td>
+      <th>xChannel</th>
+      <td><p>The name of the x channel to which the gate applies.</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>The name of the gate. Each sector is named with this parameter
+and a split flag (L, R).</p></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>The x coordinate (after the channel's scale has been applied).</p></td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td><p>The y coordinate (after the channel's scale has been applied).</p></td>
+    </tr>
+    <tr>
+      <th>gid</th>
+      <td><p>Top-level group ID of the gate, used for tailoring. If this is not specified,
+then a new Group ID will be created. For compound gates, "gid" refers to the
+top-level GID. Each sector has a unique `model.gid` and `name` to which
+populations must refer.</p></td>
+    </tr>
+    <tr>
+      <th>gids</th>
+      <td><p>Group IDs of each sector, assigned to `model.gid`.</p></td>
+    </tr>
+    <tr>
+      <th>parentPopulationId</th>
+      <td><p>ID of the parent population. Use <code>NULL</code> for
+the "ungated" population. If specified, do not specify <code>parentPopulation</code>.</p></td>
+    </tr>
+    <tr>
+      <th>parentPopulation</th>
+      <td><p>Name of the parent population. An attempt will be made
+to find the population by name. If zero or more than one population exists
+with the name, an error will be thrown. If specified, do not specify
+<code>parentPopulationId</code>.</p></td>
+    </tr>
+    <tr>
+      <th>tailoredPerFile</th>
+      <td><p>Whether this gate is tailored per FCS file.</p></td>
+    </tr>
+    <tr>
+      <th>fcsFileId</th>
+      <td><p>ID of FCS file, if tailored per file. Use <code>NULL</code> for
+the global gate in a tailored gate group. If specified, do not specify
+<code>fcsFile</code>.</p></td>
+    </tr>
+    <tr>
+      <th>fcsFile</th>
+      <td><p>Name of FCS file, if tailored per file. An attempt will be made
+to find the file by name. If zero or more than one file exists with the name,
+an error will be thrown. If specified, do not specify <code>fcsFileId</code>.</p></td>
+    </tr>
+    <tr>
+      <th>locked</th>
+      <td><p>Prevents modification of the gate via the web interface.</p></td>
+    </tr>
+    <tr>
+      <th>createPopulation</th>
+      <td><p>Automatically create corresponding population.</p></td>
+    </tr>
+    <tr>
+      <th>yChannel</th>
+      <td><p>The name of the y channel to which the gate applies.</p></td>
     </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>deletePopulationAuto</span>(<span class='no'>experimentId</span>, <span class='no'>populationId</span>)
+<span class='fu'>createSplitGate</span>(<span class='no'>experimentId</span>, <span class='st'>"FSC-A"</span>, <span class='st'>"my gate"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
