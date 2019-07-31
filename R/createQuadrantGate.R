@@ -10,12 +10,11 @@
 #' and a quadrant flag (UR, UL, LL, LR).
 #' @param x The x coordinate (after the channel's scale has been applied).
 #' @param y The y coordinate (after the channel's scale has been applied).
-#' @param angles Angles at which the quadrant lines appear, in radians.
-#' Zero (0) points horizontally to the right; angles proceed counter-clockwise.
-#' Currently these must be 0, pi / 2, pi and 3 * pi / 2.
+#' @param labels Positions of the quadrant labels. A list of four length-2 vectors in
+#' the order: UR, UL, LL, LR. These are set automatically to the plot corners.
 #' @param gid Top-level group ID of the gate, used for tailoring. If this is not specified,
 #'   then a new Group ID will be created. For compound gates, "gid" refers to the
-#'   top-level GID. Each sector has a unique mmodel gid and name to which
+#'   top-level GID. Each sector has a unique model gid and name to which
 #'   populations must refer.
 #' @param gids Group IDs of each sector, assigned to model.gids.
 #' @param parentPopulationId ID of the parent population. Use \code{NULL} for
@@ -47,6 +46,9 @@ createQuadrantGate = function(experimentId, xChannel, yChannel, name,
   #future args:
   skewable = FALSE
   angles = c(pi/2, pi, 3/2*pi, 0.000000)
+# @param angles Angles at which the quadrant lines appear, in radians.
+# Zero (0) points horizontally to the right; angles proceed counter-clockwise.
+# Currently these must be 0, pi / 2, pi and 3 * pi / 2.
 
   if (length(labels) == 0) {
     scales = data.frame(getScaleSets(experimentId)$scales)

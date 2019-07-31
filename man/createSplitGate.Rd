@@ -7,8 +7,8 @@
 createSplitGate(experimentId, xChannel, name, x, y, gid = generateId(),
   gids = replicate(2, generateId()), labels = NULL,
   parentPopulationId = NULL, parentPopulation = NULL,
-  skewable = FALSE, tailoredPerFile = FALSE, fcsFileId = NULL,
-  fcsFile = NULL, locked = FALSE, createPopulation = TRUE)
+  tailoredPerFile = FALSE, fcsFileId = NULL, fcsFile = NULL,
+  locked = FALSE, createPopulation = TRUE)
 }
 \arguments{
 \item{experimentId}{The ID of the experiment to which to add the gate.}
@@ -28,6 +28,9 @@ top-level GID. Each sector has a unique model gid and name to which
 populations must refer.}
 
 \item{gids}{Group IDs of each sector, assigned to model.gids.}
+
+\item{labels}{Positions of the quadrant labels. A list of two length-2 vectors in
+the order: L, R. These are set automatically to the top corners.}
 
 \item{parentPopulationId}{ID of the parent population. Use \code{NULL} for
 the "ungated" population. If specified, do not specify \code{parentPopulation}.}

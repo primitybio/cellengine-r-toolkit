@@ -9,6 +9,8 @@
 #' and a split flag (L, R).
 #' @param x The x coordinate of the center point (after the channel's scale has been applied).
 #' @param y The y coordinate of the dashed line extending from the center point (after the channel's scale has been applied).
+#' @param labels Positions of the quadrant labels. A list of two length-2 vectors in
+#' the order: L, R. These are set automatically to the top corners.
 #' @param gid Top-level group ID of the gate, used for tailoring. If this is not specified,
 #'   then a new Group ID will be created. For compound gates, "gid" refers to the
 #'   top-level GID. Each sector has a unique model gid and name to which
@@ -36,7 +38,7 @@
 #' }
 createSplitGate = function(experimentId, xChannel, name, x, y,
                                gid = generateId(), gids = replicate(2, generateId()), labels = NULL,
-                               parentPopulationId = NULL, parentPopulation = NULL, skewable = FALSE,
+                               parentPopulationId = NULL, parentPopulation = NULL,
                                tailoredPerFile = FALSE, fcsFileId = NULL, fcsFile = NULL,
                                locked = FALSE, createPopulation = TRUE) {
 

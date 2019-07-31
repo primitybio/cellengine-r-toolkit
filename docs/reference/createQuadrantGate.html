@@ -108,11 +108,10 @@ upper-left, lower-left, lower-right), each with a unique gid and name.</p>
     </div>
 
     <pre class="usage"><span class='fu'>createQuadrantGate</span>(<span class='no'>experimentId</span>, <span class='no'>xChannel</span>, <span class='no'>yChannel</span>, <span class='no'>name</span>, <span class='no'>x</span>, <span class='no'>y</span>,
-  <span class='kw'>angles</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>3</span>/<span class='fl'>2</span> * <span class='no'>pi</span>, <span class='no'>pi</span>, <span class='no'>pi</span>/<span class='fl'>2</span>), <span class='kw'>gid</span> <span class='kw'>=</span> <span class='fu'><a href='generateId.html'>generateId</a></span>(),
-  <span class='kw'>gids</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>4</span>, <span class='fu'><a href='generateId.html'>generateId</a></span>()), <span class='kw'>parentPopulationId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>parentPopulation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>skewable</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>tailoredPerFile</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>fcsFileId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fcsFile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>locked</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>createPopulation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>gid</span> <span class='kw'>=</span> <span class='fu'><a href='generateId.html'>generateId</a></span>(), <span class='kw'>gids</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>4</span>,
+  <span class='fu'><a href='generateId.html'>generateId</a></span>()), <span class='kw'>parentPopulationId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>parentPopulation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>tailoredPerFile</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fcsFileId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fcsFile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>locked</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>createPopulations</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,21 +142,20 @@ and a quadrant flag (UR, UL, LL, LR).</p></td>
       <td><p>The y coordinate (after the channel's scale has been applied).</p></td>
     </tr>
     <tr>
-      <th>angles</th>
-      <td><p>Angles at which the quadrant lines appear, in radians.
-Zero (0) points horizontally to the right; angles proceed counter-clockwise.
-Currently these must be 0, pi / 2, pi and 3 * pi / 2.</p></td>
+      <th>labels</th>
+      <td><p>Positions of the quadrant labels. A list of four length-2 vectors in
+the order: UR, UL, LL, LR. These are set automatically to the plot corners.</p></td>
     </tr>
     <tr>
       <th>gid</th>
       <td><p>Top-level group ID of the gate, used for tailoring. If this is not specified,
 then a new Group ID will be created. For compound gates, "gid" refers to the
-top-level GID. Each sector has a unique `model.gid` and `name` to which
+top-level GID. Each sector has a unique model gid and name to which
 populations must refer.</p></td>
     </tr>
     <tr>
       <th>gids</th>
-      <td><p>Group IDs of each sector, assigned to `model.gid`.</p></td>
+      <td><p>Group IDs of each sector, assigned to model.gids.</p></td>
     </tr>
     <tr>
       <th>parentPopulationId</th>
@@ -192,8 +190,14 @@ an error will be thrown. If specified, do not specify <code>fcsFileId</code>.</p
       <td><p>Prevents modification of the gate via the web interface.</p></td>
     </tr>
     <tr>
-      <th>createPopulation</th>
+      <th>createPopulations</th>
       <td><p>Automatically create corresponding population.</p></td>
+    </tr>
+    <tr>
+      <th>angles</th>
+      <td><p>Angles at which the quadrant lines appear, in radians.
+Zero (0) points horizontally to the right; angles proceed counter-clockwise.
+Currently these must be 0, pi / 2, pi and 3 * pi / 2.</p></td>
     </tr>
     </table>
     

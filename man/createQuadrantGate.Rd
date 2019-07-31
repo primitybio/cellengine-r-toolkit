@@ -24,9 +24,12 @@ and a quadrant flag (UR, UL, LL, LR).}
 
 \item{y}{The y coordinate (after the channel's scale has been applied).}
 
+\item{labels}{Positions of the quadrant labels. A list of four length-2 vectors in
+the order: UR, UL, LL, LR. These are set automatically to the plot corners.}
+
 \item{gid}{Top-level group ID of the gate, used for tailoring. If this is not specified,
 then a new Group ID will be created. For compound gates, "gid" refers to the
-top-level GID. Each sector has a unique mmodel gid and name to which
+top-level GID. Each sector has a unique model gid and name to which
 populations must refer.}
 
 \item{gids}{Group IDs of each sector, assigned to model.gids.}
@@ -52,10 +55,6 @@ an error will be thrown. If specified, do not specify \code{fcsFileId}.}
 \item{locked}{Prevents modification of the gate via the web interface.}
 
 \item{createPopulations}{Automatically create corresponding population.}
-
-\item{angles}{Angles at which the quadrant lines appear, in radians.
-Zero (0) points horizontally to the right; angles proceed counter-clockwise.
-Currently these must be 0, pi / 2, pi and 3 * pi / 2.}
 }
 \description{
 Creates a quadrant gate. Quadrant gates have four sectors (upper-right,
