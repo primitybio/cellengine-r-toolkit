@@ -5,11 +5,10 @@
 \title{Create quadrant gate}
 \usage{
 createQuadrantGate(experimentId, xChannel, yChannel, name, x, y,
-  angles = c(0, 3/2 * pi, pi, pi/2), labels = list(),
-  gid = generateId(), gids = replicate(4, generateId()),
-  parentPopulationId = NULL, parentPopulation = NULL,
-  skewable = FALSE, tailoredPerFile = FALSE, fcsFileId = NULL,
-  fcsFile = NULL, locked = FALSE, createPopulation = TRUE)
+  labels = NULL, gid = generateId(), gids = replicate(4,
+  generateId()), parentPopulationId = NULL, parentPopulation = NULL,
+  tailoredPerFile = FALSE, fcsFileId = NULL, fcsFile = NULL,
+  locked = FALSE, createPopulations = TRUE)
 }
 \arguments{
 \item{experimentId}{The ID of the experiment to which to add the gate.}
@@ -25,16 +24,12 @@ and a quadrant flag (UR, UL, LL, LR).}
 
 \item{y}{The y coordinate (after the channel's scale has been applied).}
 
-\item{angles}{Angles at which the quadrant lines appear, in radians.
-Zero (0) points horizontally to the right; angles proceed counter-clockwise.
-Currently these must be 0, pi / 2, pi and 3 * pi / 2.}
-
 \item{gid}{Top-level group ID of the gate, used for tailoring. If this is not specified,
 then a new Group ID will be created. For compound gates, "gid" refers to the
-top-level GID. Each sector has a unique model.gid and name to which
+top-level GID. Each sector has a unique mmodel gid and name to which
 populations must refer.}
 
-\item{gids}{Group IDs of each sector, assigned to model.gid.}
+\item{gids}{Group IDs of each sector, assigned to model.gids.}
 
 \item{parentPopulationId}{ID of the parent population. Use \code{NULL} for
 the "ungated" population. If specified, do not specify \code{parentPopulation}.}
@@ -56,7 +51,11 @@ an error will be thrown. If specified, do not specify \code{fcsFileId}.}
 
 \item{locked}{Prevents modification of the gate via the web interface.}
 
-\item{createPopulation}{Automatically create corresponding population.}
+\item{createPopulations}{Automatically create corresponding population.}
+
+\item{angles}{Angles at which the quadrant lines appear, in radians.
+Zero (0) points horizontally to the right; angles proceed counter-clockwise.
+Currently these must be 0, pi / 2, pi and 3 * pi / 2.}
 }
 \description{
 Creates a quadrant gate. Quadrant gates have four sectors (upper-right,

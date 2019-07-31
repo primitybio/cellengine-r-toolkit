@@ -15,9 +15,9 @@
 #' Currently these must be 0, pi / 2, pi and 3 * pi / 2.
 #' @param gid Top-level group ID of the gate, used for tailoring. If this is not specified,
 #'   then a new Group ID will be created. For compound gates, "gid" refers to the
-#'   top-level GID. Each sector has a unique model.gid and name to which
+#'   top-level GID. Each sector has a unique mmodel gid and name to which
 #'   populations must refer.
-#' @param gids Group IDs of each sector, assigned to model.gid.
+#' @param gids Group IDs of each sector, assigned to model.gids.
 #' @param parentPopulationId ID of the parent population. Use \code{NULL} for
 #'   the "ungated" population. If specified, do not specify \code{parentPopulation}.
 #' @param parentPopulation Name of the parent population. An attempt will be made
@@ -66,7 +66,7 @@ createQuadrantGate = function(experimentId, xChannel, yChannel, name,
     stop('Labels must be a list of 4 length-2 vectors.')
   }
 
-  names = as.character(lapply(c("(UR)", "(UL)", "(LL)", "(LR)"), function (suffix){ paste(name, suffix)}))
+  names = paste(name, (c("(UR)", "(UL)", "(LL)", "(LR)")))
 
   body = list(
     model = list(

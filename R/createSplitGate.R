@@ -11,9 +11,9 @@
 #' @param y The y coordinate of the dashed line extending from the center point (after the channel's scale has been applied).
 #' @param gid Top-level group ID of the gate, used for tailoring. If this is not specified,
 #'   then a new Group ID will be created. For compound gates, "gid" refers to the
-#'   top-level GID. Each sector has a unique model.gid and name to which
+#'   top-level GID. Each sector has a unique model gid and name to which
 #'   populations must refer.
-#' @param gids Group IDs of each sector, assigned to model.gid.
+#' @param gids Group IDs of each sector, assigned to model.gids.
 #' @param parentPopulationId ID of the parent population. Use \code{NULL} for
 #'   the "ungated" population. If specified, do not specify \code{parentPopulation}.
 #' @param parentPopulation Name of the parent population. An attempt will be made
@@ -57,7 +57,7 @@ createSplitGate = function(experimentId, xChannel, name, x, y,
     stop('Labels must be a list of 2 length-2 vectors.')
   }
 
-  names = as.character(lapply(c("(L)", "(R)"), function (suffix){ paste(name, suffix)}))
+  names = paste(name, (c("(L)", "(R)")))
 
   body = list(
     model = list(

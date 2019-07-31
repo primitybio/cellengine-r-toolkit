@@ -5,7 +5,7 @@
 \title{Create split gate}
 \usage{
 createSplitGate(experimentId, xChannel, name, x, y, gid = generateId(),
-  gids = replicate(2, generateId()), labels = list(),
+  gids = replicate(2, generateId()), labels = NULL,
   parentPopulationId = NULL, parentPopulation = NULL,
   skewable = FALSE, tailoredPerFile = FALSE, fcsFileId = NULL,
   fcsFile = NULL, locked = FALSE, createPopulation = TRUE)
@@ -24,10 +24,10 @@ and a split flag (L, R).}
 
 \item{gid}{Top-level group ID of the gate, used for tailoring. If this is not specified,
 then a new Group ID will be created. For compound gates, "gid" refers to the
-top-level GID. Each sector has a unique model.gid and name to which
+top-level GID. Each sector has a unique model gid and name to which
 populations must refer.}
 
-\item{gids}{Group IDs of each sector, assigned to model.gid.}
+\item{gids}{Group IDs of each sector, assigned to model.gids.}
 
 \item{parentPopulationId}{ID of the parent population. Use \code{NULL} for
 the "ungated" population. If specified, do not specify \code{parentPopulation}.}
