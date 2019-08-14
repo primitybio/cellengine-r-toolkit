@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create ellipse gate — createEllipseGate • cellengine</title>
+<title>Create quadrant gate — createQuadrantGate • cellengine</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,10 @@
 
 
 
-<meta property="og:title" content="Create ellipse gate — createEllipseGate" />
+<meta property="og:title" content="Create quadrant gate — createQuadrantGate" />
 
-<meta property="og:description" content="Creates an ellipse gate." />
+<meta property="og:description" content="Creates a quadrant gate. Quadrant gates have four sectors (upper-right,
+upper-left, lower-left, lower-right), each with a unique gid and name." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -94,22 +95,23 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create ellipse gate</h1>
+    <h1>Create quadrant gate</h1>
     
-    <div class="hidden name"><code>createEllipseGate.Rd</code></div>
+    <div class="hidden name"><code>createQuadrantGate.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Creates an ellipse gate.</p>
+    <p>Creates a quadrant gate. Quadrant gates have four sectors (upper-right,
+upper-left, lower-left, lower-right), each with a unique gid and name.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>createEllipseGate</span>(<span class='no'>experimentId</span>, <span class='no'>xChannel</span>, <span class='no'>yChannel</span>, <span class='no'>name</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>angle</span>,
-  <span class='no'>major</span>, <span class='no'>minor</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='no'>x</span>, <span class='no'>y</span>), <span class='kw'>gid</span> <span class='kw'>=</span> <span class='fu'><a href='generateId.html'>generateId</a></span>(),
-  <span class='kw'>parentPopulationId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>parentPopulation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>createQuadrantGate</span>(<span class='no'>experimentId</span>, <span class='no'>xChannel</span>, <span class='no'>yChannel</span>, <span class='no'>name</span>, <span class='no'>x</span>, <span class='no'>y</span>,
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>gid</span> <span class='kw'>=</span> <span class='fu'><a href='generateId.html'>generateId</a></span>(), <span class='kw'>gids</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>replicate</a></span>(<span class='fl'>4</span>,
+  <span class='fu'><a href='generateId.html'>generateId</a></span>()), <span class='kw'>parentPopulationId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>parentPopulation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>tailoredPerFile</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fcsFileId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fcsFile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>locked</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>createPopulation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>locked</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>createPopulations</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -128,36 +130,32 @@
     </tr>
     <tr>
       <th>name</th>
-      <td><p>The name of the gate.</p></td>
+      <td><p>The name of the gate. Each sector is named with this parameter
+and a quadrant flag (UR, UL, LL, LR).</p></td>
     </tr>
     <tr>
       <th>x</th>
-      <td><p>The x centerpoint of the gate.</p></td>
+      <td><p>The x coordinate (after the channel's scale has been applied).</p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>The y centerpoint of the gate.</p></td>
+      <td><p>The y coordinate (after the channel's scale has been applied).</p></td>
     </tr>
     <tr>
-      <th>angle</th>
-      <td><p>The angle of the ellipse in radians.</p></td>
-    </tr>
-    <tr>
-      <th>major</th>
-      <td><p>The major radius of the ellipse.</p></td>
-    </tr>
-    <tr>
-      <th>minor</th>
-      <td><p>The minor radius of the ellipse.</p></td>
-    </tr>
-    <tr>
-      <th>label</th>
-      <td><p>Position of the label. Defaults to the midpoint of the gate.</p></td>
+      <th>labels</th>
+      <td><p>Positions of the quadrant labels. A list of four length-2 vectors in
+the order: UR, UL, LL, LR. These are set automatically to the plot corners.</p></td>
     </tr>
     <tr>
       <th>gid</th>
-      <td><p>Group ID of the gate, used for tailoring. If this is not specified,
-then a new Group ID will be created.</p></td>
+      <td><p>Top-level group ID of the gate, used for tailoring. If this is not specified,
+then a new Group ID will be created. For compound gates, "gid" refers to the
+top-level GID. Each sector has a unique model gid and name to which
+populations must refer.</p></td>
+    </tr>
+    <tr>
+      <th>gids</th>
+      <td><p>Group IDs of each sector, assigned to model.gids.</p></td>
     </tr>
     <tr>
       <th>parentPopulationId</th>
@@ -173,7 +171,7 @@ with the name, an error will be thrown. If specified, do not specify
     </tr>
     <tr>
       <th>tailoredPerFile</th>
-      <td><p>Whether or not this gate is tailored per FCS file.</p></td>
+      <td><p>Whether this gate is tailored per FCS file.</p></td>
     </tr>
     <tr>
       <th>fcsFileId</th>
@@ -192,15 +190,21 @@ an error will be thrown. If specified, do not specify <code>fcsFileId</code>.</p
       <td><p>Prevents modification of the gate via the web interface.</p></td>
     </tr>
     <tr>
-      <th>createPopulation</th>
+      <th>createPopulations</th>
       <td><p>Automatically create corresponding population.</p></td>
+    </tr>
+    <tr>
+      <th>angles</th>
+      <td><p>Angles at which the quadrant lines appear, in radians.
+Zero (0) points horizontally to the right; angles proceed counter-clockwise.
+Currently these must be 0, pi / 2, pi and 3 * pi / 2.</p></td>
     </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>createEllipseGate</span>(<span class='no'>experimentId</span>, <span class='st'>"FSC-A"</span>, <span class='st'>"FSC-W"</span>, <span class='st'>"my gate"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>4</span>, <span class='fl'>5</span>, <span class='fl'>6</span>))
+<span class='fu'>createQuadrantGate</span>(<span class='no'>experimentId</span>, <span class='st'>"FSC-A"</span>, <span class='st'>"FSC-W"</span>, <span class='st'>"my gate"</span>, <span class='fl'>160000</span>, <span class='fl'>200000</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

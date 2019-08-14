@@ -118,3 +118,43 @@ commonGateCreate = function(body, name, gid,
     return(list(gate = gateResp))
   }
 }
+
+# Assigns common properties to body of compound gate, then makes the request.
+compoundGateCreate = function(body, names, gid, gids,
+                            experimentId,
+                            parentPopulationId, parentPopulation,
+                            tailoredPerFile, fcsFileId, fcsFile,
+                            createPopulation) {
+
+  checkDefined(experimentId)
+
+  parentPopulationId = parsePopulationArgs(parentPopulationId, parentPopulation,
+    experimentId)
+
+  body = c(body, list(
+    parentPopulationId = jsonlite::unbox(parentPopulationId),
+    gid = jsonlite::unbox(gid)
+  ))
+
+  body = parseFcsFileArgs(body, tailoredPerFile, fcsFileId, fcsFile, experimentId)
+
+  body = jsonlite::toJSON(body, null = "null", digits = NA)
+  path = paste("experiments", experimentId, "gates", sep = "/")
+  gateResp = basePost(path, body, list())
+  
+  if (createPopulation) {
+      populationResps = c()
+      for (i in seq_along(gids)){
+        gid = gids[i]
+        name = names[i]
+        populationResp = autoCreatePopulation(experimentId, name, gid, parentPopulationId)
+        populationResps = append(populationResps, populationResp)
+    }
+    return(list(
+        gate = gateResp,
+        population = populationResps
+    ))
+  } else { 
+      return(list(gate = gateResp))
+  }
+}
