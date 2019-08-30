@@ -54,36 +54,6 @@ parseFcsFileArgs = function(body, tailoredPerFile, fcsFileId, fcsFile, experimen
   return(body)
 }
 
-# Creates a population under the \code{parentPopulation} (population object) or
-# population with the ID \code{parentPopulationId}.
-autoCreatePopulation = function(experimentId, name, gid, parentPopulationId = NULL,
-                                parentPopulation = NULL) {
-
-  if (is.null(parentPopulation) && !is.null(parentPopulationId)) {
-    parentPopulation = getPopulation(experimentId, parentPopulationId)
-  }
-
-  if (is.null(parentPopulation)) {
-    # Parent is "Ungated"
-    gates = list(`$and` = c(gid))
-  } else {
-    parentPopulationId = parentPopulation$`_id`
-    gates = jsonlite::fromJSON(parentPopulation$gates)
-    if ("$and" %in% names(gates)) {
-      if (is.list(gates$`$and`) && length(gates$`$and`) == 0) { # empty, {$and: []}
-        # jsonlite deserializes empty arrays to lists instead of vectors
-        gates = list(`$and` = c(gid))
-      } else { # not empty, e.g. {$and: [gidX]}
-        gates$`$and` = c(gates$`$and`, gid)
-      }
-    } else { # complex, e.g. {$not: [gidX]}
-      gates = list(`$and` = list(gates, jsonlite::unbox(gid)))
-    }
-  }
-
-  createPopulation(experimentId, name, gates, gid, parentPopulationId)
-}
-
 # Assigns common properties to the body, then makes the request.
 commonGateCreate = function(body, name, gid,
                             experimentId,
@@ -106,16 +76,13 @@ commonGateCreate = function(body, name, gid,
 
   body = jsonlite::toJSON(body, null = "null", digits = NA)
   path = paste("experiments", experimentId, "gates", sep = "/")
-  gateResp = basePost(path, body, list())
 
   if (createPopulation) {
-    populationResp = autoCreatePopulation(experimentId, name, gid, parentPopulationId)
-    return(list(
-      gate = gateResp,
-      population = populationResp
-    ))
+      gateResp = basePost(path, body, params=list("createPopulation"="true"))
+      return(gateResp)
   } else {
-    return(list(gate = gateResp))
+      gateResp = basePost(path, body, list())
+      return(list(gate = gateResp))
   }
 }
 
@@ -140,21 +107,13 @@ compoundGateCreate = function(body, names, gid, gids,
 
   body = jsonlite::toJSON(body, null = "null", digits = NA)
   path = paste("experiments", experimentId, "gates", sep = "/")
-  gateResp = basePost(path, body, list())
   
   if (createPopulation) {
-      populationResps = c()
-      for (i in seq_along(gids)){
-        gid = gids[i]
-        name = names[i]
-        populationResp = autoCreatePopulation(experimentId, name, gid, parentPopulationId)
-        populationResps = append(populationResps, populationResp)
-    }
-    return(list(
-        gate = gateResp,
-        population = populationResps
-    ))
-  } else { 
+      gateResp = basePost(path, body, params=list("createPopulation"="true"))
+      return(gateResp)
+  } else {
+      gateResp = basePost(path, body, list())
       return(list(gate = gateResp))
   }
 }
+
