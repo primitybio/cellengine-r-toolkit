@@ -1,6 +1,7 @@
 pkg.env = new.env()
 
-pkg.env$baseURL = "https://cellengine.com/api/v1"
+# Set your development base url in .Renviron in the package directory
+pkg.env$baseURL = Sys.getenv("CELLENGINE_API_URL", "https://cellengine.com/api/v1")
 
 handleResponse = function(response) {
   httr::warn_for_status(response)
