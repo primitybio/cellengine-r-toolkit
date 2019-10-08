@@ -78,7 +78,7 @@ commonGateCreate = function(body, name, gid,
   path = paste("experiments", experimentId, "gates", sep = "/")
 
   if (createPopulation) {
-      gateResp = basePost(path, body, params=list("createPopulation"="true"))
+      gateResp = basePost(path, body, params=list("createPopulation"=TRUE))
       return(gateResp)
   } else {
       gateResp = basePost(path, body, list())
@@ -109,7 +109,7 @@ compoundGateCreate = function(body, names, gid, gids,
   path = paste("experiments", experimentId, "gates", sep = "/")
   
   if (createPopulation) {
-      gateResp = basePost(path, body, params=list("createPopulation"="true"))
+      gateResp = basePost(path, body, params=list("createPopulation"=TRUE))
       return(gateResp)
   } else {
       gateResp = basePost(path, body, list())
