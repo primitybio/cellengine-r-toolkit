@@ -4,8 +4,7 @@
 \alias{updateGateFamily}
 \title{Update gate family}
 \usage{
-updateGateFamily(experimentId, gid, properties = list(),
-  params = list())
+updateGateFamily(experimentId, gid, properties = list(), params = list())
 }
 \arguments{
 \item{experimentId}{ID of experiment.}

@@ -4,10 +4,20 @@
 \alias{getStatistics}
 \title{Get statistics}
 \usage{
-getStatistics(experimentId, fcsFileIds = NULL, fcsFiles = NULL,
-  channels = c(), statistics, compensationId, populationIds = NULL,
-  populations = NULL, scaleSetId = NULL, q = 0.5, percentOf = NULL,
-  includeAnnotations = TRUE)
+getStatistics(
+  experimentId,
+  fcsFileIds = NULL,
+  fcsFiles = NULL,
+  channels = c(),
+  statistics,
+  compensationId,
+  populationIds = NULL,
+  populations = NULL,
+  scaleSetId = NULL,
+  q = 0.5,
+  percentOf = NULL,
+  includeAnnotations = TRUE
+)
 }
 \arguments{
 \item{experimentId}{ID of experiment.}

@@ -4,11 +4,23 @@
 \alias{createSplitGate}
 \title{Create split gate}
 \usage{
-createSplitGate(experimentId, xChannel, name, x, y, gid = generateId(),
-  gids = replicate(2, generateId()), labels = NULL,
-  parentPopulationId = NULL, parentPopulation = NULL,
-  tailoredPerFile = FALSE, fcsFileId = NULL, fcsFile = NULL,
-  locked = FALSE, createPopulation = TRUE)
+createSplitGate(
+  experimentId,
+  xChannel,
+  name,
+  x,
+  y,
+  gid = generateId(),
+  gids = replicate(2, generateId()),
+  labels = NULL,
+  parentPopulationId = NULL,
+  parentPopulation = NULL,
+  tailoredPerFile = FALSE,
+  fcsFileId = NULL,
+  fcsFile = NULL,
+  locked = FALSE,
+  createPopulation = TRUE
+)
 }
 \arguments{
 \item{experimentId}{The ID of the experiment to which to add the gate.}

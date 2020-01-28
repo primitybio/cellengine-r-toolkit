@@ -4,11 +4,26 @@
 \alias{createEllipseGate}
 \title{Create ellipse gate}
 \usage{
-createEllipseGate(experimentId, xChannel, yChannel, name, x, y, angle,
-  major, minor, label = c(x, y), gid = generateId(),
-  parentPopulationId = NULL, parentPopulation = NULL,
-  tailoredPerFile = FALSE, fcsFileId = NULL, fcsFile = NULL,
-  locked = FALSE, createPopulation = TRUE)
+createEllipseGate(
+  experimentId,
+  xChannel,
+  yChannel,
+  name,
+  x,
+  y,
+  angle,
+  major,
+  minor,
+  label = c(x, y),
+  gid = generateId(),
+  parentPopulationId = NULL,
+  parentPopulation = NULL,
+  tailoredPerFile = FALSE,
+  fcsFileId = NULL,
+  fcsFile = NULL,
+  locked = FALSE,
+  createPopulation = TRUE
+)
 }
 \arguments{
 \item{experimentId}{The ID of the experiment to which to add the gate.}

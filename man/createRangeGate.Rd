@@ -4,11 +4,23 @@
 \alias{createRangeGate}
 \title{Create range gate}
 \usage{
-createRangeGate(experimentId, xChannel, name, x1, x2, y = 0.5,
-  label = c(mean(c(x1, x2)), y), gid = generateId(),
-  parentPopulationId = NULL, parentPopulation = NULL,
-  tailoredPerFile = FALSE, fcsFileId = NULL, fcsFile = NULL,
-  locked = FALSE, createPopulation = TRUE)
+createRangeGate(
+  experimentId,
+  xChannel,
+  name,
+  x1,
+  x2,
+  y = 0.5,
+  label = c(mean(c(x1, x2)), y),
+  gid = generateId(),
+  parentPopulationId = NULL,
+  parentPopulation = NULL,
+  tailoredPerFile = FALSE,
+  fcsFileId = NULL,
+  fcsFile = NULL,
+  locked = FALSE,
+  createPopulation = TRUE
+)
 }
 \arguments{
 \item{experimentId}{The ID of the experiment to which to add the gate.}
