@@ -4,11 +4,23 @@
 \alias{createPolygonGate}
 \title{Create polygon gate}
 \usage{
-createPolygonGate(experimentId, xChannel, yChannel, name,
-  xVertices = c(), yVertices = c(), label = c(mean(xVertices),
-  mean(yVertices)), gid = generateId(), parentPopulationId = NULL,
-  parentPopulation = NULL, tailoredPerFile = FALSE, fcsFileId = NULL,
-  fcsFile = NULL, locked = FALSE, createPopulation = TRUE)
+createPolygonGate(
+  experimentId,
+  xChannel,
+  yChannel,
+  name,
+  xVertices = c(),
+  yVertices = c(),
+  label = c(mean(xVertices), mean(yVertices)),
+  gid = generateId(),
+  parentPopulationId = NULL,
+  parentPopulation = NULL,
+  tailoredPerFile = FALSE,
+  fcsFileId = NULL,
+  fcsFile = NULL,
+  locked = FALSE,
+  createPopulation = TRUE
+)
 }
 \arguments{
 \item{experimentId}{The ID of the experiment to which to add the gate.}

@@ -4,11 +4,24 @@
 \alias{createQuadrantGate}
 \title{Create quadrant gate}
 \usage{
-createQuadrantGate(experimentId, xChannel, yChannel, name, x, y,
-  labels = NULL, gid = generateId(), gids = replicate(4,
-  generateId()), parentPopulationId = NULL, parentPopulation = NULL,
-  tailoredPerFile = FALSE, fcsFileId = NULL, fcsFile = NULL,
-  locked = FALSE, createPopulations = TRUE)
+createQuadrantGate(
+  experimentId,
+  xChannel,
+  yChannel,
+  name,
+  x,
+  y,
+  labels = NULL,
+  gid = generateId(),
+  gids = replicate(4, generateId()),
+  parentPopulationId = NULL,
+  parentPopulation = NULL,
+  tailoredPerFile = FALSE,
+  fcsFileId = NULL,
+  fcsFile = NULL,
+  locked = FALSE,
+  createPopulations = TRUE
+)
 }
 \arguments{
 \item{experimentId}{The ID of the experiment to which to add the gate.}

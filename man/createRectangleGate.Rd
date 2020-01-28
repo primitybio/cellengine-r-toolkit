@@ -4,11 +4,25 @@
 \alias{createRectangleGate}
 \title{Create rectangle gate}
 \usage{
-createRectangleGate(experimentId, xChannel, yChannel, name, x1, x2, y1, y2,
-  label = c(mean(c(x1, x2)), mean(c(y1, y2))), gid = generateId(),
-  parentPopulationId = NULL, parentPopulation = NULL,
-  tailoredPerFile = FALSE, fcsFileId = NULL, fcsFile = NULL,
-  locked = FALSE, createPopulation = TRUE)
+createRectangleGate(
+  experimentId,
+  xChannel,
+  yChannel,
+  name,
+  x1,
+  x2,
+  y1,
+  y2,
+  label = c(mean(c(x1, x2)), mean(c(y1, y2))),
+  gid = generateId(),
+  parentPopulationId = NULL,
+  parentPopulation = NULL,
+  tailoredPerFile = FALSE,
+  fcsFileId = NULL,
+  fcsFile = NULL,
+  locked = FALSE,
+  createPopulation = TRUE
+)
 }
 \arguments{
 \item{experimentId}{The ID of the experiment to which to add the gate.}
