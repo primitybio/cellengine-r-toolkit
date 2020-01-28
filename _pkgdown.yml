@@ -60,6 +60,7 @@ reference:
   - title: Utilities
     contents:
       - byName
+      - createLookup
       - generateId
       - UNCOMPENSATED
       - FILE_INTERNAL

@@ -122,8 +122,8 @@ byNameHash = new.env(hash = TRUE, parent = emptyenv())
 
 lookupByName = function(listpath, name, prop = "name") {
   if (class(name) != "_boxed_by_name") return(name)
-
   name = unclass(name)
+
   key = paste(listpath, name, sep="$$$")
   if (exists(key, envir = byNameHash)) return(get(key, envir = byNameHash))
 
@@ -131,7 +131,8 @@ lookupByName = function(listpath, name, prop = "name") {
     query = sprintf("eq(%s, \"%s\")", prop, name),
     limit = 2 # need >1 so we can detect ambiguous matches
   ))
-  if (!is.data.frame(vals)) {
+  vals = data.frame(t(unlist(vals)), check.names = FALSE)
+  if (nrow(vals) == 0) {
     stop(sprintf("Resource with the name '%s' does not exist in the experiment.", name))
   }
   if (nrow(vals) > 1) {
@@ -141,4 +142,37 @@ lookupByName = function(listpath, name, prop = "name") {
   val = vals$`_id`
   assign(key, val, envir = byNameHash)
   val
+}
+
+#' Find a Resource By Name
+#'
+#' Allows creation of a by-name lookup object per experiment, which can
+#' then be used to find resources by name instead of id. The resource's id is
+#' cached for the duration of the R session.
+#'
+#' @param experimentId Experiment to create lookup for.
+#' @return A function that takes the parameters "resource" and "name":
+#'   resource Type of resource. Available options are "gates", "populations", "fcsfiles", and "compensations".
+#'   name Name of resource to search for.
+#' @examples
+#' \dontrun{
+#' lookup = createLookup("5e1f66a06f5f3f0759b479c9")
+#' lookup("gates", "test_gate")
+#' }
+#' @export
+createLookup <- function(experimentId) {
+  function(resource, name) {
+    allowedArgs = c("gates", "populations", "fcsfiles", "compensations")
+    if (resource %in% allowedArgs == FALSE) {
+      stop(sprintf("Resource must be one of %s", paste(allowedArgs, collapse = ", ")))
+    }
+    listpath = sprintf("experiments/%s/%s", experimentId, resource)
+    args <- list(listpath=listpath, name=byName(name))
+    if (resource == "fcsfiles") {
+      args <- c(args, list(prop = "filename"))
+    }
+    id = do.call(lookupByName, args)
+    data = baseGet(sprintf("%s/%s/", listpath, id))
+    data
+  }
 }
