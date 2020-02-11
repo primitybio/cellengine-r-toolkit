@@ -11,6 +11,6 @@ License: Apache License (== 2.0)
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.0.0)
-Imports: httr(>= 1.3.0), jsonlite
+Imports: httr(>= 1.3.0), jsonlite, utils
 RoxygenNote: 7.0.2
 Suggests: httptest(>= 3.2.2), testthat
