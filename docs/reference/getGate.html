@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Delete FCS file — deleteFcsFile • cellengine</title>
+<title>Get a gate — getGate • cellengine</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Delete FCS file — deleteFcsFile" />
-<meta property="og:description" content="Deletes an FCS file." />
+<meta property="og:title" content="Get a gate — getGate" />
+<meta property="og:description" content="Retrieves a gate from an experiment." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,16 +115,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Delete FCS file</h1>
+    <h1>Get a gate</h1>
     
-    <div class="hidden name"><code>deleteFcsFile.Rd</code></div>
+    <div class="hidden name"><code>getGate.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Deletes an FCS file.</p>
+    <p>Retrieves a gate from an experiment.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>deleteFcsFile</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>)</pre>
+    <pre class="usage"><span class='fu'>getGate</span>(<span class='no'>experimentId</span>, <span class='no'>gateId</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,15 +134,15 @@
       <td><p>ID of experiment.</p></td>
     </tr>
     <tr>
-      <th>fcsFileId</th>
-      <td><p>ID of FCS file.</p></td>
+      <th>gateId</th>
+      <td><p>ID of gate.</p></td>
     </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>deleteFcsFile</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>)
+<span class='fu'>getGate</span>(<span class='no'>experimentId</span>, <span class='no'>gateId</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

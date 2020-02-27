@@ -12,8 +12,8 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' deleteGate(experimentId, gid = [gate family ID])
-#' deleteGate(experimentId, gateId = [gate ID])
+#' deleteGate(experimentId, gid = gateFamilyID)
+#' deleteGate(experimentId, gateId = gateID)
 #' }
 
 deleteGates = function(experimentId, gid = NULL, gateId = NULL, exclude = NULL) {

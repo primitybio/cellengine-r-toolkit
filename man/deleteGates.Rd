@@ -25,7 +25,7 @@ Currently, byName does not work for the gateId in this function (it does work fo
 }
 \examples{
 \dontrun{
-deleteGate(experimentId, gid = [gate family ID])
-deleteGate(experimentId, gateId = [gate ID])
+deleteGate(experimentId, gid = gateFamilyID)
+deleteGate(experimentId, gateId = gateID)
 }
 }

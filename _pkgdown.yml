@@ -66,3 +66,15 @@ reference:
       - FILE_INTERNAL
       - UNGATED
       - getErrorInfo
+
+articles:
+  - title: Getting Started
+    contents:
+      - gettingStarted
+  - title: Tailoring Gates
+    contents:
+      - tailoringGates
+
+navbar:
+  structure:
+    left: [home, reference, articles]
