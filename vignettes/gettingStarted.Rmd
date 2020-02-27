@@ -37,19 +37,21 @@ Gates, Populations, FcsFiles, and Compensations can all be requested by name.
 If you are looking up a resource from a specific experiment, this must be done
 with the `byName` function:
 ```R
-gate = getGate("57c4d7d4e69a1e890c4d8d2f", byName("gate_name"))
+experimentId = "57c4d7d4e69a1e890c4d8d2f"
+gate = getGate(expermentId, byName("gate_name"))
 ```
 
 You can also create a per-Experiment lookup object, which may be used to find
 resources by name or ID. This makes it convenient to query different types of
 resources from a single experiment:
 ```R
-lookup = createLookup("57c4d7d4e69a1e890c4d8d2f")
+experimentId = "57c4d7d4e69a1e890c4d8d2f"
+lookup = createLookup(experimentId)
 gate = lookup("gates", "gate_name")
 population = lookup("populations", "population_name")
 ```
 
-Looking up a resource by name requires two API calls, and so is slightly slower
+Looking up a resource by name requires one extra API call, and thus is slightly slower
 than lookup up a resource by ID. However, all by-name lookups are cached for the
 duration of the `R` session, so repeated calls of the same object are just as
 fast as a request by ID.
