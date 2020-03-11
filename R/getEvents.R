@@ -104,7 +104,7 @@ getEvents = function(experimentId,
     httr::warn_for_status(response)
     if (format == "TSV") {
       content = httr::content(response, "text")
-      content = read.table(text = content, header = headerQ, sep = "\t")
+      content = utils::read.table(text = content, header = headerQ, sep = "\t")
     } else {
       content = httr::content(response, "raw")
     }
