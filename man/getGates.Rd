@@ -16,7 +16,10 @@ Retrieves the list of gates in an experiment.
 }
 \examples{
 \dontrun{
+# List all gates in the experiment
 getGates(experimentId)
-getGates(experimentId, params = list("limit" = "5"))
+
+# List the name and GID of the first five gates
+getGates(experimentId, params = list("limit" = "5", "fields" = "+name,+gid"))
 }
 }

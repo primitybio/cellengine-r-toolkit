@@ -4,7 +4,9 @@
 \name{FILE_INTERNAL}
 \alias{FILE_INTERNAL}
 \title{File-internal compensation.}
-\format{An object of class \code{numeric} of length 1.}
+\format{
+An object of class \code{numeric} of length 1.
+}
 \usage{
 FILE_INTERNAL
 }

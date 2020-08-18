@@ -16,7 +16,10 @@ Retrieves an experiment.
 }
 \examples{
 \dontrun{
+# Retrieve by ID
 getExperiment(experimentId)
+
+# Lookup by name
 getExperiment(byName("my experiment"))
 }
 }

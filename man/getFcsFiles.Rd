@@ -17,7 +17,10 @@ FCS files themselves; this only returns information about the FCS files.
 }
 \examples{
 \dontrun{
+# List all FCS files in the experiment
 getFcsFiles(experimentId)
-getFcsFiles(experimentId, params = list("limit" = "5"))
+
+# List the filename of the the first five files
+getFcsFiles(experimentId, params = list("limit" = "5", "fields" = "+filename"))
 }
 }
