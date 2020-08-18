@@ -8,8 +8,11 @@
 #' @export
 #' @examples
 #' \dontrun{
+#' # Retrieve by ID
 #' getPopulation(experimentId, populationId)
-#' getPopulation(experimentId, populationId, params = list("fields" = "+name"))
+#'
+#' # Lookup by name
+#' getPopulation(experimentId, byName("Singlets"))
 #' }
 getPopulation = function(experimentId, populationId, params = list()) {
   checkDefined(experimentId)

@@ -6,8 +6,11 @@
 #' @export
 #' @examples
 #' \dontrun{
+#' # List all accessible experiments
 #' getExperiments()
-#' getExperiments(params = list("limit" = "5"))
+#'
+#' # List the names of the first five experiments
+#' getExperiments(params = list("limit" = "5", "fields" = "+name"))
 #' }
 getExperiments = function(params = list()) {
   baseGet(paste("experiments", sep = "/"), params)

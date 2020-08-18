@@ -1,6 +1,7 @@
 #' Get scale sets
 #'
-#' Retrieves the list of scale sets in an experiment.
+#' Retrieves the list of scale sets in an experiment. Currently each experiment
+#' has exactly one scale set.
 #'
 #' @param experimentId ID of experiment.
 #' @param params Optional query parameters.
@@ -8,7 +9,6 @@
 #' @examples
 #' \dontrun{
 #' getScaleSets(experimentId)
-#' getScaleSets(experimentId, params = list("limit" = "5"))
 #' }
 getScaleSets = function(experimentId, params = list()) {
   checkDefined(experimentId)

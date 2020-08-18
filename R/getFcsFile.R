@@ -9,8 +9,11 @@
 #' @export
 #' @examples
 #' \dontrun{
+#' # Retrieve by ID
 #' getFcsFile(experimentId, fcsFileId)
-#' getFcsFile(experimentId, fcsFileId, params = list("fields" = "+filename"))
+#'
+#' # Lookup by name
+#' getFcsFile(experimentId, byName("Sample 1.fcs"))
 #' }
 getFcsFile = function(experimentId, fcsFileId, params = list()) {
   checkDefined(experimentId)
