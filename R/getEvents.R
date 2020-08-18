@@ -47,7 +47,8 @@
 #' getEvents(experimentId, fcsFileId, destination = "/path/to/output.tsv", format = "TSV", headerQ = T)
 #'
 #' # Subsamples and gates to only contain events in the specified population:
-#' getEvents(experimentId, fcsFileId, populationId, subsampling = list(preSubsampleN = 5000, seed = 1.5))
+#' subsampling = list(preSubsampleN = 5000, seed = 1.5)
+#' getEvents(experimentId, fcsFileId, populationId, subsampling = subsampling)
 #' }
 getEvents = function(experimentId,
                      fcsFileId,

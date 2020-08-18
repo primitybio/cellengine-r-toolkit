@@ -7,8 +7,11 @@
 #' @export
 #' @examples
 #' \dontrun{
+#' # List all populations in the experiment
 #' getPopulations(experimentId)
-#' getPopulations(experimentId, params = list("limit" = "5"))
+#'
+#' # List the names of the first five populations
+#' getPopulations(experimentId, params = list("limit" = "5", "fields" = "+name"))
 #' }
 getPopulations = function(experimentId, params = list()) {
   checkDefined(experimentId)
