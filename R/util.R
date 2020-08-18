@@ -131,12 +131,11 @@ lookupByName = function(listpath, name, prop = "name") {
     query = sprintf("eq(%s, \"%s\")", prop, name),
     limit = 2 # need >1 so we can detect ambiguous matches
   ))
-  vals = data.frame(t(unlist(vals)), check.names = FALSE)
-  if (nrow(vals) == 0) {
-    stop(sprintf("Resource with the name '%s' does not exist in the experiment.", name))
+  if (!is.data.frame(vals)) {
+    stop(sprintf("Resource with the name '%s' does not exist.", name))
   }
   if (nrow(vals) > 1) {
-    stop(sprintf("More than one resource with the name '%s' exists in the experiment.", name))
+    stop(sprintf("More than one resource with the name '%s' exists.", name))
   }
 
   val = vals$`_id`

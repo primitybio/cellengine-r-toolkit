@@ -8,7 +8,7 @@
 #' @examples
 #' \dontrun{
 #' getExperiment(experimentId)
-#' getExperiment(experimentId, params = list("fields" = "+name"))
+#' getExperiment(byName("my experiment"))
 #' }
 getExperiment = function(experimentId, params = list()) {
   checkDefined(experimentId)
