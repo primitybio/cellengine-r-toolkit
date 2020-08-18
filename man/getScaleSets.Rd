@@ -12,11 +12,11 @@ getScaleSets(experimentId, params = list())
 \item{params}{Optional query parameters.}
 }
 \description{
-Retrieves the list of scale sets in an experiment.
+Retrieves the list of scale sets in an experiment. Currently each experiment
+has exactly one scale set.
 }
 \examples{
 \dontrun{
 getScaleSets(experimentId)
-getScaleSets(experimentId, params = list("limit" = "5"))
 }
 }

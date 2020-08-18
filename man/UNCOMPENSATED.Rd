@@ -4,7 +4,9 @@
 \name{UNCOMPENSATED}
 \alias{UNCOMPENSATED}
 \title{No compensation.}
-\format{An object of class \code{numeric} of length 1.}
+\format{
+An object of class \code{numeric} of length 1.
+}
 \usage{
 UNCOMPENSATED
 }

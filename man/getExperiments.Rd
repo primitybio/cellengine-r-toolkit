@@ -14,7 +14,10 @@ Retrieves the list of experiments to which you have access.
 }
 \examples{
 \dontrun{
+# List all accessible experiments
 getExperiments()
-getExperiments(params = list("limit" = "5"))
+
+# List the names of the first five experiments
+getExperiments(params = list("limit" = "5", "fields" = "+name"))
 }
 }
