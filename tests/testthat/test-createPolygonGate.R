@@ -21,7 +21,7 @@ test_that("Correct HTTP request is made", {
     {
       setServer("https://my.server.com")
       resp = createPolygonGate("591a3b441d725115208a6fda", "FSC-A", "FSC-W", "my gate",
-        c(37836.07, 1588732.12, 8139.405, 9441.949), c(971.51, 154.646, 664.78, 781.32),
+        list(c(37836.07, 971.51), c(1588732.12,154.646),  c(8139.405, 664.78), c(9441.949,  781.32)),
         createPopulation = FALSE)
       resp = resp$gate
       expect_equal(resp$experimentId, "591a3b441d725115208a6fda")
@@ -66,7 +66,7 @@ test_that("Correct HTTP request is made, fcsFileId specified", {
     {
       setServer("https://my.server.com")
       resp = createPolygonGate("591a3b441d725115208a6fda", "FSC-A", "FSC-W", "my gate",
-        c(37836.07, 1588732.12, 8139.405, 9441.949), c(971.51, 154.646, 664.78, 781.32),
+        list(c(37836.07, 971.51), c(1588732.12,154.646),  c(8139.405, 664.78), c(9441.949,  781.32)),
         tailoredPerFile = TRUE, fcsFileId = "591a3b441d725115208a6fdf", createPopulation = FALSE)
       resp = resp$gate
       expect_equal(resp$experimentId, "591a3b441d725115208a6fda")
@@ -131,7 +131,7 @@ test_that("Correct HTTP request is made, parentPopulation specified", {
     {
       setServer("https://my.server.com")
       resp = createPolygonGate("591a3b441d725115208a6fda", "FSC-A", "FSC-W", "my gate",
-        c(37836.07, 1588732.12, 8139.405, 9441.949), c(971.51, 154.646, 664.78, 781.32),
+        list(c(37836.07, 971.51), c(1588732.12,154.646),  c(8139.405, 664.78), c(9441.949,  781.32)),
         parentPopulation = "singlets", createPopulation = FALSE)
       resp = resp$gate
       expect_equal(resp$experimentId, "591a3b441d725115208a6fda")
