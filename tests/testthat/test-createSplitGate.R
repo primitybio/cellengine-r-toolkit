@@ -20,7 +20,7 @@ test_that("Correct HTTP request is made", {
     },
     {
       setServer("https://my.server.com")
-      resp = createSplitGate("591a3b441d725115208a6fda", "FSC-A", "my gate", 144000, 0.5, labels = list(c(26215.4,0.95), c(235929.6, 0.95)), createPopulation = FALSE)
+      resp = createSplitGate("591a3b441d725115208a6fda", "FSC-A", "my gate", 144000, labels = list(c(26215.4,0.95), c(235929.6, 0.95)), createPopulation = FALSE)
       resp = resp$gate
       expect_equal(resp$experimentId, "591a3b441d725115208a6fda")
       expect_equal(resp$`_id`, "592640aa298f1480900e10e4") # assigned server-side
@@ -60,7 +60,7 @@ test_that("Correct HTTP request is made, fcsFileId specified", {
     },
     {
       setServer("https://my.server.com")
-      resp = createSplitGate("591a3b441d725115208a6fda", "FSC-A", "my gate", 144000, 0.5, labels = list(c(26215.4,0.95), c(235929.6, 0.95)),
+      resp = createSplitGate("591a3b441d725115208a6fda", "FSC-A", "my gate", 144000, labels = list(c(26215.4,0.95), c(235929.6, 0.95)),
                              tailoredPerFile = TRUE, fcsFileId = "591a3b441d725115208a6fdf", createPopulation = FALSE)
       resp = resp$gate
       expect_equal(resp$experimentId, "591a3b441d725115208a6fda")
@@ -121,7 +121,7 @@ test_that("Correct HTTP request is made, parentPopulation specified", {
     },
     {
       setServer("https://my.server.com")
-      resp = createSplitGate("591a3b441d725115208a6fda", "FSC-A", "my gate", 144000, 0.5, labels = list(c(26215.4,0.95), c(235929.6, 0.95)),
+      resp = createSplitGate("591a3b441d725115208a6fda", "FSC-A", "my gate", 144000, labels = list(c(26215.4,0.95), c(235929.6, 0.95)),
                              parentPopulation = "singlets", createPopulation = FALSE, tailoredPerFile = FALSE)
       resp = resp$gate
       expect_equal(resp$experimentId, "591a3b441d725115208a6fda")

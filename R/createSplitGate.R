@@ -36,7 +36,7 @@
 #' \dontrun{
 #' createSplitGate(experimentId, "FSC-A", "my gate", 144000, 100000)
 #' }
-createSplitGate = function(experimentId, xChannel, name, x, y,
+createSplitGate = function(experimentId, xChannel, name, x, y=0.5,
                                gid = generateId(), gids = replicate(2, generateId()), labels = NULL,
                                parentPopulationId = NULL, parentPopulation = NULL,
                                tailoredPerFile = FALSE, fcsFileId = NULL, fcsFile = NULL,
