@@ -8,7 +8,8 @@
 #' @param name The name of the gate. Each sector is named with this parameter
 #' and a split flag (L, R).
 #' @param x The x coordinate of the center point (after the channel's scale has been applied).
-#' @param y The y coordinate of the dashed line extending from the center point (after the channel's scale has been applied).
+#' @param y The y position of the dashed line extending from the center point (as a fraction
+#'  of the height).
 #' @param labels Positions of the quadrant labels. A list of two length-2 vectors in
 #' the order: L, R. These are set automatically to the top corners.
 #' @param gid Top-level group ID of the gate, used for tailoring. If this is not specified,
