@@ -5,10 +5,10 @@
 #' The quick syntax accepts FCS files and populations by names. This is often
 #' easier to use, but is slower to execute because additional API requests and
 #' validation logic must be run. Thus, for performance-critical applications,
-#' use the explicit syntax, providing IDs instead of names in the \code{fcsFileIds},
-#' \code{populationIds} and \code{percentOf} parameters. The explicit syntax is
-#' also guaranteed to reference unique files and populations, while names may
-#' be non-unique, in which case an error will be raised.
+#' provide IDs instead of names in the \code{fcsFileIds}, \code{populationIds}
+#' and \code{percentOf} parameters. IDs are also guaranteed to reference unique
+#' files and populations, while names may be non-unique, in which case an error
+#' will be raised.
 #'
 #' @param experimentId ID of experiment.
 #' @param fcsFileIds IDs of FCS files. If specified, do not specify \code{fcsFiles}.
@@ -34,19 +34,16 @@
 #'   names the same length as \code{populationIds} parameter.
 #'
 #'   \itemize{
-#'     \item If omitted, then the percent of parent will be calculated for each
-#'       population.
+#'     \item If omitted or the string "PARENT", then the percent of parent will
+#'       be calculated for each population.
 #'
 #'     \item If a single ID or name is provided, then the percent of that
 #'        population will be calculated for each population specified in
 #'        \code{populations} or \code{populationIds} (useful for calculating
 #'        e.g. percent of singlets or leukocytes).
 #'
-#'     \item If an array of IDs or names the same length as the
-#'       \code{populationIds} parameter is provided, then the corresponding
-#'       populations in the \code{percentOf} and \code{populationIds} parameters
-#'       will be matched up in order, calculating the percent of the \emph{i}th
-#'       \code{population} in the \emph{i}th \code{percentOf} population.
+#'     \item If an array of IDs or names is provided, then the percent of each
+#'        of those populations will be calculated.
 #'   }
 #'
 #'   In the latter two cases, if a name or list of names instead of IDs are
