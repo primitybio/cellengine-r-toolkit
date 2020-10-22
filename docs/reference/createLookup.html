@@ -119,7 +119,7 @@ then be used to find resources by name instead of id. The resource's id is
 cached for the duration of the R session.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>createLookup</span>(<span class='no'>experimentId</span>)</pre>
+    <pre class="usage"><span class='fu'>createLookup</span><span class='op'>(</span><span class='va'>experimentId</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,10 +137,11 @@ cached for the duration of the R session.</p>
   name Name of resource to search for.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>lookup</span> <span class='kw'>=</span> <span class='fu'>createLookup</span>(<span class='st'>"5e1f66a06f5f3f0759b479c9"</span>)
-<span class='fu'>lookup</span>(<span class='st'>"gates"</span>, <span class='st'>"test_gate"</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>lookup</span> <span class='op'>=</span> <span class='fu'>createLookup</span><span class='op'>(</span><span class='st'>"5e1f66a06f5f3f0759b479c9"</span><span class='op'>)</span>
+<span class='fu'>lookup</span><span class='op'>(</span><span class='st'>"gates"</span>, <span class='st'>"test_gate"</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -156,7 +157,7 @@ cached for the duration of the R session.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
