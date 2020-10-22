@@ -117,23 +117,23 @@ each with a unique gid and name." />
 each with a unique gid and name.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>createSplitGate</span>(
-  <span class='no'>experimentId</span>,
-  <span class='no'>xChannel</span>,
-  <span class='no'>name</span>,
-  <span class='no'>x</span>,
-  <span class='no'>y</span>,
-  <span class='kw'>gid</span> <span class='kw'>=</span> <span class='fu'><a href='generateId.html'>generateId</a></span>(),
-  <span class='kw'>gids</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span>(<span class='fl'>2</span>, <span class='fu'><a href='generateId.html'>generateId</a></span>()),
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>parentPopulationId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>parentPopulation</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>tailoredPerFile</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>fcsFileId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>fcsFile</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>locked</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>createPopulation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>createSplitGate</span><span class='op'>(</span>
+  <span class='va'>experimentId</span>,
+  <span class='va'>xChannel</span>,
+  <span class='va'>name</span>,
+  <span class='va'>x</span>,
+  <span class='va'>y</span>,
+  gid <span class='op'>=</span> <span class='fu'><a href='generateId.html'>generateId</a></span><span class='op'>(</span><span class='op'>)</span>,
+  gids <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fu'><a href='generateId.html'>generateId</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>,
+  labels <span class='op'>=</span> <span class='cn'>NULL</span>,
+  parentPopulationId <span class='op'>=</span> <span class='cn'>NULL</span>,
+  parentPopulation <span class='op'>=</span> <span class='cn'>NULL</span>,
+  tailoredPerFile <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  fcsFileId <span class='op'>=</span> <span class='cn'>NULL</span>,
+  fcsFile <span class='op'>=</span> <span class='cn'>NULL</span>,
+  locked <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  createPopulation <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -215,9 +215,10 @@ an error will be thrown. If specified, do not specify <code>fcsFileId</code>.</p
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>createSplitGate</span>(<span class='no'>experimentId</span>, <span class='st'>"FSC-A"</span>, <span class='st'>"my gate"</span>, <span class='fl'>144000</span>, <span class='fl'>100000</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>createSplitGate</span><span class='op'>(</span><span class='va'>experimentId</span>, <span class='st'>"FSC-A"</span>, <span class='st'>"my gate"</span>, <span class='fl'>144000</span>, <span class='fl'>100000</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -233,7 +234,7 @@ an error will be thrown. If specified, do not specify <code>fcsFileId</code>.</p
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

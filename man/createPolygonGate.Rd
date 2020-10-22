@@ -9,9 +9,10 @@ createPolygonGate(
   xChannel,
   yChannel,
   name,
+  vertices = list(),
   xVertices = c(),
   yVertices = c(),
-  label = c(mean(xVertices), mean(yVertices)),
+  label = NULL,
   gid = generateId(),
   parentPopulationId = NULL,
   parentPopulation = NULL,
@@ -31,9 +32,13 @@ createPolygonGate(
 
 \item{name}{The name of the gate.}
 
-\item{xVertices}{List of x coordinates for the polygon's vertices.}
+\item{vertices}{List of vectors of coordinates, like list(c(x,y), c(x,y), ...)}
 
-\item{yVertices}{List of y coordinates for the polygon's vertices.}
+\item{xVertices}{**Deprecated** Use `vertices` instead. List of x
+coordinates for the polygon's vertices.}
+
+\item{yVertices}{**Deprecated** Use `vertices` instead. List of y
+coordinates for the polygon's vertices.}
 
 \item{label}{Position of the label. Defaults to the midpoint of the gate.}
 

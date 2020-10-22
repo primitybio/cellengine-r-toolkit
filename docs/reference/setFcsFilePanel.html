@@ -115,7 +115,7 @@
     <p>Updates the panel properties of an FCS file.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>setFcsFilePanel</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='no'>panelName</span>, <span class='no'>panel</span>)</pre>
+    <pre class="usage"><span class='fu'>setFcsFilePanel</span><span class='op'>(</span><span class='va'>experimentId</span>, <span class='va'>fcsFileId</span>, <span class='va'>panelName</span>, <span class='va'>panel</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,13 +153,14 @@ labels, and is typically the reagent description (e.g. "CD3-PacBlu").</p>
 <p>The <code>panelName</code> property is used to group files by panel.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>panel</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(
-  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"index"</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='st'>"channel"</span> <span class='kw'>=</span> <span class='st'>"FSC-A"</span>),
-  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"index"</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='st'>"channel"</span> <span class='kw'>=</span> <span class='st'>"Blue530-A"</span>, <span class='st'>"reagent"</span> <span class='kw'>=</span> <span class='st'>"CD3"</span>)
-)
-<span class='fu'>setFcsFilePanel</span>(<span class='no'>experimentId</span>, <span class='no'>fcsFileId</span>, <span class='st'>"Panel 1"</span>, <span class='no'>panel</span>)
-}</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>panel</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"index"</span> <span class='op'>=</span> <span class='fl'>1</span>, <span class='st'>"channel"</span> <span class='op'>=</span> <span class='st'>"FSC-A"</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"index"</span> <span class='op'>=</span> <span class='fl'>7</span>, <span class='st'>"channel"</span> <span class='op'>=</span> <span class='st'>"Blue530-A"</span>, <span class='st'>"reagent"</span> <span class='op'>=</span> <span class='st'>"CD3"</span><span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'>setFcsFilePanel</span><span class='op'>(</span><span class='va'>experimentId</span>, <span class='va'>fcsFileId</span>, <span class='st'>"Panel 1"</span>, <span class='va'>panel</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -175,7 +176,7 @@ labels, and is typically the reagent description (e.g. "CD3-PacBlu").</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
