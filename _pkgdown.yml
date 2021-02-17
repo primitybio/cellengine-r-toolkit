@@ -17,6 +17,7 @@ reference:
       - updateExperiment
       - deleteExperiment
       - getAttachments
+      - uploadAttachment
 
   - title: FCS Files
     contents:
