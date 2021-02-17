@@ -1,14 +1,5 @@
 context("getStatistics")
 
-test_that("throws an error if neither fcsFileIds nor fcsFiles is specified", {
-  {
-    expect_error(
-      getStatistics("eid", statistics = c(), compensationId = 0),
-      "One of fcsFileIds or fcsFiles is required"
-    )
-  }
-})
-
 test_that("throws an error if both fcsFileIds and fcsFiles is specified", {
   {
     expect_error(
@@ -43,10 +34,10 @@ test_that("looks up fcsFiles by name; unambiguous match", {
     },
     {
       setServer("https://my.server.com")
-      # Don't specify populations so the call dies after the lookup
+      # Specify both populationIds and populations so the call dies after the lookup
       expect_error(
-        getStatistics("591a3b441d725115208a6fda", statistics = c(), compensationId = 0, fcsFiles = c("filename1.fcs")),
-        "One of populationIds or populations is required"
+        getStatistics("591a3b441d725115208a6fda", populationIds = 'some ID', populations = 'some population', statistics = c(), compensationId = 0, fcsFiles = c("filename1.fcs")),
+        "Please specify only one of 'populations' or 'populationIds'."
       )
     }
   )
@@ -181,15 +172,6 @@ test_that("looks up fcsFiles by name; errors with too few and ambiguous results"
       )
     }
   )
-})
-
-test_that("throws an error if neither populationIds nor populations is specified", {
-  {
-    expect_error(
-      getStatistics("eid", statistics = c(), compensationId = 0, fcsFileIds = c("a")),
-      "One of populationIds or populations is required"
-    )
-  }
 })
 
 test_that("throws an error if both populationIds and populations is specified", {
@@ -752,6 +734,37 @@ test_that("works, percentOf specified as null (ungated)", {
       getStatistics("591a3b441d725115208a6fda", statistics = c("percent"), compensationId = 0,
         fcsFileIds = c("591a3b441d725115208a6fdb"), populationIds = c("591a3b441d725115208a6fdc", "591a3b441d725115208a6fd1"),
         scaleSetId = "591a3b441d725115208a6fdd", percentOf = UNGATED)
+    }
+  )
+})
+
+test_that("works, gets statistics for all FCS files and populations", {
+  with_mock(
+    `httr::request_perform` = function(req, handle, refresh) {
+      switch(req$url,
+        "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fda/bulkstatistics" = {
+          expect_equal(req$method, "POST")
+          body = rawToChar(req$options$postfields)
+          expect_equal(body, '{\"fcsFileIds\":null,\"statistics\":[\"percent\"],\"populationIds\":null,\"compensationId\":0,\"q\":0.5,\"scaleSetId\":\"591a3b441d725115208a6fdd\",\"format\":\"json\",\"annotations\":true,\"percentOf\":""}')
+          response = httptest::fake_response(
+            req$url,
+            req$method,
+            content = '[]',
+            status_code = 200,
+            headers = list(`Content-Type` = "application/json")
+          )
+          return(response)
+        },
+        {
+          stop(sprintf("Unexpected request URL: %s", req$url))
+        }
+      )
+    },
+    {
+      setServer("https://my.server.com")
+      getStatistics("591a3b441d725115208a6fda", statistics = c("percent"), compensationId = 0,
+                    fcsFileIds = NULL, populationIds = NULL,
+                    scaleSetId = "591a3b441d725115208a6fdd", percentOf = UNGATED)
     }
   )
 })
