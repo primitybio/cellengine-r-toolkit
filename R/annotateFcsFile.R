@@ -4,7 +4,8 @@
 #'
 #' This function overwrites any existing annotations. To add new annotations
 #' while keeping the existing annotations, first use \code{getFcsFile} to get
-#' the existing annotations.
+#' the existing annotations. To append new annotations without deleting existing
+#' annotations, use \code{addAnnotation}.
 #'
 #' @param experimentId ID of experiment.
 #' @param fcsFileId ID of FCS file.
