@@ -7,7 +7,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' uploadFcsFile(experimentId, "/path/to/file")
+#' uploadAttachment(experimentId, "/path/to/file")
 #' }
 uploadAttachment = function(experimentId, attachmentPath) {
   checkDefined(experimentId)
