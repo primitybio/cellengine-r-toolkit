@@ -42,7 +42,8 @@
 <meta property="og:title" content="Find a Resource By Name — createLookup" />
 <meta property="og:description" content="Allows creation of a by-name lookup object per experiment, which can
 then be used to find resources by name instead of id. The resource's id is
-cached for the duration of the R session." />
+cached for the duration of the R session.
+If a name is not specified, a list of all requested resources will be returned." />
 
 
 
@@ -116,7 +117,8 @@ cached for the duration of the R session." />
     <div class="ref-description">
     <p>Allows creation of a by-name lookup object per experiment, which can
 then be used to find resources by name instead of id. The resource's id is
-cached for the duration of the R session.</p>
+cached for the duration of the R session.
+If a name is not specified, a list of all requested resources will be returned.</p>
     </div>
 
     <pre class="usage"><span class='fu'>createLookup</span><span class='op'>(</span><span class='va'>experimentId</span><span class='op'>)</span></pre>
@@ -140,6 +142,8 @@ cached for the duration of the R session.</p>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
 <span class='va'>lookup</span> <span class='op'>=</span> <span class='fu'>createLookup</span><span class='op'>(</span><span class='st'>"5e1f66a06f5f3f0759b479c9"</span><span class='op'>)</span>
 <span class='fu'>lookup</span><span class='op'>(</span><span class='st'>"gates"</span>, <span class='st'>"test_gate"</span><span class='op'>)</span>
+<span class='co'># or:</span>
+<span class='fu'>lookup</span><span class='op'>(</span><span class='st'>"gates"</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
   </div>

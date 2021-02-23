@@ -122,7 +122,7 @@ each with a unique gid and name.</p>
   <span class='va'>xChannel</span>,
   <span class='va'>name</span>,
   <span class='va'>x</span>,
-  <span class='va'>y</span>,
+  y <span class='op'>=</span> <span class='fl'>0.5</span>,
   gid <span class='op'>=</span> <span class='fu'><a href='generateId.html'>generateId</a></span><span class='op'>(</span><span class='op'>)</span>,
   gids <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>replicate</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fu'><a href='generateId.html'>generateId</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>,
   labels <span class='op'>=</span> <span class='cn'>NULL</span>,
@@ -157,7 +157,8 @@ and a split flag (L, R).</p></td>
     </tr>
     <tr>
       <th>y</th>
-      <td><p>The y coordinate of the dashed line extending from the center point (after the channel's scale has been applied).</p></td>
+      <td><p>The y position of the dashed line extending from the center point (as a fraction
+of the height).</p></td>
     </tr>
     <tr>
       <th>gid</th>

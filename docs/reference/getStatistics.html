@@ -188,17 +188,14 @@ scale set exists in the experiment, that scale set will be used.</p></td>
       <td><p>Single population ID or name, or list of population IDs or
   names the same length as <code>populationIds</code> parameter.</p>
 <p></p><ul>
-<li><p>If omitted, then the percent of parent will be calculated for each
-      population.</p></li>
+<li><p>If omitted or the string "PARENT", then the percent of parent will
+      be calculated for each population.</p></li>
 <li><p>If a single ID or name is provided, then the percent of that
        population will be calculated for each population specified in
        <code>populations</code> or <code>populationIds</code> (useful for calculating
        e.g. percent of singlets or leukocytes).</p></li>
-<li><p>If an array of IDs or names the same length as the
-      <code>populationIds</code> parameter is provided, then the corresponding
-      populations in the <code>percentOf</code> and <code>populationIds</code> parameters
-      will be matched up in order, calculating the percent of the <em>i</em>th
-      <code>population</code> in the <em>i</em>th <code>percentOf</code> population.</p></li>
+<li><p>If an array of IDs or names is provided, then the percent of each
+       of those populations will be calculated.</p></li>
 </ul>
 
 <p>In the latter two cases, if a name or list of names instead of IDs are
@@ -215,17 +212,19 @@ frame.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Statistics as a data frame, including file annotations and 
+    <p>Statistics as a data frame, including file annotations and
   information about the statistics such as the channel name and population.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The quick syntax accepts FCS files and populations by names. This is often
 easier to use, but is slower to execute because additional API requests and
 validation logic must be run. Thus, for performance-critical applications,
-use the explicit syntax, providing IDs instead of names in the <code>fcsFileIds</code>,
-<code>populationIds</code> and <code>percentOf</code> parameters. The explicit syntax is
-also guaranteed to reference unique files and populations, while names may
-be non-unique, in which case an error will be raised.</p>
+provide IDs instead of names in the <code>fcsFileIds</code>, <code>populationIds</code>
+and <code>percentOf</code> parameters. IDs are also guaranteed to reference unique
+files and populations, while names may be non-unique, in which case an error
+will be raised.
+Specify neither <code>fcsFileIds</code> nor fcsFiles to calculate statistics for
+all non-control FCS files.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
