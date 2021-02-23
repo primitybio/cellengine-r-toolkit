@@ -17,11 +17,19 @@ deleteGates(experimentId, gid = NULL, gateId = NULL, exclude = NULL)
 }
 \description{
 Deletes a gate or a tailored gate family
-Works for compound gates if you specify the top-level gid. Specifying the gid of a sector (i.e. one listed in model.gids) will result in no gates being deleted.
-If gateId is specified, only that gate will be deleted, regardless of the other parameters specified.
 }
 \details{
-Currently, byName does not work for the gateId in this function (it does work for the experimentID).
+This is an advanced function, primarily used for deleting tailored gates. It
+does not delete populations. Use \code{deletePopulationAuto} to delete gates
+and their associated populations.
+
+Works for compound gates if you specify the top-level gid. Specifying the gid
+of a sector (i.e. one listed in model.gids) will result in no gates being
+deleted. If gateId is specified, only that gate will be deleted, regardless
+of the other parameters specified.
+
+Currently, \code{byName} does not work for the gateId in this function (it does work
+for the experimentId).
 }
 \examples{
 \dontrun{

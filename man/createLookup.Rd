@@ -18,10 +18,13 @@ A function that takes the parameters "resource" and "name":
 Allows creation of a by-name lookup object per experiment, which can
 then be used to find resources by name instead of id. The resource's id is
 cached for the duration of the R session.
+If a name is not specified, a list of all requested resources will be returned.
 }
 \examples{
 \dontrun{
 lookup = createLookup("5e1f66a06f5f3f0759b479c9")
 lookup("gates", "test_gate")
+# or:
+lookup("gates")
 }
 }
