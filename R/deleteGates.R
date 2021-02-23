@@ -11,8 +11,8 @@
 #' deleted. If gateId is specified, only that gate will be deleted, regardless
 #' of the other parameters specified.
 #'
-#' Currently, byName does not work for the gateId in this function (it does work
-#' for the experimentID).
+#' Currently, \code{byName} does not work for the gateId in this function (it does work
+#' for the experimentId).
 #' @param experimentId ID of experiment.
 #' @param gid ID of gate family.
 #' @param gateId ID of gate.
