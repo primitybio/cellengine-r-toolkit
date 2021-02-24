@@ -1,0 +1,24 @@
+context("uploadAttachment")
+
+test_that("Correct HTTP request is made", {
+  with_mock(
+    `httr::request_perform` = function(req, handle, refresh) {
+      expect_equal(req$method, "POST")
+      expect_equal(req$url, "https://my.server.com/api/v1/experiments/591a3b441d725115208a6fdb/attachments")
+      response = httptest::fake_response(
+        req$url,
+        req$method,
+        content = '{"_id":"591a3b441d725115208a6fda","filename":"test.txt","experimentId":"591a3b441d725115208a6fdb","crc32c":"4d9f30b7","md5":"b6cb0f190337db50a672e9f3dc616e10","size":9}',
+        status_code = 201,
+        headers = list(`Content-Type` = "application/json")
+      )
+      return(response)
+    },
+    {
+      setServer("https://my.server.com")
+      resp = uploadAttachment("591a3b441d725115208a6fdb", "../test.txt")
+      expect_equal(resp$`_id`, "591a3b441d725115208a6fda")
+      expect_equal(resp$filename, "test.txt")
+    }
+  )
+})

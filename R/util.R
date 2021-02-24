@@ -148,6 +148,7 @@ lookupByName = function(listpath, name, prop = "name") {
 #' Allows creation of a by-name lookup object per experiment, which can
 #' then be used to find resources by name instead of id. The resource's id is
 #' cached for the duration of the R session.
+#' If a name is not specified, a list of all requested resources will be returned.
 #'
 #' @param experimentId Experiment to create lookup for.
 #' @return A function that takes the parameters "resource" and "name":
@@ -157,21 +158,29 @@ lookupByName = function(listpath, name, prop = "name") {
 #' \dontrun{
 #' lookup = createLookup("5e1f66a06f5f3f0759b479c9")
 #' lookup("gates", "test_gate")
+#' # or:
+#' lookup("gates")
 #' }
 #' @export
 createLookup <- function(experimentId) {
-  function(resource, name) {
+  function(resource, name='') {
     allowedArgs = c("gates", "populations", "fcsfiles", "compensations")
     if (resource %in% allowedArgs == FALSE) {
       stop(sprintf("Resource must be one of %s", paste(allowedArgs, collapse = ", ")))
     }
     listpath = sprintf("experiments/%s/%s", experimentId, resource)
-    args <- list(listpath=listpath, name=byName(name))
-    if (resource == "fcsfiles") {
-      args <- c(args, list(prop = "filename"))
+
+    if (name == '') {
+      data = baseGet(listpath)
+
+    } else {
+      args <- list(listpath=listpath, name=byName(name))
+      if (resource == "fcsfiles") {
+        args <- c(args, list(prop = "filename"))
+      }
+      id = do.call(lookupByName, args)
+      data = baseGet(sprintf("%s/%s/", listpath, id))
     }
-    id = do.call(lookupByName, args)
-    data = baseGet(sprintf("%s/%s/", listpath, id))
     data
   }
 }

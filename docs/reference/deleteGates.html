@@ -40,9 +40,7 @@
 
 
 <meta property="og:title" content="Delete gate — deleteGates" />
-<meta property="og:description" content="Deletes a gate or a tailored gate family
-Works for compound gates if you specify the top-level gid. Specifying the gid of a sector (i.e. one listed in model.gids) will result in no gates being deleted.
-If gateId is specified, only that gate will be deleted, regardless of the other parameters specified." />
+<meta property="og:description" content="Deletes a gate or a tailored gate family" />
 
 
 
@@ -114,9 +112,7 @@ If gateId is specified, only that gate will be deleted, regardless of the other 
     </div>
 
     <div class="ref-description">
-    <p>Deletes a gate or a tailored gate family
-Works for compound gates if you specify the top-level gid. Specifying the gid of a sector (i.e. one listed in model.gids) will result in no gates being deleted.
-If gateId is specified, only that gate will be deleted, regardless of the other parameters specified.</p>
+    <p>Deletes a gate or a tailored gate family</p>
     </div>
 
     <pre class="usage"><span class='fu'>deleteGates</span><span class='op'>(</span><span class='va'>experimentId</span>, gid <span class='op'>=</span> <span class='cn'>NULL</span>, gateId <span class='op'>=</span> <span class='cn'>NULL</span>, exclude <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
@@ -144,7 +140,15 @@ If gateId is specified, only that gate will be deleted, regardless of the other 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Currently, byName does not work for the gateId in this function (it does work for the experimentID).</p>
+    <p>This is an advanced function, primarily used for deleting tailored gates. It
+does not delete populations. Use <code>deletePopulationAuto</code> to delete gates
+and their associated populations.</p>
+<p>Works for compound gates if you specify the top-level gid. Specifying the gid
+of a sector (i.e. one listed in model.gids) will result in no gates being
+deleted. If gateId is specified, only that gate will be deleted, regardless
+of the other parameters specified.</p>
+<p>Currently, <code>byName</code> does not work for the gateId in this function (it does work
+for the experimentId).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>

@@ -9,6 +9,8 @@
 #' and \code{percentOf} parameters. IDs are also guaranteed to reference unique
 #' files and populations, while names may be non-unique, in which case an error
 #' will be raised.
+#' Specify neither \code{fcsFileIds} nor {fcsFiles} to calculate statistics for
+#' all non-control FCS files.
 #'
 #' @param experimentId ID of experiment.
 #' @param fcsFileIds IDs of FCS files. If specified, do not specify \code{fcsFiles}.
@@ -53,7 +55,7 @@
 #' @param includeAnnotations Includes FCS file annotations in the returned data
 #'   frame.
 #'
-#' @return Statistics as a data frame, including file annotations and 
+#' @return Statistics as a data frame, including file annotations and
 #'   information about the statistics such as the channel name and population.
 #'
 #' @export
@@ -101,9 +103,6 @@ getStatistics = function(experimentId,
   experimentId = lookupByName("experiments", experimentId)
 
   # FCS file arguments
-  if (is.null(fcsFileIds) && is.null(fcsFiles)) {
-    stop("One of fcsFileIds or fcsFiles is required.")
-  }
   if (!is.null(fcsFileIds) && !is.null(fcsFiles)) {
     stop("Please specify only one of 'fcsFiles' or 'fcsFileIds'.")
   }
@@ -136,9 +135,6 @@ getStatistics = function(experimentId,
   }
 
   # population arguments
-  if (is.null(populationIds) && is.null(populations)) {
-    stop("One of populationIds or populations is required.")
-  }
   if (!is.null(populationIds) && !is.null(populations)) {
     stop("Please specify only one of 'populations' or 'populationIds'.")
   }

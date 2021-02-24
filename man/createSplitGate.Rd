@@ -9,7 +9,7 @@ createSplitGate(
   xChannel,
   name,
   x,
-  y,
+  y = 0.5,
   gid = generateId(),
   gids = replicate(2, generateId()),
   labels = NULL,
@@ -32,7 +32,8 @@ and a split flag (L, R).}
 
 \item{x}{The x coordinate of the center point (after the channel's scale has been applied).}
 
-\item{y}{The y coordinate of the dashed line extending from the center point (after the channel's scale has been applied).}
+\item{y}{The y position of the dashed line extending from the center point (as a fraction
+of the height).}
 
 \item{gid}{Top-level group ID of the gate, used for tailoring. If this is not specified,
 then a new Group ID will be created. For compound gates, "gid" refers to the
