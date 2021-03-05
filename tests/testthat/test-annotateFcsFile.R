@@ -19,8 +19,14 @@ test_that("Correct HTTP request is made", {
     {
       setServer("https://my.server.com")
       annos = list(
-        "annotation 1" = "myvalue",
-        "annotation 2" = 2.12
+        list(
+          name = "annotation 1",
+          value = "myvalue"
+          ),
+        list(
+          name = "annotation 2",
+          value = 2.12
+          )
       )
       resp = annotateFcsFile("591a3b441d725115208a6fda", "591a3b441d725115208a6fdc", annos)
     }
