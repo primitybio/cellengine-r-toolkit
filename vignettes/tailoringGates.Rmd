@@ -1,5 +1,5 @@
 ---
-title: "Gates"
+title: "Tailoring Gates"
 output: rmarkdown::html_vignette
 ---
 

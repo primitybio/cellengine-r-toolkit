@@ -13,5 +13,10 @@
 getScaleSets = function(experimentId, params = list()) {
   checkDefined(experimentId)
   experimentId = lookupByName("experiments", experimentId)
-  baseGet(paste("experiments", experimentId, "scalesets", sep = "/"), params)
+  scaleSet = baseGet(paste("experiments", experimentId, "scalesets", sep = "/"), params)
+  scales = data.frame(scaleSet$scales)
+  simpleScales = scales$scale
+  rownames(simpleScales) <- scales$channelName
+  scaleSet$scales = simpleScales
+  scaleSet
 }
