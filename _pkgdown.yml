@@ -32,6 +32,7 @@ reference:
   - title: Scales
     contents:
       - getScaleSets
+      - applyScale
 
   - title: Compensations
     contents:
