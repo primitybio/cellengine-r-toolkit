@@ -14,7 +14,7 @@ applyScale = function(scale, data, clamp_q=FALSE) {
   fn = switch(
     scale$type,
     "LinearScale" = function(a) { a },
-    "LogScale" = function(a) { if (a <= 0) 0 else log10(a) },
+    "LogScale" = function(a) { if (a <= 1) 0 else log10(a) },
     "ArcSinhScale" = function(a) { asinh(a / scale$cofactor) },
     )
 
