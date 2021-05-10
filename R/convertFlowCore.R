@@ -1,4 +1,9 @@
-library("flowCore")
+library("stats")
+
+if(!requireNamespace("flowCore")){
+  message("These utilities require the 'flowCore' package.")
+  return(invisible())
+}
 
 #' Convert a gate to flowCore
 #'
@@ -9,7 +14,7 @@ library("flowCore")
 convertGate <- function (gate) {
   switch(
     gate$type,
-    "RectangleGate" = rectangleGate(filterId = gate$name, setNames(list(c(gate$model$rectangle$x1, gate$model$rectangle$x2), c(gate$model$rectangle$y1, gate$model$rectangle$y2)), c(gate$xChannel, gate$yChannel))),
+    "RectangleGate" = flowCore::rectangleGate(filterId = gate$name, stats::setNames(list(c(gate$model$rectangle$x1, gate$model$rectangle$x2), c(gate$model$rectangle$y1, gate$model$rectangle$y2)), c(gate$xChannel, gate$yChannel))),
     "EllipseGate" = {
       ellipse <- gate$model$ellipse
       points <- getEllipsePoints(ellipse$center[1], ellipse$center[2], ellipse$angle, ellipse$major, ellipse$minor)
@@ -21,12 +26,12 @@ convertGate <- function (gate) {
       colnames(cov) <- c(gate$xChannel, gate$yChannel)
       rownames(cov) <- c(gate$xChannel, gate$yChannel)
 
-      return(ellipsoidGate(filterId = gate$name, .gate = cov, mean = result$center))
+      return(flowCore::ellipsoidGate(filterId = gate$name, .gate = cov, mean = result$center))
     },
     "PolygonGate" = {
       m <- gate$model$polygon$vertices
       colnames(m) <- c(gate$xChannel, gate$yChannel)
-      polygonGate(filterId = gate$name, m)
+      flowCore::polygonGate(filterId = gate$name, m)
     }
   )
 }
