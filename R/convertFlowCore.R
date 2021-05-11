@@ -35,3 +35,37 @@ convertGate <- function (gate) {
     }
   )
 }
+
+#' Scale flowCore gate
+#'
+#' Applies a scale to points from a flowCore gate, so that it may
+#' be saved to CellEngine.
+#'
+#' @param gate The flowCore gate points (i.e. PologonalGate@boundaries)
+#' @param scaleSet The CellEngine ScaleSet.
+#' @export
+#' @examples
+#' \dontrun{
+#' sngl <- flowDensity(file, params)
+#' flowGate <- sngl@filter
+#' scaleSet <- getScaleSets("5d2f8b4b21fd0676fb3a6a8c")
+#' gatePoints <- scaleFlowCoreGate(gate, scaleSet)
+#' createPolygonGate(id, colnames(gate)[1], colnames(gate)[2], 'my gate', vertices=gate_points)
+#' }
+scaleFlowCoreGate <- function (gate, scaleSet) {
+  xChannel <- colnames(gate)[1]
+  yChannel <- colnames(gate)[2]
+  scales = data.frame(scaleSet$scales)
+  s = scales$scale
+  rownames(s) = scales$channelName
+
+  scaleX <- s[xChannel,]
+  scaleY <- s[yChannel,]
+
+  scaledGate = cbind(applyScale(scaleX, gate[,xChannel]), applyScale(scaleY, gate[,yChannel]))
+  colnames(scaledGate) <- c(xChannel, yChannel)
+  gate[,xChannel] <- unlist(scaledGate[,xChannel])
+  gate[,yChannel] <- unlist(scaledGate[,yChannel])
+
+  return(lapply(seq_len(nrow(gate)), function(i) gate[i,]))
+}
