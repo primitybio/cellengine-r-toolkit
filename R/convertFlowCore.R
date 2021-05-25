@@ -1,20 +1,25 @@
 library("stats")
 
-if(!requireNamespace("flowCore")){
-  message("These utilities require the 'flowCore' package.")
-  return(invisible())
-}
-
 #' Convert a gate to flowCore
 #'
 #' Converts a CellEngine gate ("PolygonGate", "EllipseGate", or "RectangleGate") to
 #' its flowCore analogue.
 #'
 #' @param gate The CellEngine gate to be converted
-convertGate <- function (gate) {
+convertToFlowCore <- function (gate) {
+  if (!requireNamespace("flowCore")) {
+    message("These utilities require the 'flowCore' package.")
+    return(invisible())
+  }
+
   switch(
     gate$type,
-    "RectangleGate" = flowCore::rectangleGate(filterId = gate$name, stats::setNames(list(c(gate$model$rectangle$x1, gate$model$rectangle$x2), c(gate$model$rectangle$y1, gate$model$rectangle$y2)), c(gate$xChannel, gate$yChannel))),
+    "RectangleGate" = flowCore::rectangleGate(
+      filterId = gate$name,
+      stats::setNames(list(
+        c(gate$model$rectangle$x1, gate$model$rectangle$x2),
+        c(gate$model$rectangle$y1, gate$model$rectangle$y2)),
+      c(gate$xChannel, gate$yChannel))),
     "EllipseGate" = {
       ellipse <- gate$model$ellipse
       points <- getEllipsePoints(ellipse$center[1], ellipse$center[2], ellipse$angle, ellipse$major, ellipse$minor)

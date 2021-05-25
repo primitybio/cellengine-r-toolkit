@@ -59,6 +59,10 @@ reference:
     contents:
       # - getPlot
 
+  - title: FlowCore Utilities
+    contents:
+      - convertToFlowCore
+
   - title: Utilities
     contents:
       - byName
