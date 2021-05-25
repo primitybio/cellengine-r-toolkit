@@ -54,8 +54,8 @@ convertToFlowCore <- function (gate) {
 #' sngl <- flowDensity(file, params)
 #' flowGate <- sngl@filter
 #' scaleSet <- getScaleSets("5d2f8b4b21fd0676fb3a6a8c")
-#' gatePoints <- scaleFlowCoreGate(gate, scaleSet)
-#' createPolygonGate(id, colnames(gate)[1], colnames(gate)[2], 'my gate', vertices=gate_points)
+#' gatePoints <- scaleFlowCoreGate(flowGate, scaleSet)
+#' createPolygonGate(id, colnames(flowGate)[1], colnames(flowGate)[2], 'my gate', vertices=gatePoints)
 #' }
 scaleFlowCoreGate <- function (gate, scaleSet) {
   xChannel <- colnames(gate)[1]
