@@ -74,3 +74,30 @@ scaleFlowCoreGate <- function (gate, scaleSet) {
 
   return(lapply(seq_len(nrow(gate)), function(i) gate[i,]))
 }
+
+#' Convert flowDensity to gate
+#'
+#' Converts points in a flowDensity "filter" to a CellEngine Gate and
+#' saves it to CellEngine. A ScaleSet must be provided to scale the 
+#' gate correctly.
+#'
+#' @param flowDensity The flowDensity object.
+#' @param scaleSet The CellEngine ScaleSet to be applied.
+#' @export
+#' @examples
+#' \dontrun{
+#' sngl <- flowDensity(file, params)
+#' scaleSet <- getScaleSets("5d2f8b4b21fd0676fb3a6a8c")
+#' convertFromFlowCore(sngl, scaleSet, name = "my gate")
+#' }
+convertFromFlowCore <- function (flowDensity, scaleSet, name) {
+  flowGate <- flowDensity@filter
+  gatePoints <- scaleFlowCoreGate(flowGate, scaleSet)
+  createPolygonGate(
+    id,
+    colnames(flowGate)[1],
+    colnames(flowGate)[2],
+    name,
+    vertices = gatePoints
+  )
+}
