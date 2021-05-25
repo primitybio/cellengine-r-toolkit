@@ -23,6 +23,7 @@ reference:
     contents:
       - uploadFcsFile
       - getFcsFiles
+      - downloadFcsFiles
       - getFcsFile
       - getEvents
       - annotateFcsFile
