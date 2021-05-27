@@ -7,8 +7,8 @@
 #' "tsv (without header)")
 #' @param destination [String] Write the files to the specified destination.
 #' @param overwrite [Logical] Allows a destination file to be overwritten.
-#' @param fcsFileIds [Array<String>] Optional. Defaults to returning all files
-#' in the experiment.
+#' @param fcsFileIds [Array<String>] Optional. Defaults to returning all
+#' non-control files in the experiment.
 #' @param populationIds [Array<String>] Optional. If provided, only events from
 #' these populations will be included in the output files. Defaults to ungated.
 #' @param compensationId [String] Required if populationIds is specified.
@@ -18,19 +18,19 @@
 #' numerical values will be the compensated values. For FCS format, the
 #' numerical values will be unchanged, but the file header will contain the
 #' compensation as the spill string (file-internal compensation).
-#' @param preSubsampleN [Integer] Randomly subsample the file to contain this many events
-#' before gating.
-#' @param preSubsampleP [Numeric] Randomly subsample the file to contain this percent of
-#' events (0 to 1) before gating.
-#' @param postSubSampleN [Integer] Randomly subsample the file to contain this many events
-#' after gating.
-#' @param postSubSampleP [Numeric] Randomly subsample the file to contain this percent of
-#' events (0 to 1) after gating.
-#' @param seed [Numeric] Seed for random number generator used for subsampling. Use for
-#' deterministic (reproducible) subsampling. If omitted, a pseudo-random value
-#' is used.
-#' @param filenameTemplate [String]	Tokenized template to dynamically name each
-#' file in the resulting archive, like "{file.name}-{population.name}"
+#' @param preSubsampleN [Integer] Randomly subsample the file to contain this
+#' many events before gating.
+#' @param preSubsampleP [Numeric] Randomly subsample the file to contain this
+#' percent of events (0 to 1) before gating.
+#' @param postSubSampleN [Integer] Randomly subsample the file to contain this
+#' many events after gating.
+#' @param postSubSampleP [Numeric] Randomly subsample the file to contain this
+#' percent of events (0 to 1) after gating.
+#' @param seed [Numeric] Seed for random number generator used for
+#' subsampling. Use for deterministic (reproducible) subsampling. If omitted, a
+#' pseudo-random value is used.
+#' @param filenameTemplate [String]	Tokenized template to dynamically name
+#' each file in the resulting archive, like "{file.name}-{population.name}"
 #' @export
 #' @examples
 #' \dontrun{
