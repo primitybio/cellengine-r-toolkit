@@ -1,7 +1,9 @@
 #' Get FCS files
 #'
-#' Retrieves the list of FCS files in an experiment. This does not download the
-#' FCS files themselves; this only returns information about the FCS files.
+#' Retrieves the list of FCS files in an experiment. This does not download
+#' the FCS files themselves; this only returns information about the FCS files.
+#' Only returns non-control FCS files unless "includeControls"=T is passed in
+#' params.
 #'
 #' @param experimentId ID of experiment.
 #' @param params Optional query parameters.
