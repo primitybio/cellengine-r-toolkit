@@ -9,8 +9,7 @@ library("stats")
 #' @export
 convertToFlowCore <- function (gate) {
   if (!requireNamespace("flowCore")) {
-    message("These utilities require the 'flowCore' package.")
-    return(invisible())
+    stop("These utilities require the 'flowCore' package.")
   }
 
   switch(
