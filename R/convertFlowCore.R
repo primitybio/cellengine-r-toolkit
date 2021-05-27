@@ -6,6 +6,7 @@ library("stats")
 #' its flowCore analogue.
 #'
 #' @param gate The CellEngine gate to be converted
+#' @export
 convertToFlowCore <- function (gate) {
   if (!requireNamespace("flowCore")) {
     message("These utilities require the 'flowCore' package.")
