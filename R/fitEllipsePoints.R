@@ -46,9 +46,14 @@ fitEllipsePoints <- function(xy, tolerance = 0.005, max.iter = 500) {
     err <- sqrt(sum((new_u - u)^2))
     count <- count + 1
     if (count > max.iter) {
-      warning(paste("Iterated", max.iter, "times and still can't find the bounding ellipse. \n", sep=""))
-      warning("Either increase the tolerance or the maximum number of iterations")
-      return(NULL)
+    message <- paste(
+     "Iterated", max.iter, "times and
+     still can't find the bounding
+     ellipse. \n Either increase the
+     tolerance or the maximum number of
+     iterations. \n", sep = ""
+    )
+      stop(message)
     }
     u <- new_u
   }
