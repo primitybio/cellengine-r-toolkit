@@ -74,7 +74,6 @@ reference:
       - FILE_INTERNAL
       - UNGATED
       - getErrorInfo
-      - convertGate
 
 articles:
   - title: Getting Started
