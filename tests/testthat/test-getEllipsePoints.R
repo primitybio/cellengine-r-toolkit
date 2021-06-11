@@ -5,7 +5,7 @@ test_that("returns 8 points on an ellipse", {
   gate <- jsonlite::fromJSON(content)
   ell <- gate$model$ellipse
 
-  points <- getEllipsePoints(ell$center[1], ell$center[2], ell$angle, ell$major, ell$minor)
+  points <- getEllipsePoints(ell$angle, ell$major, ell$minor, ell$center[1], ell$center[2])
   expect_equal(8, length(points))
   expect_equal(2, length(points[[1]]))
 })

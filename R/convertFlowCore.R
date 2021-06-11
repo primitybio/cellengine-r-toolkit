@@ -22,7 +22,7 @@ convertToFlowCore <- function (gate) {
       c(gate$xChannel, gate$yChannel))),
     "EllipseGate" = {
       ellipse <- gate$model$ellipse
-      points <- getEllipsePoints(ellipse$center[1], ellipse$center[2], ellipse$angle, ellipse$major, ellipse$minor)
+      points <- getEllipsePoints(ellipse$angle, ellipse$major, ellipse$minor, ellipse$center[[1]][1], ellipse$center[[1]][2])
       points <- t(data.frame(points))
 
       result <- fitEllipsePoints(points)

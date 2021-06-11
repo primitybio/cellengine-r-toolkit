@@ -8,7 +8,7 @@
 #' @param major Length of the major axis.
 #' @param minor length of the minor axis.
 #'
-getEllipsePoints <- function (x, y, angle, major, minor) {
+getEllipsePoints <- function (angle, major, minor, x, y) {
   points <- list()
   phi <- 0
 
