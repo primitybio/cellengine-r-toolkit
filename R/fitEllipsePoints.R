@@ -13,22 +13,22 @@
 #'
 #' @return A named list containing:
 #'  - "covar", the 2x2 covariance matrix of the ellipse
-#'  - "center", a 2x1 vector of the center of the ellipse such that:
-#'      (x - C)' A (x - C) <= 1
-#'  - "axes", a 2x1 vector whose elements are one-half the
-#'      lengths of the major and minor axes
+#'  - "x", the x-coordinate of the ellipse center
+#'  - "y", the y-coordinate of the ellipse center
+#'  - "major", the length of the major axis
+#'  - "minor", the length of the minor axis
 #'  - "angle", the angle of rotation
-fitEllipsePoints <- function(xy, tolerance = 0.005, max.iter = 500) {
+fitEllipsePoints <- function(xy, tolerance = 1e-20, max.iter = 1000) {
   if (ncol(xy) != 2) {
     stop("xy must be a two-column data frame")
   }
   n = nrow(xy)
   d = ncol(xy)
   if (n <= d) stop("There cannot be more columns than rows")
-  
+
   ## Add a column of 1s to the (n x 2) matrix xy - so it is now (n x 3)
   Q <- t(cbind(xy, rep(1,n)))
-  
+
   ## Initialize
   count <- 1
   err <- 1
@@ -46,13 +46,13 @@ fitEllipsePoints <- function(xy, tolerance = 0.005, max.iter = 500) {
     err <- sqrt(sum((new_u - u)^2))
     count <- count + 1
     if (count > max.iter) {
-    message <- paste(
-     "Iterated", max.iter, "times and
-     still can't find the bounding
-     ellipse. \n Either increase the
-     tolerance or the maximum number of
-     iterations. \n", sep = ""
-    )
+      message <- paste(
+       "Iterated ", max.iter, " times and
+       still can't find the bounding
+       ellipse. \n Either increase the
+       tolerance or the maximum number of
+       iterations. \n", sep = ""
+      )
       stop(message)
     }
     u <- new_u
@@ -63,15 +63,30 @@ fitEllipsePoints <- function(xy, tolerance = 0.005, max.iter = 500) {
   P <- t(xy)
   # Compute the center, adding back the shifted values
   c <- as.vector((P %*% u))
+  x <- c[1]
+  y <- c[2]
   # Compute the A-matrix
   A <- (1/d) * solve(P %*% U %*% t(P) - (P %*% u) %*% t(P %*% u))
+  # covar is the covariance matrix of the ellipse
+  covar <- solve(A)
   # Find the Eigenvalues of matrix A which will be used to get the major and minor axes
   A.eigen <- eigen(A)
   # Calculate the length of the semi-major and semi-minor axes
   # from the Eigenvalues of A.
   semi.axes <- sort(1 / sqrt(A.eigen$values), decreasing=TRUE)
+  major <- semi.axes[2]
+  minor <- semi.axes[1]
   # Calculate the rotation angle from the first Eigenvector
   alpha <- atan2(A.eigen$vectors[2,1], A.eigen$vectors[1,1]) - pi/2
-  ellipse.params <- list("covar" = A, "center" = c, "axes" = semi.axes, angle = alpha)
-  return(ellipse.params)
+
+  eigenVectors = A.eigen$vectors
+  if (length(eigenVectors) == 4) {
+    ev2 <- eigenVectors[2,]
+    angle <- atan(ev2[1] / ev2[2])
+  } else {
+    ev1 <- eigenVectors[1]
+    angle <- -atan(ev1[2] / ev1[1])
+  }
+
+  list("covar" = covar, "x" = x, "y" = y, "major" = params$major, "minor" = params$minor, angle = params$angle)
 }
