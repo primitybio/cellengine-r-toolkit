@@ -18,6 +18,7 @@
 #'  - "major", the length of the major axis
 #'  - "minor", the length of the minor axis
 #'  - "angle", the angle of rotation
+#' @export
 fitEllipsePoints <- function(xy, tolerance = 1e-20, max.iter = 1000) {
   if (ncol(xy) != 2) {
     stop("xy must be a two-column data frame")
@@ -74,19 +75,12 @@ fitEllipsePoints <- function(xy, tolerance = 1e-20, max.iter = 1000) {
   # Calculate the length of the semi-major and semi-minor axes
   # from the Eigenvalues of A.
   semi.axes <- sort(1 / sqrt(A.eigen$values), decreasing=TRUE)
-  major <- semi.axes[2]
-  minor <- semi.axes[1]
+  major <- semi.axes[1]
+  minor <- semi.axes[2]
   # Calculate the rotation angle from the first Eigenvector
   alpha <- atan2(A.eigen$vectors[2,1], A.eigen$vectors[1,1]) - pi/2
 
-  eigenVectors = A.eigen$vectors
-  if (length(eigenVectors) == 4) {
-    ev2 <- eigenVectors[2,]
-    angle <- atan(ev2[1] / ev2[2])
-  } else {
-    ev1 <- eigenVectors[1]
-    angle <- -atan(ev1[2] / ev1[1])
-  }
+  params <- covarToParameters(covar)
 
   list("covar" = covar, "x" = x, "y" = y, "major" = params$major, "minor" = params$minor, angle = params$angle)
 }

@@ -6,8 +6,7 @@ test_that("returns ellipse parameters from covariance matrix", {
                          c("FSC-A", "FSC-W")))
   params <- covarToParameters(covar)
 
-  print(params)
-  expect_equal(params$minor, 48.37784, tolerance = 0.001)
-  expect_equal(params$major, 98.76024, tolerance = 0.001)
-  expect_equal(params$angle, 0.6722, tolerance = 0.001)
+  expect_equal(params$minor, 98.8, tolerance = 0.001)
+  expect_equal(params$major, 48.4, tolerance = 0.001)
+  expect_equal(params$angle, -0.899, tolerance = 0.001)
 })
