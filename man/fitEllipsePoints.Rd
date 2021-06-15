@@ -4,7 +4,7 @@
 \alias{fitEllipsePoints}
 \title{Fit ellipse points}
 \usage{
-fitEllipsePoints(xy, tolerance = 0.005, max.iter = 500)
+fitEllipsePoints(xy, tolerance = 1e-20, max.iter = 1000)
 }
 \arguments{
 \item{xy}{a two-column data frame containing x and y coordinates.}
@@ -16,10 +16,10 @@ fitEllipsePoints(xy, tolerance = 0.005, max.iter = 500)
 \value{
 A named list containing:
  - "covar", the 2x2 covariance matrix of the ellipse
- - "center", a 2x1 vector of the center of the ellipse such that:
-     (x - C)' A (x - C) <= 1
- - "axes", a 2x1 vector whose elements are one-half the
-     lengths of the major and minor axes
+ - "x", the x-coordinate of the ellipse center
+ - "y", the y-coordinate of the ellipse center
+ - "major", the length of the major axis
+ - "minor", the length of the minor axis
  - "angle", the angle of rotation
 }
 \description{

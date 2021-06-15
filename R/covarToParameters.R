@@ -3,7 +3,6 @@
 #' Returns list("major" = major, "minor" = minor, "angle" = angle)
 #'
 #' @param covar Covariance matrix
-#' @export
 covarToParameters <- function (covar) {
   eigens <- eigen(covar)
   lambdas <- eigens$values

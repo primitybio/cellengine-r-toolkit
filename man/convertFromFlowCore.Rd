@@ -2,18 +2,18 @@
 % Please edit documentation in R/convertFlowCore.R
 \name{convertFromFlowCore}
 \alias{convertFromFlowCore}
-\title{Convert flowDensity to gate}
+\title{Convert flowCore to gate}
 \usage{
-convertFromFlowCore(flowDensity, scaleSet, name)
+convertFromFlowCore(flowObject, scaleSet, name = NULL)
 }
 \arguments{
-\item{flowDensity}{The flowDensity object.}
+\item{flowObject}{A flowDensity object or a flowCore Gate}
 
 \item{scaleSet}{The CellEngine ScaleSet to be applied.}
 }
 \description{
-Converts points in a flowDensity "filter" to a CellEngine Gate and
-saves it to CellEngine. A ScaleSet must be provided to scale the 
+Converts points in a flowCore gate or flowDensity filter to a CellEngine
+Gate and saves it to CellEngine. A ScaleSet must be provided to scale the
 gate correctly.
 }
 \examples{

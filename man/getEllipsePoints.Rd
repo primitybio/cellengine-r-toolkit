@@ -4,18 +4,18 @@
 \alias{getEllipsePoints}
 \title{Get ellipse points}
 \usage{
-getEllipsePoints(x, y, angle, major, minor)
+getEllipsePoints(angle, major, minor, x, y)
 }
 \arguments{
-\item{x}{X-coordinate of the ellipse center.}
-
-\item{y}{Y-coordinate of the ellipse center.}
-
 \item{angle}{Angle of the ellipse.}
 
 \item{major}{Length of the major axis.}
 
 \item{minor}{length of the minor axis.}
+
+\item{x}{X-coordinate of the ellipse center.}
+
+\item{y}{Y-coordinate of the ellipse center.}
 }
 \description{
 Returns 8 perimeter points at angular increments of pi / 4.

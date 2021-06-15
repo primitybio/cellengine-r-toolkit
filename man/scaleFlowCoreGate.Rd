@@ -2,14 +2,14 @@
 % Please edit documentation in R/convertFlowCore.R
 \name{scaleFlowCoreGate}
 \alias{scaleFlowCoreGate}
-\title{Scale flowCore gate}
+\title{Scale a flowCore gate or flowDensity filter}
 \usage{
 scaleFlowCoreGate(gate, scaleSet)
 }
 \arguments{
-\item{gate}{The flowCore gate points (i.e. PologonalGate@boundaries)}
+\item{gate}{The flowCore gate points (i.e. polygonGate@boundaries)}
 
-\item{scaleSet}{The CellEngine ScaleSet.}
+\item{scaleSet}{The CellEngine ScaleSet to apply.}
 }
 \description{
 Applies a scale to points from a flowCore gate, so that it may
