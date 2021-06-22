@@ -60,6 +60,12 @@ reference:
     contents:
       # - getPlot
 
+  - title: FlowCore Utilities
+    contents:
+      - convertToFlowCore
+      - convertFromFlowCore
+      - scaleFlowCoreGate
+
   - title: Utilities
     contents:
       - byName
